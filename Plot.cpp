@@ -1,4 +1,5 @@
 #include "Plot.h"
+#include <iostream>
 
 using namespace std;
 
@@ -18,4 +19,14 @@ int Plot::getNumCrops(){
 
 void Plot::sow(){
     sowed = true;
+}
+
+void Plot::plantCrop(Crop* crop){
+    if (numCrops < maxCrops){
+        crops[numCrops] = crop;
+        numCrops++;
+    }else{
+        cout << "The plot is full" << endl;
+        return;
+    }
 }

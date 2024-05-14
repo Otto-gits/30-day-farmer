@@ -2,16 +2,9 @@
 
 
 Crop::Crop(){
-    plant_age = 0;
-    max_age = 10;
-    int growth_rate = 4;
-    int profit = 4;
-    int waterSchedule = 4;
-    float waterLevel = 4;
 }
-Crop::Crop(int plant_age, int max_age){
-    this -> plant_age = plant_age;
-    this -> max_age = max_age;
+Crop::Crop(int ID){
+    this -> ID = ID;
 }
 
 int Crop::getAge(){

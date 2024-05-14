@@ -11,9 +11,10 @@
         int profit;
         int waterSchedule;
         float waterLevel;
+        int ID;
     public:
         Crop();
-        Crop(int plant_age, int max_age);
+        Crop(int ID);
         int getAge();
         int getMaxAge();
         int getPlantSize();

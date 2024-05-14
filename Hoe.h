@@ -9,9 +9,7 @@ class Hoe: public Tool{
     public:
         Hoe();
         Plot sowPlot(Plot plot);
-
 };
-
 
 
 #endif

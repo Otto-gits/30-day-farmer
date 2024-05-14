@@ -8,8 +8,8 @@ int main() {
     std::cout << "Press Enter to age the plant ('q' to quit): ";
     while ((input = std::cin.get()) != 'q') {
         if (input == '\n') {
-            // Age the plant by one year
-            crop.ageOneYear();
+            // Age the plant by one day
+            crop.ageOneDay();
 
             // Print the updated age
             std::cout << "Plant age: " << crop.getAge() << std::endl;

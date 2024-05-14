@@ -9,7 +9,7 @@ int main() {
     while ((input = std::cin.get()) != 'q') {
         if (input == '\n') {
             // Age the plant by one year
-            crop.ageOneYear();
+            crop.ageOneDay();
 
             // Print the updated age
             std::cout << "Plant age: " << crop.getAge() << std::endl;

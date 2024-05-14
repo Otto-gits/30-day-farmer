@@ -13,7 +13,7 @@ class Farm{
         string name;
         string location;
         float balance;
-        wheatHarvastCount();
+
          
 }
 ;

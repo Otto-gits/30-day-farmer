@@ -8,7 +8,7 @@
 class Shovel: public Tool{
     public:
         Shovel();
-        Plot plantCrop(Plot plot);
+        void plant(Plot& plot);
 };
 
 

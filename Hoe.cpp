@@ -4,8 +4,9 @@ Hoe::Hoe(){
     uses = 4;
 }
 
-Plot Hoe::sowPlot(Plot plot){
+void Hoe::sowPlot(Plot& plot){
     plot.sow();
-    return plot;
+    uses--;
 }
 
+// Need to fix this

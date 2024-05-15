@@ -7,6 +7,7 @@ Plot::Plot(){
     sowed = false;
     numCrops = 0;
     maxCrops = 4;
+    crops = new Crop*[maxCrops];
 }
 
 bool Plot::getSowed(){

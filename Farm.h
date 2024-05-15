@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// Farm class that is the bais for the project
+// Farm class that is the basis for the project
 
 class Farm{
     protected:
@@ -28,9 +28,7 @@ class Farm{
         Farm();
         Farm(string name, string location);
         void addPlot(Plot* plot);
-}
-;
-
+};
 
 
 #endif

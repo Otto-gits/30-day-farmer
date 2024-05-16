@@ -9,8 +9,10 @@
 
 
 class Scythe: public Tool{
+    private:
+        Farm farm;
     public:
-        Scythe();
+        Scythe(Farm& farm);
         void harvestCrop(Crop& crop);
 };
 

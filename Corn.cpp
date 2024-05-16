@@ -5,6 +5,7 @@
 using namespace std;
 
 Corn::Corn(){
+    salePrice = 13;
     plant_age = 0;
     waterLevel = 0;
     plant_size = 0;

@@ -10,13 +10,6 @@ cropMerchant::cropMerchant(){
         cornSeedCost = 10;
         cherrySeedCost = 24;
         appleSeedCost = 25;
-        bellPeppersSalePrice = 6;
-        onionSeedSalePrice = 9;
-        carrotSeedSalePrice = 13;
-        wheatSeedSalePrice = 2; 
-        cornSeedSalePrice = 13;
-        cherrySeedSalePrice = 20;
-        appleSeedSalePrice = 20;
         scytheReplenishmentCost = 10;
         hoeReplenishmentCost = 10;
         shovelReplenishmentCost = 10;

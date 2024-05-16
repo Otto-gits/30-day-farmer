@@ -12,6 +12,7 @@
         int waterSchedule;
         float waterLevel;
         int ID;
+        int salePrice;
     public:
         Crop();
         Crop(int ID);
@@ -28,6 +29,7 @@
         void setPlantSize(int plant_size);
         void setWaterLevel(float waterLevel);
         bool isMature();
+        int getSalePrice();
  };
 
 #endif

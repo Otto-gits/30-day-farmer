@@ -5,6 +5,7 @@
 using namespace std;
 
 Onion::Onion(){
+    salePrice = 9;
     plant_age = 0;
     max_age = 15; // Max age before dying 
     plant_size = 0;

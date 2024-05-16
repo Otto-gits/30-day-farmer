@@ -63,4 +63,7 @@ bool Crop::isMature(){
     }
 }
 
+int Crop::getSalePrice(){
+    return salePrice;
+}
 

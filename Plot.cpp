@@ -31,3 +31,7 @@ void Plot::plantCrop(Crop* crop){
         return;
     }
 }
+
+void Plot::removeCrop(){
+    
+}

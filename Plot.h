@@ -15,7 +15,7 @@ class Plot{
         int getNumCrops();
         void sow();
         void plantCrop(Crop* crop);
-        // void removeCrop(int ID);
+        void removeCrop();
 };
 
 #endif

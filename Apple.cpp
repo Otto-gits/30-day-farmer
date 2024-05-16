@@ -5,6 +5,7 @@
 using namespace std;
 
 Apple::Apple(){
+    salePrice = 20;
     plant_age = 0;
     waterLevel = 0;
     plant_size = 0;

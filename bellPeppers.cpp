@@ -5,6 +5,7 @@
 using namespace std;
 
 bellPeppers::bellPeppers(){
+    salePrice = 6;
     plant_age = 0;
     max_age = 20; // Max age before dying 
     plant_size = 0;

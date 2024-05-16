@@ -10,7 +10,8 @@
 int main()
 {
     Plot p1;
-    Crop wheat;
+    Wheat wheat;
+    Shovel shovel;
     sf::RenderWindow window(sf::VideoMode(1000, 600), "30 Day Farmer"); // this creates the window in which the game is played
     sf::Texture TXcrops; // Creates the variable for the image in which the crops can be selected
     if (!TXcrops.loadFromFile("crops.png", sf::IntRect(0, 0, 550, 75))) { //loads crops.png from the github
@@ -54,7 +55,7 @@ int main()
             }
                 else if (dirtPos.contains(event.mouseButton.x,event.mouseButton.y) && wheatMode == true){
                     rectangle.setFillColor(sf::Color(20, 20, 0));
-                    Shovel.plant()
+                    shovel.plantCrop(wheat);
                 }
             
         }

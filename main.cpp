@@ -1,7 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Wheat.h"
+#include "Plot.h"
+#include "Crop.h"
+#include "Farm.h"
+#include "Shovel.h"
+
+
 int main()
 {
+    Plot p1;
+    Crop wheat;
     sf::RenderWindow window(sf::VideoMode(1000, 600), "30 Day Farmer"); // this creates the window in which the game is played
     sf::Texture TXcrops; // Creates the variable for the image in which the crops can be selected
     if (!TXcrops.loadFromFile("crops.png", sf::IntRect(0, 0, 550, 75))) { //loads crops.png from the github
@@ -10,12 +19,14 @@ int main()
     }
     // run the program as long as the window is open
 
+    //sf::
+
     sf::RectangleShape rectangle(sf::Vector2f(100, 100));
     rectangle.setFillColor(sf::Color(139, 69, 19)); // Color of the rectangle
     rectangle.setPosition(200, 250);
-    sf::FloatRect dirtPos(200, 250 , 100,100);
+    sf::FloatRect dirtPos(200, 250 , 100,100); 
 
-    sf::Sprite SPcrops(TXcrops); // creates aa sprite from which the image will load into
+    sf::Sprite SPcrops(TXcrops); // creates a sprite from which the image will load into
     SPcrops.setPosition(50, 10); // sets the position for where the crops image will be 
     sf::FloatRect wheatPos(55, 15, 50, 50); // the area in which the wheat is selected to be planted
     bool wheatMode = false; // A boolean variable in which the game knows which crop is being planted
@@ -43,6 +54,7 @@ int main()
             }
                 else if (dirtPos.contains(event.mouseButton.x,event.mouseButton.y) && wheatMode == true){
                     rectangle.setFillColor(sf::Color(20, 20, 0));
+                    Shovel.plant()
                 }
             
         }

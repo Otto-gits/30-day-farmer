@@ -27,6 +27,7 @@
         void setPlantAge(int plant_age);
         void setPlantSize(int plant_size);
         void setWaterLevel(float waterLevel);
+        bool isMature();
  };
 
 #endif

@@ -3,6 +3,9 @@
 
 #include "Tool.h"
 #include "Plot.h"
+#include "cropMerchant.h"
+#include "Farm.h"
+
 
 
 class Scythe: public Tool{

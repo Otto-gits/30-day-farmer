@@ -14,13 +14,13 @@ class Farm{
         string name;
         string location;
         float balance;
-        int bellPeppersHarvastCount;
-        int onionHarvastCount;
-        int carrotHarvastCount;
-        int wheatHarvastCount;
-        int cornHarvastCount;
-        int cherryHarvastCount;
-        int appleHarvastCount;
+        // int bellPeppersHarvastCount;
+        // int onionHarvastCount;
+        // int carrotHarvastCount;
+        // int wheatHarvastCount;
+        // int cornHarvastCount;
+        // int cherryHarvastCount;
+        // int appleHarvastCount;
         int numPlots;
         int maxNumPlots;
         Plot** plots;
@@ -28,6 +28,7 @@ class Farm{
         Farm();
         Farm(string name, string location);
         void addPlot(Plot* plot);
+        void addToBalance(int amount);
 };
 
 

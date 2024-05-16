@@ -54,3 +54,13 @@ void Crop::setPlantSize(int plant_size){
 void Crop::setWaterLevel(float waterLevel){
     this->waterLevel = waterLevel;
 }
+
+bool Crop::isMature(){
+    if (plant_age == max_age){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+

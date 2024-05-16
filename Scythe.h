@@ -11,8 +11,9 @@
 class Scythe: public Tool{
     private:
         Farm farm;
+        Plot plot;
     public:
-        Scythe(Farm& farm);
+        Scythe(Farm& farm, Plot& plot);
         void harvestCrop(Crop& crop);
 };
 

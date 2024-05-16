@@ -1,37 +1,42 @@
-#include "Plot.h"
-#include <iostream>
+    #include "Plot.h"
+    #include <iostream>
 
-using namespace std;
+    using namespace std;
 
-Plot::Plot(){
-    sowed = false;
-    numCrops = 0;
-    maxCrops = 4;
-    crops = new Crop*[maxCrops];
-}
-
-bool Plot::getSowed(){
-    return sowed;
-}
-
-int Plot::getNumCrops(){
-    return numCrops;
-}
-
-void Plot::sow(){
-    sowed = true;
-}
-
-void Plot::plantCrop(Crop* crop){
-    if (numCrops < maxCrops){
-        crops[numCrops] = crop;
-        numCrops++;
-    }else{
-        cout << "The plot is full" << endl;
-        return;
+    Plot::Plot(){
+        sowed = false;
+        crop = nullptr;
     }
-}
 
-void Plot::removeCrop(){
-    
-}
+    bool Plot::getSowed(){
+        return sowed;
+    }
+
+    bool Plot::hasCrop(){
+        if (crop != nullptr){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    void Plot::sow(){
+        sowed = true;
+    }
+
+    void Plot::plantCrop(Crop* newCrop){
+        if (hasCrop() == false){
+            crop = newCrop;
+        }
+        else{
+            cout << "The plot is full" << endl;
+            return;
+        }
+    }
+
+
+    void Plot::removeCrop(){
+        delete crop;
+        crop = nullptr;
+    }
+

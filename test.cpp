@@ -14,7 +14,11 @@ int main(){
     Corn c1;
     wateringCan can;
     Plot p1;
+    Farm f1;
     Hoe hoe;
+
+    Scythe s1(f1,p1);
+    
     
     cout << c1.getWaterLevel() << endl;
 

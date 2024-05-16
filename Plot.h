@@ -6,16 +6,18 @@
 class Plot{
     protected:
         bool sowed;
-        int numCrops;
-        int maxCrops;   
-        Crop** crops;
+        // int numCrops;
+        // int maxCrops;   
+        // Crop** crops;
+        Crop* crop;
     public:
         Plot();
         bool getSowed();
-        int getNumCrops();
+        // int getNumCrops();
         void sow();
-        void plantCrop(Crop* crop);
-        void removeCrop();
+        void plantCrop(Crop* newCrop);
+        void removeCrop();  
+        bool hasCrop();
 };
 
 #endif

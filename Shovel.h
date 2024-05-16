@@ -8,7 +8,6 @@
 class Shovel: public Tool{
     public:
         Shovel();
-        void plant(Plot& plot);
 };
 
 

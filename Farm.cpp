@@ -49,3 +49,15 @@ void Farm::addPlot(Plot* plot){
 void Farm::addToBalance(int amount){
     balance += amount;
 }
+
+void Farm::removeFromBalance(int amount){
+    blanace -= amount;
+}
+
+Plot* Farm::getPlot(int index) const {
+    if (index >= 0 && index < numPlots) {
+        return plots[index];
+    } else {
+        return nullptr; // Return nullptr if index is out of bounds
+    }
+}

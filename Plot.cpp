@@ -20,13 +20,15 @@
         }
     }
 
+
+
     void Plot::sow(){
         sowed = true;
     }
 
     void Plot::plantCrop(Crop* newCrop){
         if (hasCrop() == false){
-            crop = newCrop;
+            crop = new Crop(*newCrop);
         }
         else{
             cout << "The plot is full" << endl;

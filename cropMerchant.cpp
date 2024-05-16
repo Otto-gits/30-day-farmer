@@ -17,7 +17,7 @@ cropMerchant::cropMerchant(){
 }
 
 void cropMerchant::buyWheat(Crop& crop){
-
+        
 }
 
 void cropMerchant:: buyBellPeppers(Crop& crop){

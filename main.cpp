@@ -10,7 +10,13 @@
 
 int main()
 {
-    Plot p1;
+    Farm farmy("Farmy", "Adelaide");
+    for (int i = 0; i < 5; ++i) {
+        Plot* newPlot = new Plot(); // Assuming default constructor for Plot
+        farmy.addPlot(newPlot);
+    }
+    Plot* p1 = farmy.getPlot(0);
+
     Wheat wheatCrop;
     sf::RenderWindow window(sf::VideoMode(1000, 600), "30 Day Farmer"); // this creates the window in which the game is played
     sf::Texture TXcrops; // Creates the variable for the image in which the crops can be selected

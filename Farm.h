@@ -29,6 +29,8 @@ class Farm{
         Farm(string name, string location);
         void addPlot(Plot* plot);
         void addToBalance(int amount);
+        void removeFromBalance(int amount);
+        Plot* getPlot(int index)
 };
 
 

@@ -3,16 +3,17 @@
 
 using namespace std;
 
-Scythe::Scythe(Farm& farm){
+Scythe::Scythe(Farm& farm, Plot& plot){
     this->farm = farm;
+    this->plot = plot;
     uses = 4;
 }
 
 void Scythe::harvestCrop(Crop& crop){ // Accepting reference to Crop object
     if (crop.isMature()){
         farm.addToBalance(crop.getSalePrice());
+        plot.removeCrop();
         
-        // crop.remove();
         uses--;
     }
 }

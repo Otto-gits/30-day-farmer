@@ -8,6 +8,7 @@
 
 class cropMerchant{
     private:
+        Farm& farm;
         int bellPeppersSeedCost;
         int onionSeedCost;
         int carrotSeedCost;
@@ -15,19 +16,12 @@ class cropMerchant{
         int cornSeedCost;
         int cherrySeedCost;
         int appleSeedCost;
-        int bellPeppersSalePrice;
-        int onionSeedSalePrice;
-        int carrotSeedSalePrice;
-        int wheatSeedSalePrice;
-        int cornSeedSalePrice;
-        int cherrySeedSalePrice;
-        int appleSeedSalePrice;
         int scytheReplenishmentCost;
         int hoeReplenishmentCost;
         int shovelReplenishmentCost;    
         int wateringCanReplenishmentCost;    
     public:
-        cropMerchant();
+        cropMerchant(Farm& farm);
         void buyWheat(Crop& crop);
         void buyBellPeppers(Crop& crop);
         void buyOnion(Crop& crop);

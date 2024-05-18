@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-cropMerchant::cropMerchant(){
+cropMerchant::cropMerchant(Farm& farm){
+        this->farm = farm;
         bellPeppersSeedCost = 5;
         onionSeedCost = 7;
         carrotSeedCost = 11;
@@ -17,7 +18,10 @@ cropMerchant::cropMerchant(){
 }
 
 void cropMerchant::buyWheat(Crop& crop){
-        
+        if (farm.getBalance() >= wheatSeedCost){
+                farm.removeFromBalance(wheatSeedCost);
+                farm.
+        }
 }
 
 void cropMerchant:: buyBellPeppers(Crop& crop){

@@ -51,10 +51,10 @@ void Farm::addToBalance(int amount){
 }
 
 void Farm::removeFromBalance(int amount){
-    blanace -= amount;
+    balance -= amount;
 }
 
-Plot* Farm::getPlot(int index) const {
+Plot* Farm::getPlot(int index){
     if (index >= 0 && index < numPlots) {
         return plots[index];
     } else {

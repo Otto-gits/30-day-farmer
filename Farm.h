@@ -30,7 +30,7 @@ class Farm{
         void addPlot(Plot* plot);
         void addToBalance(int amount);
         void removeFromBalance(int amount);
-        Plot* getPlot(int index)
+        Plot* getPlot(int index);
 };
 
 

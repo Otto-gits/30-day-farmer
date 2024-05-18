@@ -22,7 +22,7 @@ Farm::Farm(){
 Farm::Farm(string name, string location){
     this->name = name;
     this->location = location; 
-    balance = 0;
+    balance = 1;
     // bellPeppersHarvastCount = 0;
     // onionHarvastCount = 0;
     // carrotHarvastCount = 0;

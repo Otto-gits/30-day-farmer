@@ -5,7 +5,7 @@
 using namespace std;
 
 Wheat::Wheat(){
-    salePrice = 3;
+    salePrice = 1;
     plant_age = 0;
     max_age = 10; // Max age before dying 
     plant_size = 0;

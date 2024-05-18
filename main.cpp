@@ -14,6 +14,9 @@
 #include "wateringCan.h"
 #include "Tool.h"
 #include "cropMerchant.h"
+#include "Cherry.h"
+#include "Apple.h"
+
 
 
 int main(){
@@ -28,7 +31,7 @@ int main(){
     Plot* p3 = farmy.getPlot(2);
     Plot* p4 = farmy.getPlot(3);
     Plot* p5 = farmy.getPlot(4);
-
+    bool waterMode = false;
     Wheat wheatCrop;
 
     sf::RenderWindow window(sf::VideoMode(1000, 600), "30 Day Farmer"); // this creates the window in which the game is played
@@ -73,8 +76,10 @@ int main(){
     sf::FloatRect onionPos(400, 137 , 60,55); // the area in which the wheat is selected to be planted
     sf::FloatRect cornPos(470, 137 , 60,55); // the area in which the wheat is selected to be planted
     sf::FloatRect carrotPos(530, 137 , 60,55); // the area in which the wheat is selected to be planted
-    sf::FloatRect cherryPos(600, 137 , 60,55); // the area in which the wheat is selected to be planted
-    sf::FloatRect applePos(660, 137 , 60,55); // the area in which the wheat is selected to be planted
+    //sf::FloatRect cherryPos(600, 137 , 60,55); // the area in which the wheat is selected to be planted
+    //sf::FloatRect applePos(660, 137 , 60,55); // the area in which the wheat is selected to be planted
+    sf::FloatRect wCanPos(840, 425 , 70,65); // the area in which the wheat is selected to be planted
+
 
     sf::Sprite spPlot1(plot1);
     spPlot1.setPosition(120, 360);
@@ -115,23 +120,33 @@ int main(){
                 if (wheatPos.contains(event.mouseButton.x,event.mouseButton.y)){
                     Merchant.buyWheat();
                 }
-                if (wheatPos.contains(event.mouseButton.x,event.mouseButton.y)){
-
+                else if (pepperPos.contains(event.mouseButton.x,event.mouseButton.y)){
+                    Merchant.buyBellPeppers();
                 }
-                
-                if (wheatPos.contains(event.mouseButton.x,event.mouseButton.y)){
-
+                else if (onionPos.contains(event.mouseButton.x,event.mouseButton.y)){
+                    Merchant.buyOnion();
                 }
-
-                if (wheatPos.contains(event.mouseButton.x,event.mouseButton.y)){
-
+                else if (cornPos.contains(event.mouseButton.x,event.mouseButton.y)){
+                    Merchant.buyCorn();
                 }
-
-                if (wheatPos.contains(event.mouseButton.x,event.mouseButton.y)){\
-
+                else if (carrotPos.contains(event.mouseButton.x,event.mouseButton.y)){\
+                    Merchant.buyCarrot();
                 }
-                if (wheatPos.contains(event.mouseButton.x,event.mouseButton.y)){
-
+                else if (cherryPos.contains(event.mouseButton.x,event.mouseButton.y)){
+                    Merchant.buyCherry();
+                }
+                else if (applePos.contains(event.mouseButton.x,event.mouseButton.y)){
+                    Merchant.buyApple();
+                }
+                else if (wCanPos.contains(event.mouseButton.x,event.mouseButton.y) ){
+                    if (waterMode==false){
+                        waterMode = true;
+                        std::cout << "watermode on" <<std::endl;
+                    }
+                    else{
+                        waterMode = false;
+                            std::cout << "watermode off" <<std::endl;
+                    }
                 }
             }
             

@@ -30,42 +30,102 @@ void cropMerchant::buyWheat(){
         }
 }
 
-void cropMerchant:: buyBellPeppers(Crop& crop){
+void cropMerchant:: buyBellPeppers(){
+        if (farm.getBalance() >= bellPeppersSeedCost){
+                farm.removeFromBalance(bellPeppersSeedCost);
+                Plot* availablePlot= farm.getAvailablePlot();
+                if(availablePlot != nullptr){
+                        availablePlot->plantCrop(new bellPeppers());
+                }else{
+                        cout << "No available plots to plant bellpeppers" << endl;
+                }
+        }else{
+                cout << "Insufficient funds to buy bellpeppers" << endl;
+        }
+}
+
+void cropMerchant::buyOnion(){
+        if (farm.getBalance() >= onionSeedCost){
+                farm.removeFromBalance(onionSeedCost);
+                Plot* availablePlot= farm.getAvailablePlot();
+                if(availablePlot != nullptr){
+                        availablePlot->plantCrop(new Onion());
+                }else{
+                        cout << "No available plots to plant onion" << endl;
+                }
+        }else{
+                cout << "Insufficient funds to buy onion" << endl;
+        }
+}
+void cropMerchant::buyCarrot(){
+        if (farm.getBalance() >= carrotSeedCost){
+                farm.removeFromBalance(carrotSeedCost);
+                Plot* availablePlot= farm.getAvailablePlot();
+                if(availablePlot != nullptr){
+                        availablePlot->plantCrop(new Carrot());
+                }else{
+                        cout << "No available plots to plant carrot" << endl;
+                }
+        }else{
+                cout << "Insufficient funds to buy carrot" << endl;
+        }
+}
+
+void cropMerchant::buyCorn(){
+        if (farm.getBalance() >= cornSeedCost){
+                farm.removeFromBalance(cornSeedCost);
+                Plot* availablePlot= farm.getAvailablePlot();
+                if(availablePlot != nullptr){
+                        availablePlot->plantCrop(new Corn());
+                }else{
+                        cout << "No available plots to plant corn" << endl;
+                }
+        }else{
+                cout << "Insufficient funds to buy corn" << endl;
+        }
+}
+        
+void cropMerchant::buyCherry(){
+        if (farm.getBalance() >= cherrySeedCost){
+                farm.removeFromBalance(cherrySeedCost);
+                Plot* availablePlot= farm.getAvailablePlot();
+                if(availablePlot != nullptr){
+                        availablePlot->plantCrop(new Cherry());
+                }else{
+                        cout << "No available plots to plant cherry" << endl;
+                }
+        }else{
+                cout << "Insufficient funds to buy cherry" << endl;
+        }
+}
+
+void cropMerchant::buyApple(){
+        if (farm.getBalance() >= appleSeedCost){
+                farm.removeFromBalance(appleSeedCost);
+                Plot* availablePlot= farm.getAvailablePlot();
+                if(availablePlot != nullptr){
+                        availablePlot->plantCrop(new Apple());
+                }else{
+                        cout << "No available plots to plant apple" << endl;
+                }
+        }else{
+                cout << "Insufficient funds to buy apple" << endl;
+        }
+}
+
+void cropMerchant::replenishScythe(){
 
 }
 
-void cropMerchant::buyOnion(Crop& crop){
-
-}
-void cropMerchant::buyCarrot(Crop& crop){
-
-}
-
-void cropMerchant::buyCorn(Crop& crop){
+void cropMerchant::replenishHoe(){
 
 }
         
-void cropMerchant::buyCherry(Crop& crop){
+void cropMerchant::replenishShovel(){
 
 }
 
-void cropMerchant::buyApple(Crop& corp){
-
-}
-
-void cropMerchant::replenishScythe(Tool& tool){
-
-}
-
-void cropMerchant::replenishHoe(Tool& tool){
-
-}
-        
-void cropMerchant::replenishShovel(Tool& tool){
-
-}
-
-void cropMerchant::replenishWateringCan(Tool& tool){
+void cropMerchant::replenishWateringCan(){
     
 }
 

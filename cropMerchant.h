@@ -34,16 +34,16 @@ class cropMerchant{
     public:
         cropMerchant(Farm& farm);
         void buyWheat();
-        void buyBellPeppers(Crop& crop);
-        void buyOnion(Crop& crop);
-        void buyCarrot(Crop& crop);
-        void buyCorn(Crop& crop);
-        void buyCherry(Crop& crop);
-        void buyApple(Crop& corp);
-        void replenishScythe(Tool& tool);
-        void replenishHoe(Tool& tool);
-        void replenishShovel(Tool& tool);
-        void replenishWateringCan(Tool& tool);
+        void buyBellPeppers();
+        void buyOnion();
+        void buyCarrot();
+        void buyCorn();
+        void buyCherry();
+        void buyApple();
+        void replenishScythe();
+        void replenishHoe();
+        void replenishShovel();
+        void replenishWateringCan();
 };
 
 #endif

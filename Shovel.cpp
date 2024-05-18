@@ -1,6 +1,8 @@
 #include "Shovel.h"
 #include <iostream>
 
+using namespace std;
+
 Shovel::Shovel(){
     uses = 4;
 }

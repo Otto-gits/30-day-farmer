@@ -4,8 +4,6 @@
 #include "Tool.h"
 #include "Plot.h"
 
-using namespace std;
-
 class Shovel: public Tool{
     private:
     public:

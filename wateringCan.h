@@ -2,12 +2,13 @@
 #define WATERINGCAN_H
 
 #include "Tool.h"
-#include "Crop.h"
+#include "Plot.h"
+    
 
 class wateringCan : public Tool {
 public:
     wateringCan();
-    void waterCrop(Crop& crop); // Accepting reference to Crop object
+    void waterCrop(Plot& plot); // Accepting reference to Crop object
 };
 
 #endif

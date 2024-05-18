@@ -18,6 +18,7 @@ class Plot{
         void plantCrop(Crop* newCrop);
         void removeCrop();  
         bool hasCrop();
+        Crop* getCrop();
 };
 
 #endif

@@ -8,7 +8,7 @@ class Shovel: public Tool{
     private:
     public:
         Shovel();
-x
+        void digupCrop(Plot& plot)override;
 };
 
 

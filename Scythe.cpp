@@ -13,7 +13,6 @@ void Scythe::harvestCrop(Crop& crop){ // Accepting reference to Crop object
     if (crop.isMature()){
         farm.addToBalance(crop.getSalePrice());
         plot.removeCrop();
-        
         uses--;
     }
 }

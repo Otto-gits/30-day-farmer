@@ -6,10 +6,10 @@ class Tool{
         int uses;
     public:
         Tool();
-        virtual void sowPlot(Plot& plot) = 0 ;
-        virtual void digupCrop(Plot &plot) = 0;
-        virtual void  waterCrop(Crop& crop) = 0;
-        virtual void harvestCrop(Crop& crop) = 0;
+        virtual void sowPlot(Plot& plot);
+        virtual void digupCrop(Plot& plot);
+        virtual void  waterCrop(Plot& plot);
+        virtual void harvestCrop(Crop& crop);
         int getUses();
         void setUses(int uses);
     

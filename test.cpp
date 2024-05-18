@@ -28,10 +28,10 @@ int main(){
     cropMerchant merchant(f1); // Create a cropMerchant object
     f1.addToBalance(100);      // Add balance to the farm
 
-    Scythe s1(f1, *p1);  // Create a Scythe object with references to Farm and Plot
+    Scythe s1(f1, *p1);  //l Create a Scythe object with references to Farm and Plot
 
     cout << "Initial water level of Corn: " << c1.getWaterLevel() << endl;
-    can.waterCrop(c1);  // Water the corn crop
+    can.waterCrop(p1);  // Water the corn crop
     cout << "Water level of Corn after watering: " << c1.getWaterLevel() << endl;
 
     cout << "Plot sowed status before sowing: " << p1->getSowed() << endl;

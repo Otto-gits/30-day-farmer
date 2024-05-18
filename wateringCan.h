@@ -8,7 +8,7 @@
 class wateringCan : public Tool {
 public:
     wateringCan();
-    void waterCrop(Plot& plot); // Accepting reference to Crop object
+    void waterCrop(Plot& plot) override; // Accepting reference to Crop object
 };
 
 #endif

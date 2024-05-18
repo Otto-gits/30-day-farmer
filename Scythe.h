@@ -14,7 +14,7 @@ class Scythe: public Tool{
         Plot plot;
     public:
         Scythe(Farm& farm, Plot& plot);
-        void harvestCrop(Crop& crop)override;
+        void harvestCrop(Crop& crop);
 };
 
 #endif

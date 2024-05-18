@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <sstream>
 #include "Wheat.h"
 #include "Plot.h"
 #include "Crop.h"
@@ -40,6 +41,20 @@ int main(){
 
 
     sf::RenderWindow window(sf::VideoMode(1000, 600), "30 Day Farmer"); // this creates the window in which the game is played
+    sf::Font font;
+    if (!font.loadFromFile("RobotoSlab-Regular.ttf")) {
+        std::cerr << "Failed to load RobotoSlab-Regular.ttf" << std::endl;
+        return -1;
+    }
+
+    // Create a text object to display the money
+    sf::Text moneyText;
+    moneyText.setFont(font);
+    moneyText.setCharacterSize(48); // Set text size
+    moneyText.setFillColor(sf::Color::White); // Set text color
+    moneyText.setPosition(10, 10); // Set text position
+
+
     sf::Texture Background; // Creates the variable for the image in which the crops can be selected
     if (!Background.loadFromFile("30DayFarmerBack.jpg", sf::IntRect(0, 0, 1000, 700))) { //loads crops.png from the github
         std::cerr << "Failed to load 30DayFarmerBack.jpg" << std::endl;
@@ -174,6 +189,10 @@ int main(){
         }
 
         // clear the window with black color
+        std::ostringstream ss;
+        ss << farmy.getBalance();
+        moneyText.setString(ss.str());
+
         window.clear(sf::Color(255, 255, 255));
     
         // draw everything here...
@@ -184,7 +203,7 @@ int main(){
         window.draw(spPlot3);
         window.draw(spPlot4);
         window.draw(spPlot5); 
- 
+        window.draw(moneyText);
         // end the current frame
         window.display();
     }

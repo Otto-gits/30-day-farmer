@@ -8,7 +8,7 @@
 class Hoe: public Tool{
     public:
         Hoe();
-        void sowPlot(Plot& plot)override;
+        void sowPlot(Plot& plot);
 };
 
 

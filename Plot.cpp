@@ -1,44 +1,47 @@
-    #include "Plot.h"
-    #include <iostream>
+#include "Plot.h"
+#include <iostream>
 
-    using namespace std;
+using namespace std;
 
-    Plot::Plot(){
-        sowed = false;
-        crop = nullptr;
+Plot::Plot(){
+    sowed = false;
+    crop = nullptr;
+}
+
+bool Plot::getSowed(){
+    return sowed;
+}
+
+bool Plot::hasCrop(){
+    if (crop != nullptr){
+        return true;
+    }else{
+        return false;
     }
+}
 
-    bool Plot::getSowed(){
-        return sowed;
+
+
+void Plot::sow(){
+    sowed = true;
+}
+
+void Plot::plantCrop(Crop* newCrop){
+    if (hasCrop() == false){
+        crop = new Crop(*newCrop);
     }
-
-    bool Plot::hasCrop(){
-        if (crop != nullptr){
-            return true;
-        }else{
-            return false;
-        }
+    else{
+        cout << "The plot is full" << endl;
+        return;
     }
+}
 
+Crop* Plot::getCrop(){
+    return crop;
+}
 
-
-    void Plot::sow(){
-        sowed = true;
-    }
-
-    void Plot::plantCrop(Crop* newCrop){
-        if (hasCrop() == false){
-            crop = new Crop(*newCrop);
-        }
-        else{
-            cout << "The plot is full" << endl;
-            return;
-        }
-    }
-
-
-    void Plot::removeCrop(){
-        delete crop;
-        crop = nullptr;
-    }
+void Plot::removeCrop(){
+    delete crop;
+    crop = nullptr;
+}
 

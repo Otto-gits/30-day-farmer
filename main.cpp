@@ -16,6 +16,7 @@
 #include "cropMerchant.h"
 #include "Cherry.h"
 #include "Apple.h"
+#include "Tree.h"
 
 
 
@@ -31,8 +32,12 @@ int main(){
     Plot* p3 = farmy.getPlot(2);
     Plot* p4 = farmy.getPlot(3);
     Plot* p5 = farmy.getPlot(4);
-    bool waterMode = false;
+    
     Wheat wheatCrop;
+
+    wateringCan wCan;
+    bool waterMode = false;
+
 
     sf::RenderWindow window(sf::VideoMode(1000, 600), "30 Day Farmer"); // this creates the window in which the game is played
     sf::Texture Background; // Creates the variable for the image in which the crops can be selected
@@ -76,8 +81,8 @@ int main(){
     sf::FloatRect onionPos(400, 137 , 60,55); // the area in which the wheat is selected to be planted
     sf::FloatRect cornPos(470, 137 , 60,55); // the area in which the wheat is selected to be planted
     sf::FloatRect carrotPos(530, 137 , 60,55); // the area in which the wheat is selected to be planted
-    //sf::FloatRect cherryPos(600, 137 , 60,55); // the area in which the wheat is selected to be planted
-    //sf::FloatRect applePos(660, 137 , 60,55); // the area in which the wheat is selected to be planted
+    sf::FloatRect cherryPos(600, 137 , 60,55); // the area in which the wheat is selected to be planted
+    sf::FloatRect applePos(660, 137 , 60,55); // the area in which the wheat is selected to be planted
     sf::FloatRect wCanPos(840, 425 , 70,65); // the area in which the wheat is selected to be planted
 
 
@@ -148,6 +153,22 @@ int main(){
                             std::cout << "watermode off" <<std::endl;
                     }
                 }
+                else if (plot1Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p1->hasCrop() == true){
+                    wCan.waterCrop(*p1);
+                }
+                else if (plot2Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p2->hasCrop() == true){
+                    wCan.waterCrop(*p2);
+                }
+                else if (plot3Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p3->hasCrop() == true){
+                    wCan.waterCrop(*p3);
+                }
+                else if (plot4Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p4->hasCrop() == true){
+                    wCan.waterCrop(*p4);
+                }
+                else if (plot5Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p5->hasCrop() == true){
+                    wCan.waterCrop(*p5);
+                }
+
             }
             
         }

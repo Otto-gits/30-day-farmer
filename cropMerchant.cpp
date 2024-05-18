@@ -113,8 +113,14 @@ void cropMerchant::buyApple(){
         }
 }
 
-void cropMerchant::replenishScythe(){
-
+void cropMerchant::replenishScythe(Tool& tool, Farm& farm){
+        if (tool.getUses() == 0 & farm.getBalance() >= scytheReplenishmentCost){
+                tool.setUses(4);
+                farm.removeFromBalance(scytheReplenishmentCost);
+                cout << "Scythe sucessfully replenished" << endl;
+        }else{
+                cout << "Scythe could not be replenished" << endl;
+        }
 }
 
 void cropMerchant::replenishHoe(){

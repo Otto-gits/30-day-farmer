@@ -10,6 +10,7 @@
 #include "Onion.h"
 #include "Carrot.h"
 #include "Corn.h"
+#include "Tree.h"
 #include "Cherry.h"
 #include "Apple.h"
 #include "Scythe.h"
@@ -40,7 +41,7 @@ class cropMerchant{
         void buyCorn();
         void buyCherry();
         void buyApple();
-        void replenishScythe();
+        void replenishScythe(Tool& tool, Farm& farm);
         void replenishHoe();
         void replenishShovel();
         void replenishWateringCan();

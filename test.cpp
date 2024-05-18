@@ -52,6 +52,8 @@ int main(){
 
     cout << "Plot has crop after buying wheat: " << p1->hasCrop() << endl;
 
+    
+
     merchant.buyCorn();
 
 

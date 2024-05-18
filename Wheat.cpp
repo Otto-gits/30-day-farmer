@@ -16,4 +16,3 @@ Wheat::Wheat(){
     waterLevel = 0;
 }
 
-

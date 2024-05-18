@@ -2,8 +2,7 @@
 
 #include <iostream>
 
-cropMerchant::cropMerchant(Farm& farm){
-        this->farm = farm;
+cropMerchant::cropMerchant(Farm& farm): farm(farm){
         bellPeppersSeedCost = 5;
         onionSeedCost = 7;
         carrotSeedCost = 11;
@@ -17,10 +16,17 @@ cropMerchant::cropMerchant(Farm& farm){
         wateringCanReplenishmentCost = 10;   
 }
 
-void cropMerchant::buyWheat(Crop& crop){
+void cropMerchant::buyWheat(){
         if (farm.getBalance() >= wheatSeedCost){
                 farm.removeFromBalance(wheatSeedCost);
-                farm.
+                Plot* availablePlot= farm.getAvailablePlot();
+                if(availablePlot != nullptr){
+                        availablePlot->plantCrop(new Wheat());
+                }else{
+                        cout << "No available plots to plant wheat" << endl;
+                }
+        }else{
+                cout << "Insufficient funds to buy wheat" << endl;
         }
 }
 

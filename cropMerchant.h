@@ -5,6 +5,17 @@
 #include "Tool.h"
 #include "Plot.h"
 #include "Farm.h"
+#include "Wheat.h"
+#include "bellPeppers.h"
+#include "Onion.h"
+#include "Carrot.h"
+#include "Corn.h"
+#include "Cherry.h"
+#include "Apple.h"
+#include "Scythe.h"
+#include "Hoe.h"
+#include "Shovel.h"
+#include "wateringCan.h"
 
 class cropMerchant{
     private:
@@ -22,7 +33,7 @@ class cropMerchant{
         int wateringCanReplenishmentCost;    
     public:
         cropMerchant(Farm& farm);
-        void buyWheat(Crop& crop);
+        void buyWheat();
         void buyBellPeppers(Crop& crop);
         void buyOnion(Crop& crop);
         void buyCarrot(Crop& crop);

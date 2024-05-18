@@ -4,17 +4,17 @@ CXX = g++
 # Define the target executable
 TARGET = main
 
-# Define the source files
-SRCS = main.cpp Plot.cpp Farm.cpp Wheat.cpp Crop.cpp
+# Define the source files (excluding main.cpp)
+SRCS = Plot.cpp Farm.cpp Wheat.cpp Crop.cpp bellPeppers.cpp Carrot.cpp Corn.cpp cropMerchant.cpp Hoe.cpp Onion.cpp Scythe.cpp Shovel.cpp Tool.cpp wateringCan.cpp 
 
 # Define the object files
-OBJS = $(SRCS:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o) main.o
 
 # Define the compiler flags
 CXXFLAGS = -I/usr/include
 
 # Define the linker flags
-LDFLAGS = -L/usr/include -lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # Rule to link the target executable
 $(TARGET): $(OBJS)

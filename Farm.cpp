@@ -15,7 +15,7 @@ Farm::Farm(){
     // cherryHarvastCount = 0;
     // appleHarvastCount = 0;
     numPlots = 0;
-    maxNumPlots = 10;
+    maxNumPlots = 5;
     plots = new Plot*[maxNumPlots];
 }
 
@@ -31,7 +31,7 @@ Farm::Farm(string name, string location){
     // cherryHarvastCount = 0;
     // appleHarvastCount = 0;
     numPlots = 0;
-    maxNumPlots = 10;
+    maxNumPlots = 5;
     plots = new Plot*[maxNumPlots];
 }
 
@@ -54,6 +54,15 @@ void Farm::removeFromBalance(int amount){
     balance -= amount;
 }
 
+Plot* Farm::getAvailablePlot(){
+    for (int i = 0; i < numPlots; i++){
+        if (!plots[i]->hasCrop()){
+            return plots[i];
+        }
+    }
+    return nullptr;
+}
+
 Plot* Farm::getPlot(int index){
     if (index >= 0 && index < numPlots) {
         return plots[index];
@@ -61,3 +70,8 @@ Plot* Farm::getPlot(int index){
         return nullptr; // Return nullptr if index is out of bounds
     }
 }
+
+float Farm::getBalance(){
+    return balance;
+}
+

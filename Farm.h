@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+
 #include "Plot.h"
 
 using namespace std;
@@ -30,7 +31,10 @@ class Farm{
         void addPlot(Plot* plot);
         void addToBalance(int amount);
         void removeFromBalance(int amount);
+        Plot* getAvailablePlot();
+        float getBalance();
         Plot* getPlot(int index);
+        
 };
 
 

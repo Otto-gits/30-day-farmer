@@ -1,48 +1,123 @@
+// #include <iostream>
+// #include "wateringCan.h"
+// #include "Crop.h"
+// #include "Corn.h"
+// #include "Plot.h"
+// #include "Farm.h"
+// #include "Hoe.h"
+// #include "Scythe.h"
+// #include "Shovel.h"
+// #include "cropMerchant.h"
+// #include "Farm.h"
+
+
+
+// using namespace std;
+
+// int main(){
+
+//     Corn c1;
+//     wateringCan can;
+//     Plot* p1 = new Plot();
+//     Farm f1;
+//     Hoe hoe;
+//     Shovel shovel;
+//     Wheat Wheat;
+
+
+//     cropMerchant cropMerchant(f1);
+//     f1.addToBalance(100);
+
+//     Scythe s1(f1,*p1);
+
+    
+//     cout << c1.getWaterLevel() << endl;
+//     can.waterCrop(c1);
+
+//     cout << c1.getWaterLevel() << endl;
+
+//     cout << p1->getSowed() << endl;
+//     hoe.sowPlot(*p1);
+
+//     cout << p1->getSowed() << endl;
+
+//     p1->plantCrop(&c1);
+
+//     cout << p1->hasCrop() << endl;
+
+//     shovel.digupCrop(*p1);
+
+//     cout << p1->hasCrop() << endl;
+
+//     f1.addPlot(p1);
+
+//     cout << "Balance before buying wheat: " << f1.getBalance() << endl;
+//     cropMerchant.buyWheat();
+//     cout << "Balance after buying wheat: " << f1.getBalance() << endl;
+
+//     cout << "Plot has crop: " << p1->hasCrop() << endl;
+
+//     delete p1;
+
+//     return 0;
+// }
+
+
 #include <iostream>
-#include "wateringCan.h"
-#include "Crop.h"
-#include "Corn.h"
+#include "Wheat.h"
 #include "Plot.h"
+#include "Crop.h"
 #include "Farm.h"
-#include "Hoe.h"
+#include "bellPeppers.h"
+#include "Onion.h"
+#include "Carrot.h"
+#include "Corn.h"
 #include "Scythe.h"
+#include "Hoe.h"
 #include "Shovel.h"
-
-
+#include "wateringCan.h"
+#include "Tool.h"
+#include "cropMerchant.h"
 
 using namespace std;
 
 int main(){
+    Farm f1;          // Create a Farm object
+    Corn c1;          // Create a Corn object
+    wateringCan can;  // Create a wateringCan object
+    Plot* p1 = new Plot(); // Create a Plot object dynamically
+    Hoe hoe;          // Create a Hoe object
+    Shovel shovel;    // Create a Shovel object
+    Wheat wheat;      // Create a Wheat object
 
-    Corn c1;
-    wateringCan can;
-    Plot p1;
-    Farm f1;
-    Hoe hoe;
-    Shovel shovel;
+    cropMerchant merchant(f1); // Create a cropMerchant object
+    f1.addToBalance(100);      // Add balance to the farm
 
-    Scythe s1(f1,p1);
+    Scythe s1(f1, *p1);  // Create a Scythe object with references to Farm and Plot
 
-    
-    cout << c1.getWaterLevel() << endl;
+    cout << "Initial water level of Corn: " << c1.getWaterLevel() << endl;
+    can.waterCrop(c1);  // Water the corn crop
+    cout << "Water level of Corn after watering: " << c1.getWaterLevel() << endl;
 
-    can.waterCrop(c1);
+    cout << "Plot sowed status before sowing: " << p1->getSowed() << endl;
+    hoe.sowPlot(*p1); // Sow the plot
+    cout << "Plot sowed status after sowing: " << p1->getSowed() << endl;
 
-    cout << c1.getWaterLevel() << endl;
+    p1->plantCrop(&c1);  // Plant corn in the plot
+    cout << "Plot has crop: " << p1->hasCrop() << endl;
 
-    cout << p1.getSowed() << endl;
-    hoe.sowPlot(p1);
+    shovel.digupCrop(*p1); // Dig up the crop
+    cout << "Plot has crop after digging up: " << p1->hasCrop() << endl;
 
-    cout << p1.getSowed() << endl;
+    f1.addPlot(p1); // Add the plot to the farm
 
-    p1.plantCrop(&c1);
+    cout << "Balance before buying wheat: " << f1.getBalance() << endl;
+    merchant.buyWheat(); // Buy wheat
+    cout << "Balance after buying wheat: " << f1.getBalance() << endl;
 
+    cout << "Plot has crop after buying wheat: " << p1->hasCrop() << endl;
 
-    cout << p1.hasCrop() << endl;
+    delete p1;  // Delete the dynamically created plot
 
-    shovel.digupCrop(p1);
-
-    cout << p1.hasCrop() << endl;
-
-    
+    return 0;
 }

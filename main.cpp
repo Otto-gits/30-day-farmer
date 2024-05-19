@@ -19,8 +19,6 @@
 #include "Apple.h"
 #include "Tree.h" 
 
-
-
 int main(){
     Farm farmy("Farmy", "Adelaide");
     cropMerchant Merchant(farmy);
@@ -61,77 +59,72 @@ int main(){
 
 
     sf::Texture Background; // Creates the variable for the image in which the crops can be selected
-    if (!Background.loadFromFile("30DayFarmerBack.jpg", sf::IntRect(0, 0, 1000, 700))) { //loads crops.png from the github
-        std::cerr << "Failed to load 30DayFarmerBack.jpg" << std::endl;
+    if (!Background.loadFromFile("30DayFarmerBack.jpg", sf::IntRect(0, 0, 1000, 700))) { //loads the background image from the files
+        std::cerr << "Failed to load 30DayFarmerBack.jpg" << std::endl; // sends an error message if the image does not load
         return -1;
     }
     sf::Texture plot1;
-    if (!plot1.loadFromFile("Plot1Dry.png",sf::IntRect(0, 0,500,500))) { //loads crops.png from the github
+    if (!plot1.loadFromFile("Plot1Dry.png",sf::IntRect(0, 0,500,500))) { 
         std::cerr << "Failed to load Plot1 dry.png" << std::endl;
         return -1;
     }
     sf::Texture plot2;
-    if (!plot2.loadFromFile("Plot2Dry.png",sf::IntRect(0, 0,500,500))) { //loads crops.png from the github
+    if (!plot2.loadFromFile("Plot2Dry.png",sf::IntRect(0, 0,500,500))) { 
         std::cerr << "Failed to load Plot2dry.png" << std::endl;
         return -1;
     }
-
     sf::Texture plot3;
     if (!plot3.loadFromFile("Plot3Dry.png", sf::IntRect(0, 0, 500, 500))) {
         std::cerr << "Failed to load Plot3Dry.png" << std::endl;
         return -1;
     }
-
     sf::Texture plot4;
     if (!plot4.loadFromFile("Plot4Dry.png", sf::IntRect(0, 0, 500, 500))) {
         std::cerr << "Failed to load Plot4Dry.png" << std::endl;
         return -1;
     }
-
     sf::Texture plot5;
     if (!plot5.loadFromFile("Plot5Dry.png", sf::IntRect(0, 0, 500, 500))) {
         std::cerr << "Failed to load Plot5Dry.png" << std::endl;
         return -1;
     }
-    // run the program as long as the window is open
-    sf::Sprite SPbackground(Background); // creates a sprite from which the image will load into
-    SPbackground.setPosition(0, 0); // sets the position for where the crops image will be 
-    sf::FloatRect wheatPos(280, 137 , 60,55); // the area in which the wheat is selected to be planted
-    sf::FloatRect pepperPos(340, 137 , 60,55); // the area in which the wheat is selected to be planted
-    sf::FloatRect onionPos(400, 137 , 60,55); // the area in which the wheat is selected to be planted
-    sf::FloatRect cornPos(470, 137 , 60,55); // the area in which the wheat is selected to be planted
-    sf::FloatRect carrotPos(530, 137 , 60,55); // the area in which the wheat is selected to be planted
-    sf::FloatRect cherryPos(600, 137 , 60,55); // the area in which the wheat is selected to be planted
-    sf::FloatRect applePos(660, 137 , 60,55); // the area in which the wheat is selected to be planted
-    sf::FloatRect wCanPos(840, 425 , 70,65); // the area in which the wheat is selected to be planted
+    // this is the area where a user can click to interact with the objects.
+    sf::FloatRect wheatPos(280, 137 , 60,55); 
+    sf::FloatRect pepperPos(340, 137 , 60,55); 
+    sf::FloatRect onionPos(400, 137 , 60,55); 
+    sf::FloatRect cornPos(470, 137 , 60,55);
+    sf::FloatRect carrotPos(530, 137 , 60,55); 
+    sf::FloatRect cherryPos(600, 137 , 60,55); 
+    sf::FloatRect applePos(660, 137 , 60,55); 
+    sf::FloatRect shovelPos(840,200,70,75);
+    sf::FloatRect hoePos(840,275,70,75);
+    sf::FloatRect scythePos(840,350,70,75);
+    sf::FloatRect wCanPos(840, 425 , 70,75); 
     sf::FloatRect nextDayPos(500,545,160,30);
 
-
-    sf::Sprite spPlot1(plot1);
-    spPlot1.setPosition(120, 360);
-    spPlot1.setScale(0.375f, 0.375f);
+    sf::Sprite SPbackground(Background); // creates a sprite from which the background will load into 
+    sf::Sprite spPlot1(plot1); 
+    spPlot1.setPosition(120, 360); //sets the position of wher the loaded image will sit
+    spPlot1.setScale(0.375f, 0.375f); 
     sf::FloatRect plot1Coord(220, 420 , 45,40); 
-
     sf::Sprite spPlot2(plot2);
     spPlot2.setPosition(250, 345);
-    spPlot2.setScale(0.375f, 0.375f);
+    spPlot2.setScale(0.375f, 0.375f); //sets the scale compared to the loaded image of how big the image should be
     sf::FloatRect plot2Coord(300, 410 , 100,45); 
-
     sf::Sprite spPlot3(plot3);
     spPlot3.setPosition(390, 340);
     spPlot3.setScale(0.375f, 0.375f);
-    sf::FloatRect plot3Coord(427, 405 , 110,50); 
-
+    sf::FloatRect plot3Coord(427, 405 , 110,50); //creates a rectangle of the area in which the user can click to utilize the plot
     sf::Sprite spPlot4(plot4);
     spPlot4.setPosition(525, 345);
     spPlot4.setScale(0.375f, 0.375f);
     sf::FloatRect plot4Coord(570, 400 , 90,50); 
-
     sf::Sprite spPlot5(plot5);
     spPlot5.setPosition(660, 350);
     spPlot5.setScale(0.375f, 0.375f);
     sf::FloatRect plot5Coord(700, 415 , 70,45); 
 
+    // run the program as long as the window is open
     while (window.isOpen())
     {
         // check all the window's events that were triggered since the last iteration of the loop
@@ -192,6 +185,7 @@ int main(){
                 else if (nextDayPos.contains(event.mouseButton.x,event.mouseButton.y)){
                     farmy.newDay();
                 }
+                else if ( )
 
             }
             

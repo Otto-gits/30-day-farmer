@@ -13,6 +13,10 @@
 #include "wateringCan.h"
 #include "Tool.h"
 #include "cropMerchant.h"
+#include "Cherry.h"
+#include "Tree.h"
+#include "Apple.h"
+
 
 using namespace std;
 
@@ -31,7 +35,7 @@ int main(){
     Scythe s1(f1, *p1);  //l Create a Scythe object with references to Farm and Plot
 
     cout << "Initial water level of Corn: " << c1.getWaterLevel() << endl;
-    can.waterCrop(p1);  // Water the corn crop
+    can.waterCrop(p 1);  // Water the corn crop
     cout << "Water level of Corn after watering: " << c1.getWaterLevel() << endl;
 
     cout << "Plot sowed status before sowing: " << p1->getSowed() << endl;
@@ -52,11 +56,15 @@ int main(){
 
     cout << "Plot has crop after buying wheat: " << p1->hasCrop() << endl;
 
-    
+    s1.setUses(0);
 
-    merchant.buyCorn();
+    cout << s1.getUses() << endl;
 
+    merchant.replenishScythe(s1,f1);
+    // merchant.buyCorn();
 
+    cout << s1.getUses() << endl;
+    cout << f1.getBalance() << endl;
 
 
     delete p1;  // Delete the dynamically created plot

@@ -123,15 +123,33 @@ void cropMerchant::replenishScythe(Tool& tool, Farm& farm){
         }
 }
 
-void cropMerchant::replenishHoe(){
-
+void cropMerchant::replenishHoe(Tool& tool, Farm& farm){
+        if (tool.getUses() == 0 & farm.getBalance() >= hoeReplenishmentCost){
+                tool.setUses(4);
+                farm.removeFromBalance(hoeReplenishmentCost);
+                cout << "Hoe sucessfully replenished" << endl;
+        }else{
+                cout << "Hoe could not be replenished" << endl;
+        }
 }
         
-void cropMerchant::replenishShovel(){
-
+void cropMerchant::replenishShovel(Tool& tool, Farm& farm){
+        if (tool.getUses() == 0 & farm.getBalance() >= shovelReplenishmentCost){
+                tool.setUses(4);
+                farm.removeFromBalance(shovelReplenishmentCost);
+                cout << "Shovel sucessfully replenished" << endl;
+        }else{
+                cout << "Shovel could not be replenished" << endl;
+        }
 }
 
-void cropMerchant::replenishWateringCan(){
-    
+void cropMerchant::replenishWateringCan(Tool& tool, Farm& farm){
+        if (tool.getUses() == 0 & farm.getBalance() >= wateringCanReplenishmentCost){
+                tool.setUses(4);
+                farm.removeFromBalance(wateringCanReplenishmentCost);
+                cout << "Watering can sucessfully replenished" << endl;
+        }else{
+                cout << "Watering can could not be replenished" << endl;
+        }
 }
 

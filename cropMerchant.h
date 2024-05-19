@@ -42,9 +42,9 @@ class cropMerchant{
         void buyCherry();
         void buyApple();
         void replenishScythe(Tool& tool, Farm& farm);
-        void replenishHoe();
-        void replenishShovel();
-        void replenishWateringCan();
+        void replenishHoe(Tool& tool, Farm& farm);
+        void replenishShovel(Tool& tool, Farm& farm);
+        void replenishWateringCan(Tool& tool, Farm& farm);
 };
 
 #endif

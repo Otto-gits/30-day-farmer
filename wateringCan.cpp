@@ -7,9 +7,11 @@ wateringCan::wateringCan() {
     uses = 4;
 }
 
-void wateringCan::waterCrop(Plot& plot){ // Accepting reference to Crop object
-    Crop* crop = plot.getCrop();
-    crop->setWaterLevel(100); // Setting water level to 100
-    uses--;
+Crop* wateringCan::waterCrop(Plot& plot) { // Returning pointer to Crop object
+    Crop* crop = plot.getCrop(); // Correct method call
+    if (crop) { // Check if crop is not null
+        crop->setWaterLevel(100); // Setting water level to 100
+        uses--;
+    }
+    return crop;
 }
-

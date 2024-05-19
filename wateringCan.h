@@ -4,11 +4,10 @@
 #include "Tool.h"
 #include "Plot.h"
 
-
 class wateringCan : public Tool {
 public:
     wateringCan();
-    void waterCrop(Plot& plot); // Accepting reference to Crop object
+    Crop* waterCrop(Plot& plot); // Returning pointer to Crop object
 };
 
 #endif

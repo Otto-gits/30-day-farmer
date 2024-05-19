@@ -15,6 +15,7 @@ class Farm{
         string name;
         string location;
         float balance;
+        int dayNum;
         // int bellPeppersHarvastCount;
         // int onionHarvastCount;
         // int carrotHarvastCount;
@@ -28,9 +29,11 @@ class Farm{
     public: 
         Farm();
         Farm(string name, string location);
+        void newDay();
         void addPlot(Plot* plot);
         void addToBalance(int amount);
         void removeFromBalance(int amount);
+        int getDayNum();
         Plot* getAvailablePlot();
         float getBalance();
         Plot* getPlot(int index);

@@ -17,7 +17,7 @@
 #include "cropMerchant.h"
 #include "Cherry.h"
 #include "Apple.h"
-#include "Tree.h"
+#include "Tree.h" 
 
 
 
@@ -50,9 +50,14 @@ int main(){
     // Create a text object to display the money
     sf::Text moneyText;
     moneyText.setFont(font);
-    moneyText.setCharacterSize(48); // Set text size
+    moneyText.setCharacterSize(38); // Set text size
     moneyText.setFillColor(sf::Color::White); // Set text color
-    moneyText.setPosition(10, 10); // Set text position
+    moneyText.setPosition(635, 93); // Set text position
+    sf::Text dayCount;
+    dayCount.setFont(font);
+    dayCount.setCharacterSize(38); // Set text size
+    dayCount.setFillColor(sf::Color::White); // Set text color
+    dayCount.setPosition(440, 93); // Set text position
 
 
     sf::Texture Background; // Creates the variable for the image in which the crops can be selected
@@ -99,6 +104,7 @@ int main(){
     sf::FloatRect cherryPos(600, 137 , 60,55); // the area in which the wheat is selected to be planted
     sf::FloatRect applePos(660, 137 , 60,55); // the area in which the wheat is selected to be planted
     sf::FloatRect wCanPos(840, 425 , 70,65); // the area in which the wheat is selected to be planted
+    sf::FloatRect nextDayPos(500,545,160,30);
 
 
     sf::Sprite spPlot1(plot1);
@@ -183,6 +189,9 @@ int main(){
                 else if (plot5Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p5->hasCrop() == true){
                     wCan.waterCrop(*p5);
                 }
+                else if (nextDayPos.contains(event.mouseButton.x,event.mouseButton.y)){
+                    farmy.newDay();
+                }
 
             }
             
@@ -192,6 +201,10 @@ int main(){
         std::ostringstream ss;
         ss << farmy.getBalance();
         moneyText.setString(ss.str());
+
+        std::ostringstream dd;
+        dd << farmy.getDayNum();
+        dayCount.setString(dd.str());
 
         window.clear(sf::Color(255, 255, 255));
     
@@ -204,6 +217,7 @@ int main(){
         window.draw(spPlot4);
         window.draw(spPlot5); 
         window.draw(moneyText);
+        window.draw(dayCount);
         // end the current frame
         window.display();
     }

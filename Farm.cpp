@@ -7,6 +7,7 @@ Farm::Farm(){
     name = "Farm";
     location = "Adelaide";
     balance = 0;
+    dayNum = 0;
     // bellPeppersHarvastCount = 0;
     // onionHarvastCount = 0;
     // carrotHarvastCount = 0;
@@ -23,6 +24,7 @@ Farm::Farm(string name, string location){
     this->name = name;
     this->location = location; 
     balance = 1;
+    dayNum = 0;
     // bellPeppersHarvastCount = 0;
     // onionHarvastCount = 0;
     // carrotHarvastCount = 0;
@@ -35,6 +37,10 @@ Farm::Farm(string name, string location){
     plots = new Plot*[maxNumPlots];
 }
 
+void Farm::newDay(){
+    dayNum += 1;
+    //write something!
+}
 
 void Farm::addPlot(Plot* plot){
     if (numPlots < maxNumPlots){
@@ -75,3 +81,6 @@ float Farm::getBalance(){
     return balance;
 }
 
+int Farm::getDayNum(){
+    return dayNum;
+}

@@ -36,6 +36,12 @@ int main(){
 
     wateringCan wCan;
     bool waterMode = false;
+    Shovel shove;
+    bool shovelMode = false;
+    Hoe hoe;
+    bool hoeMode = false;
+    //Scythe scythe;
+    //bool scytheMode = false;
 
 
     sf::RenderWindow window(sf::VideoMode(1000, 600), "30 Day Farmer"); // this creates the window in which the game is played
@@ -101,6 +107,7 @@ int main(){
     sf::FloatRect scythePos(840,350,70,75);
     sf::FloatRect wCanPos(840, 425 , 70,75); 
     sf::FloatRect nextDayPos(500,545,160,30);
+    sf::FloatRect buyLandPos(330,545,160,30);
 
     sf::Sprite SPbackground(Background); // creates a sprite from which the background will load into 
     sf::Sprite spPlot1(plot1); 
@@ -160,6 +167,8 @@ int main(){
                 else if (wCanPos.contains(event.mouseButton.x,event.mouseButton.y) ){
                     if (waterMode==false){
                         waterMode = true;
+                        hoeMode = false;
+                        shovelMode = false;
                         std::cout << "watermode on" <<std::endl;
                     }
                     else{
@@ -185,7 +194,42 @@ int main(){
                 else if (nextDayPos.contains(event.mouseButton.x,event.mouseButton.y)){
                     farmy.newDay();
                 }
-                else if ( )
+                else if (shovelPos.contains(event.mouseButton.x,event.mouseButton.y)){
+                    if (shovelMode ==false){
+                        shovelMode = true;
+                        hoeMode = false;
+                        waterMode = false;
+                            
+                        std::cout << "Shovelmode on" <<std::endl;
+                    }
+                    else{
+                        shovelMode = false;
+                            std::cout << "Shovelmode off" <<std::endl;
+                    }
+                }
+                else if (hoePos.contains(event.mouseButton.x,event.mouseButton.y)){
+                    if (hoeMode ==false){
+                        hoeMode = true;
+                        waterMode = false;
+                        shovelMode = false;
+                        std::cout << "HoeMode on" <<std::endl;
+                    }
+                    else{
+                        hoeMode = false;
+                            std::cout << "Hoemode off" <<std::endl;
+                    }
+                }
+                /*else if (scythe.contains(event.mouseButton.x,event.mouseButton.y)){
+                    if (scytheMode ==false){
+                        scythe = true;
+                        std::cout << "ScytheMode on" <<std::endl;
+                    }
+                    else{
+                        scytheMode = false;
+                            std::cout << "Scythemode off" <<std::endl;
+                    }
+                }
+                }*/
 
             }
             

@@ -14,6 +14,7 @@ Carrot::Carrot(){
     growth_rate = 2; //Grows by size two every day  
     profit = 11; 
     waterSchedule = 3; // Every four days 
+    type = "Carrot";
 }
 
 

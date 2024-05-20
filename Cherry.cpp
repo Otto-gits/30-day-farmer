@@ -14,6 +14,7 @@ Cherry::Cherry(){
     growth_rate = 5; //Grows by size two every day  
     profit = 15; 
     waterSchedule = 3; // Every four days 
+    type = "Cherry";
 }
 
 

@@ -41,7 +41,10 @@ Crop* Plot::getCrop(){
 }
 
 void Plot::removeCrop(){
+    if(crop != nullptr){
     delete crop;
     crop = nullptr;
+    sowed = false;
+    }
 }
 

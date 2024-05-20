@@ -84,3 +84,7 @@ float Farm::getBalance(){
 int Farm::getDayNum(){
     return dayNum;
 }
+
+int Farm::getNumPlots(){
+    return numPlots;
+}

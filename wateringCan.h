@@ -7,7 +7,7 @@
 class wateringCan : public Tool {
 public:
     wateringCan();
-    Crop* waterCrop(Plot& plot); // Returning pointer to Crop object
+    void waterCrop(Plot& plot); // Returning pointer to Crop object
 };
 
 #endif

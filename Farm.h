@@ -34,6 +34,7 @@ class Farm{
         void addToBalance(int amount);
         void removeFromBalance(int amount);
         int getDayNum();
+        int getNumPlots();
         Plot* getAvailablePlot();
         float getBalance();
         Plot* getPlot(int index);

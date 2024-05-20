@@ -6,6 +6,8 @@
 class Wheat: public Crop{
     public:
         Wheat();
+        // virtual CropType getType() const override;
+
 };
 
 #endif

@@ -34,37 +34,53 @@ int main(){
 
     Scythe s1(f1, *p1);  //l Create a Scythe object with references to Farm and Plot
 
-    cout << "Initial water level of Corn: " << c1.getWaterLevel() << endl;
-    can.waterCrop(p 1);  // Water the corn crop
-    cout << "Water level of Corn after watering: " << c1.getWaterLevel() << endl;
-
     cout << "Plot sowed status before sowing: " << p1->getSowed() << endl;
     hoe.sowPlot(*p1); // Sow the plot
     cout << "Plot sowed status after sowing: " << p1->getSowed() << endl;
 
-    p1->plantCrop(&c1);  // Plant corn in the plot
+    f1.addPlot(p1);
+    
+    p1->plantCrop(&wheat);  // Plant corn in the plot
     cout << "Plot has crop: " << p1->hasCrop() << endl;
 
-    shovel.digupCrop(*p1); // Dig up the crop
-    cout << "Plot has crop after digging up: " << p1->hasCrop() << endl;
+    cout << "Initial water level of Corn: " << p1->getCrop()->getWaterLevel() << endl;
+    can.waterCrop(*p1);  // Water the corn crop
+    cout << "Water level of Corn after watering: " << p1->getCrop()->getWaterLevel() << endl;
 
-    f1.addPlot(p1); // Add the plot to the farm
+    p1->getCrop()->setPlantSize(4);
 
-    cout << "Balance before buying wheat: " << f1.getBalance() << endl;
-    merchant.buyWheat(); // Buy wheat
-    cout << "Balance after buying wheat: " << f1.getBalance() << endl;
+    cout << p1->getCrop()->getPlantSize() << endl;
 
-    cout << "Plot has crop after buying wheat: " << p1->hasCrop() << endl;
-
-    s1.setUses(0);
-
-    cout << s1.getUses() << endl;
-
-    merchant.replenishScythe(s1,f1);
-    // merchant.buyCorn();
-
-    cout << s1.getUses() << endl;
     cout << f1.getBalance() << endl;
+
+    merchant.sellWheat();
+
+    cout << p1->hasCrop() << endl;  
+    cout << f1.getBalance() << endl;
+
+    
+
+
+    // shovel.digupCrop(*p1); // Dig up the crop
+    // cout << "Plot has crop after digging up: " << p1->hasCrop() << endl;
+
+    // f1.addPlot(p1); // Add the plot to the farm
+
+    // cout << "Balance before buying wheat: " << f1.getBalance() << endl;
+    // merchant.buyWheat(); // Buy wheat
+    // cout << "Balance after buying wheat: " << f1.getBalance() << endl;
+
+    // cout << "Plot has crop after buying wheat: " << p1->hasCrop() << endl;
+
+    // s1.setUses(0);
+
+    // cout << s1.getUses() << endl;
+
+    // merchant.replenishScythe(s1,f1);
+    // // merchant.buyCorn();
+
+    // cout << s1.getUses() << endl;
+    // cout << f1.getBalance() << endl;
 
 
     delete p1;  // Delete the dynamically created plot

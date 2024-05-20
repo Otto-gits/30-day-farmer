@@ -14,6 +14,7 @@ Corn::Corn(){
     growth_rate = 2; //Grows by size two every day  
     profit = 13; 
     waterSchedule = 4; // Every four days 
+    type = "Corn";
 }
 
 

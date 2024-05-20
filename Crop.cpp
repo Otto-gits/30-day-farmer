@@ -56,7 +56,7 @@ void Crop::setWaterLevel(float waterLevel){
 }
 
 bool Crop::isMature(){
-    if (plant_age == max_age){
+    if (plant_size == max_size){
         return true;
     }else{
         return false;
@@ -67,3 +67,10 @@ int Crop::getSalePrice(){
     return salePrice;
 }
 
+string Crop::getType(){
+    return type;
+}
+
+// Crop::CropType Crop::getType() const{
+//     return CropType::Crop;
+// }

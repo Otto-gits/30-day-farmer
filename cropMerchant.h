@@ -45,6 +45,13 @@ class cropMerchant{
         void replenishHoe(Tool& tool, Farm& farm);
         void replenishShovel(Tool& tool, Farm& farm);
         void replenishWateringCan(Tool& tool, Farm& farm);
+        void sellWheat();
+        void sellBellPeppers();
+        void sellOnion();
+        void sellCarrot();
+        void sellCorn();
+        void sellCherry();
+        void sellApple();
 };
 
 #endif

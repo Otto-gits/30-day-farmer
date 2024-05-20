@@ -6,6 +6,7 @@
 class Onion: public Crop{
     public:
         Onion();
+        // virtual CropType getType() const override;
 };
 
 #endif

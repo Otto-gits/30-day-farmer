@@ -14,6 +14,7 @@ bellPeppers::bellPeppers(){
     profit = 6; 
     waterSchedule = 4; // Every four days 
     waterLevel = 0;
+    type = "bellPeppers";
 }
 
 

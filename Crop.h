@@ -1,6 +1,10 @@
 #ifndef CROP_H
 #define CROP_H
 
+#include <string>
+
+using namespace std;
+
  class Crop {
     protected:
         int plant_age;
@@ -13,6 +17,7 @@
         float waterLevel;
         int ID;
         int salePrice;
+        string type;
     public:
         Crop();
         Crop(int ID);
@@ -30,6 +35,10 @@
         void setWaterLevel(float waterLevel);
         bool isMature();
         int getSalePrice();
+        string getType();
+        // enum class CropType{Wheat, bellPeppers, Onion, Carrot, Corn, Cherry, Apple, Crop};
+
+        // virtual CropType getType() const;
  };
 
 #endif

@@ -14,5 +14,10 @@ Onion::Onion(){
     profit = 9; 
     waterSchedule = 3; // Every three days 
     waterLevel = 0;
+    type = "Onion";
 }
+
+// Crop::CropType Onion::getType() const{
+//     return CropType::Onion;
+// }
 

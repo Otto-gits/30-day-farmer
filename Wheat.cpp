@@ -14,5 +14,11 @@ Wheat::Wheat(){
     profit = 3; 
     waterSchedule = 2; // Every four days 
     waterLevel = 0;
+    type = "Wheat";
 }
+
+
+// Crop::CropType Wheat::getType() const{
+//     return CropType::Wheat;
+// }
 

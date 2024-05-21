@@ -59,6 +59,12 @@ int main(){
     dayCount.setCharacterSize(38); // Set text size
     dayCount.setFillColor(sf::Color::White); // Set text color
     dayCount.setPosition(440, 93); // Set text position
+    sf::Text plot1Text;
+    plot1Text.setFont(font);
+    plot1Text.setCharacterSize(19); // Set text size
+    plot1Text.setFillColor(sf::Color::Red); // Set text color
+    plot1Text.setPosition(440, 500); // Set text position
+
 
 
     sf::Texture Background; // Creates the variable for the image in which the crops can be selected
@@ -210,15 +216,59 @@ int main(){
                         }
                     }
                 }
+                else if (plot3Coord.contains(event.mouseButton.x,event.mouseButton.y)){
+                    if(p3->hasCrop() == true){
+                        if (waterMode == true){
+                            wCan.waterCrop(*p3);
+                        }
+                        else if (scytheMode == true){
+                            scythe.harvestCrop(2);
+                        }
+                        else if(shovelMode == true){
+                            shovel.digupCrop(*p3);
+                        }
+                    }
+                    else{
+                        if (hoeMode == true){
+                            hoe.sowPlot(*p3);
+                        }
+                    }
                 }
-                else if (plot3Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p3->hasCrop() == true){
-                    wCan.waterCrop(*p3);
+                else if (plot4Coord.contains(event.mouseButton.x,event.mouseButton.y)){
+                    if(p4->hasCrop() == true){
+                        if (waterMode == true){
+                            wCan.waterCrop(*p4);
+                        }
+                        else if (scytheMode == true){
+                            scythe.harvestCrop(3);
+                        }
+                        else if(shovelMode == true){
+                            shovel.digupCrop(*p4);
+                        }
+                    }
+                    else{
+                        if (hoeMode == true){
+                            hoe.sowPlot(*p4);
+                        }
+                    }
                 }
-                else if (plot4Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p4->hasCrop() == true){
-                    wCan.waterCrop(*p4);
-                }
-                else if (plot5Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p5->hasCrop() == true){
-                    wCan.waterCrop(*p5);
+                else if (plot5Coord.contains(event.mouseButton.x,event.mouseButton.y)){
+                    if(p5->hasCrop() == true){
+                        if (waterMode == true){
+                            wCan.waterCrop(*p5);
+                        }
+                        else if (scytheMode == true){
+                            scythe.harvestCrop(4);
+                        }
+                        else if(shovelMode == true){
+                            shovel.digupCrop(*p5);
+                        }
+                    }
+                    else{
+                        if (hoeMode == true){
+                            hoe.sowPlot(*p5);
+                        }
+                    }
                 }
                 else if (nextDayPos.contains(event.mouseButton.x,event.mouseButton.y)){
                     farmy.newDay();
@@ -262,13 +312,10 @@ int main(){
                         scytheMode = false;
                             std::cout << "Scythemode off" <<std::endl;
                     }
-                
-                
-
-
             }
             
         }
+            }
 
         // clear the window with black color
         std::ostringstream ss;
@@ -278,6 +325,10 @@ int main(){
         std::ostringstream dd;
         dd << farmy.getDayNum();
         dayCount.setString(dd.str());
+
+        std::ostringstream p1Stream;
+        p1Stream << p1->getCrop()->getType();
+        plot1Text.setString(p1Stream.str());
 
         window.clear(sf::Color(255, 255, 255));
     
@@ -291,9 +342,11 @@ int main(){
         window.draw(spPlot5); 
         window.draw(moneyText);
         window.draw(dayCount);
+        window.draw(plot1Text);
         // end the current frame
         window.display();
     }
-
+        
+    
     return 0;
-}
+    }

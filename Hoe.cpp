@@ -5,8 +5,8 @@ Hoe::Hoe(){
 }
 
 void Hoe::sowPlot(Plot& plot){
-    plot.sow();
-    uses--;
+    plot.sow(); // call the sow function from plot 
+    uses--; // Decrement uses 
 }
 
 void Hoe::use(Plot& plot) {

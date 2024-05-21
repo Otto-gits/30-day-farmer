@@ -6,22 +6,13 @@
 
 Crop::Crop(){
 }
-Crop::Crop(int ID){
-    this -> ID = ID;
-}
 
 int Crop::getAge(){
-    return plant_age;
+    return plantAge;
 }
 
 int Crop::getMaxAge(){
-    return max_age;
-}
-
-void Crop::ageOneDay() {
-    if (plant_age < max_age) {
-        plant_age++;
-    }
+    return maxAge;
 }
 
 float Crop::getWaterLevel(){
@@ -29,29 +20,21 @@ float Crop::getWaterLevel(){
 }
 
 int Crop::getPlantSize(){
-    return plant_size;
+    return plantSize;
 }
 
 int Crop:: getMaxSize(){
-    return max_size;
+    return maxSize;
 }
 int Crop::getGrowthRate(){
-    return growth_rate;
+    return growthRate;
 }
 
-int Crop:: getProfit(){
-    return profit;
+void Crop::setPlantAge(int plantAge){
+    this->plantAge = plantAge;
 }
-
-int Crop:: getWaterSchedule(){
-    return waterSchedule;
-}
-
-void Crop::setPlantAge(int plant_age){
-    this->plant_age = plant_age;
-}
-void Crop::setPlantSize(int plant_size){
-    this->plant_size = plant_size;
+void Crop::setPlantSize(int plantSize){
+    this->plantSize = plantSize;
 }
 
 void Crop::setWaterLevel(float waterLevel){
@@ -59,7 +42,7 @@ void Crop::setWaterLevel(float waterLevel){
 }
 
 bool Crop::isMature(){
-    if (plant_size == max_size){
+    if (plantSize == maxSize){
         return true;
     }else{
         return false;
@@ -74,6 +57,3 @@ string Crop::getType(){
     return type;
 }
 
-// Crop::CropType Crop::getType() const{
-//     return CropType::Crop;
-// }

@@ -5,19 +5,13 @@
 using namespace std;
 
 Onion::Onion(){
-    salePrice = 9;
-    plant_age = 0;
-    max_age = 15; // Max age before dying 
-    plant_size = 0;
-    max_size = 10;  
-    growth_rate = 3;
-    profit = 9; 
-    waterSchedule = 3; // Every three days 
+    plantAge = 0;
+    plantSize = 0;
     waterLevel = 0;
+    maxAge = 15; // Max age before dying 
+    maxSize = 10;  
+    growthRate = 3; 
+    salePrice = 9;
     type = "Onion";
 }
-
-// Crop::CropType Onion::getType() const{
-//     return CropType::Onion;
-// }
 

@@ -5,20 +5,15 @@
 using namespace std;
 
 Wheat::Wheat(){
-    salePrice = 1;
-    plant_age = 0;
-    max_age = 10; // Max age before dying 
-    plant_size = 0;
-    max_size = 4;  
-    growth_rate = 2; //Grows by size two every day  
-    profit = 3; 
-    waterSchedule = 2; // Every four days 
+    plantAge = 0;
+    plantSize = 0;
     waterLevel = 0;
+    maxAge = 10; // Max age before dying 
+    maxSize = 4;  
+    growthRate = 2; //Grows by size two every day  
+    salePrice = 1;
     type = "Wheat";
 }
 
 
-// Crop::CropType Wheat::getType() const{
-//     return CropType::Wheat;
-// }
 

@@ -16,7 +16,7 @@
 #include "Cherry.h"
 #include "Tree.h"
 #include "Apple.h"
-
+// #include "savefile.cpp"
 
 using namespace std;
 
@@ -71,6 +71,8 @@ int main(){
 
     cout << firstPlot->getCrop()->getAge() << endl;
     cout << firstPlot->getCrop()->getPlantSize() << endl;
+
+    // saveState(f1);
 
     // cout << firstPlot->getCrop()->getWaterLevel() << endl;
 

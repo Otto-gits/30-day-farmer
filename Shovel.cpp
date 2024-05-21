@@ -9,10 +9,10 @@ Shovel::Shovel(){
 
 
 void Shovel::digupCrop(Plot& plot){
-    if(plot.hasCrop()){
-        plot.removeCrop();
+    if(plot.hasCrop()){ // Check to see if the plot has a crop
+        plot.removeCrop(); // Call removeCrop from Plot
         cout << "Crop dug up succesfully" << endl;
-        uses--;
+        uses--; // decrement uses 
     }else{
         cout <<"Crop could not be dug up" << endl;
     }

@@ -5,15 +5,13 @@
 using namespace std;
 
 bellPeppers::bellPeppers(){
-    salePrice = 6;
-    plant_age = 0;
-    max_age = 20; // Max age before dying 
-    plant_size = 0;
-    max_size = 8;  
-    growth_rate = 2; //Grows by size two every day  
-    profit = 6; 
-    waterSchedule = 4; // Every four days 
+    plantAge = 0;
     waterLevel = 0;
+    plantSize = 0;
+    maxAge = 20; // Max age before dying 
+    maxSize = 8;  
+    growthRate = 2; //Grows by size two every day   
+    salePrice = 6;
     type = "bellPeppers";
 }
 

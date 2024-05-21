@@ -8,13 +8,6 @@ Farm::Farm(){
     location = "Adelaide";
     balance = 1000;
     dayNum = 0;
-    // bellPeppersHarvastCount = 0;
-    // onionHarvastCount = 0;
-    // carrotHarvastCount = 0;
-    // wheatHarvastCount = 0;
-    // cornHarvastCount = 0;
-    // cherryHarvastCount = 0;
-    // appleHarvastCount = 0;
     numPlots = 5;
     plots = new Plot*[numPlots];
     for (int i = 0; i < numPlots; i++){
@@ -22,24 +15,6 @@ Farm::Farm(){
     }
 }
 
-Farm::Farm(string name, string location){
-    this->name = name;
-    this->location = location; 
-    balance = 1;
-    dayNum = 0;
-    // bellPeppersHarvastCount = 0;
-    // onionHarvastCount = 0;
-    // carrotHarvastCount = 0;
-    // wheatHarvastCount = 0;
-    // cornHarvastCount = 0;
-    // cherryHarvastCount = 0;
-    // appleHarvastCount = 0;
-    numPlots = 5;
-    plots = new Plot*[numPlots];
-    for (int i = 0; i < numPlots; i++){
-        plots[i] = new Plot();
-    }
-}
 
 void Farm::newDay(){
     if (dayNum < maxNumDays){
@@ -57,16 +32,6 @@ void Farm::newDay(){
         }
     }
 }
-
-// void Farm::addPlot(Plot* plot){
-//     if (numPlots < maxNumPlots){
-//         plots[numPlots] = plot;
-//         numPlots++;
-//     }else{
-//         cout << "The farm is full" << endl;
-//         return;
-//     }
-// }
 
 void Farm::addToBalance(int amount){
     balance += amount;
@@ -89,7 +54,7 @@ Plot* Farm::getPlot(int index){
     if (index >= 0 && index < numPlots) {
         return plots[index];
     } else {
-        return nullptr; // Return nullptr if index is out of bounds
+        return nullptr; 
     }
 }
 

@@ -8,17 +8,17 @@ using namespace std;
 
 class Plot{
     protected:
-        bool sowed;
-        Crop* crop;
+        bool sowed; // Boolean status of whether the plot is sowed or not, allowing for crop planting 
+        Crop* crop; // Create a pointer to a crop
     public:
-        Plot();
-        bool getSowed();
-        void sow();
-        void plantCrop(Crop* newCrop);
-        void removeCrop();  
-        bool hasCrop();
-        Crop* getCrop();
-        string getPlotCropType();
+        Plot(); // Default constructor for Plot, sets sowed to be false and crop to initially be a nullptr
+        bool getSowed(); // Returns the status of whether the plot is sowed 
+        void sow(); // Sowes the plot 
+        void plantCrop(Crop* newCrop); // Plants a crop in the plot 
+        void removeCrop(); // Removes a crop from the plot
+        bool hasCrop(); // Returns a boolean depended on whether a plot has a crop in it 
+        Crop* getCrop(); // Returns a pointer to a crop in the plot
+        string getPlotCropType(); // Returns a string depended on the type of the crop in the plot
 };
 
 #endif

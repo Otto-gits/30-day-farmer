@@ -6,14 +6,12 @@
 
 class Tool{
     protected:
-        int uses;
+        int uses; // The amount of uses a crop has before breaking
     public:
-        Tool();
-        int getUses();
-        void setUses(int uses);
-        virtual void use(Plot& plot) = 0;
-    
-
+        Tool(); // Default constructor for tool, sets uses to 4
+        int getUses(); // Returns the current amount of uses a tool has 
+        void setUses(int uses); // Set the amount of uses for a tool
+        virtual void use(Plot& plot) = 0; // Pure virtual function which allows a tool to be used, performing a specific function depending on the tool
 };
 
 

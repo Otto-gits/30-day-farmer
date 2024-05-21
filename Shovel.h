@@ -5,12 +5,11 @@
 #include "Plot.h"
 
 class Shovel: public Tool{
-    private:
     public:
-        Shovel();
-        void digupCrop(Plot& plot);
-        void use (Plot& plot)override;
-        
+        Shovel(); // Default constructor for a shovel
+        void digupCrop(Plot& plot); // Digs up a crop that is passed through the plot that the crop is contained in. 
+        void use (Plot& plot)override; // Overidden use function from tool that calls digupCrop to perform the shovel's specific use
+
 };
 
 

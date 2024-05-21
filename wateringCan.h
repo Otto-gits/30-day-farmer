@@ -6,9 +6,9 @@
 
 class wateringCan : public Tool {
 public:
-    wateringCan();
-    void waterCrop(Plot& plot); // Returning pointer to Crop object
-    void use(Plot& plot)override;
+    wateringCan(); // Default constructor for watering can 
+    void waterCrop(Plot& plot); // Waters a crop that is passed in through the plot that that crop is contained in 
+    void use(Plot& plot)override; // Overidden use function from tool that calls waterCrop to perform the watering can's specific use 
 };
 
 

@@ -27,6 +27,7 @@ void Plot::sow(){
 }
 
 void Plot::plantCrop(Crop* newCrop){
+<<<<<<< HEAD
     if (sowed == true){
         if (hasCrop() == false){
             crop = new Crop(*newCrop);
@@ -37,6 +38,14 @@ void Plot::plantCrop(Crop* newCrop){
         }
     }else{
         cout << "The plot is not sowed" << endl;
+=======
+    if (hasCrop() == false){
+        crop = new Crop(*newCrop);
+    }
+    else{
+        cout << "The plot is full" << endl;
+        return;
+>>>>>>> 7329e3421fae8ff55bb5b91f4deedd672bf1ad20
     }
 }
 

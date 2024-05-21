@@ -9,6 +9,7 @@ Farm::Farm(){
     balance = 1000;
     dayNum = 0;
     numPlots = 5;
+    maxNumDays = 30;
     plots = new Plot*[numPlots];
     for (int i = 0; i < numPlots; i++){
         plots[i] = new Plot();
@@ -18,7 +19,7 @@ Farm::Farm(){
 
 void Farm::newDay(){
     if (dayNum < maxNumDays){
-        dayNum += 1;
+        dayNum++;
         for (int i = 0; i < numPlots; i++) {
             Plot* plot = plots[i];
             if (plot->hasCrop()) {
@@ -30,6 +31,9 @@ void Farm::newDay(){
                 }
             }
         }
+    }
+    else{
+        cout << "Game over" << endl;
     }
 }
 

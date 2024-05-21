@@ -5,6 +5,9 @@
 #include <iostream>
 
 #include "Plot.h"
+#include "Crop.h"
+#include "Tool.h"
+
 
 using namespace std;
 

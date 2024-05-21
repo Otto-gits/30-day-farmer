@@ -1,7 +1,10 @@
 #ifndef PLOT_H
 #define PLOT_H
 
+#include <string>
 #include "Crop.h"
+
+using namespace std;
 
 class Plot{
     protected:
@@ -15,6 +18,7 @@ class Plot{
         void removeCrop();  
         bool hasCrop();
         Crop* getCrop();
+        string getPlotCropType();
 };
 
 #endif

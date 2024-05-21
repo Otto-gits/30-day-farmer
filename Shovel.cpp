@@ -17,3 +17,8 @@ void Shovel::digupCrop(Plot& plot){
         cout <<"Crop could not be dug up" << endl;
     }
 }
+
+
+void Shovel::use(Plot& plot) {
+    digupCrop(plot); // Call the specific action for the Shovel
+}

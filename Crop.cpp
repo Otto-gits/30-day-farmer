@@ -1,6 +1,9 @@
 #include "Crop.h"
 #include <iostream>
 
+#include "cropMerchant.h"
+#include "Farm.h"
+
 Crop::Crop(){
 }
 Crop::Crop(int ID){

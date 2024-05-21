@@ -43,28 +43,46 @@ int main(){
 
     Plot* firstPlot = f1.getPlot(0);
     Plot* secondPlot = f1.getPlot(1);
-
+    Plot* thirdPlot = f1.getPlot(2);
+    Plot* fourthPlot = f1.getPlot(3);
+    Plot* fifthPlot = f1.getPlot(4);
 
     hoe.sowPlot(*firstPlot);
+    hoe.sowPlot(*secondPlot);
+    hoe.sowPlot(*thirdPlot);
+    hoe.sowPlot(*fourthPlot);
+    hoe.sowPlot(*fifthPlot);
+
     merchant.buyWheat();   
+    merchant.buyApple();
+    merchant.buyCarrot();
+    merchant.buyCorn();
+    merchant.buyCherry();
 
     cout << firstPlot->getCrop()->getWaterLevel() << endl;
     
-    can.waterCrop(*firstPlot);
+    can.use(*firstPlot);
 
     cout << firstPlot->getCrop()->getWaterLevel() << endl;
+    cout << firstPlot->getCrop()->getPlantSize() << endl;
+    cout << firstPlot->getCrop()->getAge() << endl;
 
-    firstPlot->getCrop()->setPlantSize(4);
+    f1.newDay();
 
-    cout << "Balance before harvest: "<< f1.getBalance() << endl;
+    cout << firstPlot->getCrop()->getAge() << endl;
+    cout << firstPlot->getCrop()->getPlantSize() << endl;
 
-    cout << firstPlot->hasCrop() << endl;
+    // cout << firstPlot->getCrop()->getWaterLevel() << endl;
+
+    // cout << "Balance before harvest: "<< f1.getBalance() << endl;
+
+    // cout << firstPlot->hasCrop() << endl;
  
-    scythe.harvestCrop(*firstPlot); 
+    // scythe.harvestCrop(*firstPlot); 
 
-    cout << firstPlot->hasCrop() << endl;
+    // cout << firstPlot->hasCrop() << endl;
 
-    cout << "Balance after harvest: " << f1.getBalance() << endl;
+    // cout << "Balance after harvest: " << f1.getBalance() << endl;
 
 
  

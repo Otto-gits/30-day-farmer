@@ -14,3 +14,8 @@ void wateringCan::waterCrop(Plot& plot) { // Returning pointer to Crop object
         uses--;
     }
 }
+
+void wateringCan::use(Plot& plot) {
+    waterCrop(plot); // Call the specific action for the WateringCan
+}
+

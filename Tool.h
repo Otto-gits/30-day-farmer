@@ -11,6 +11,7 @@ class Tool{
         Tool();
         int getUses();
         void setUses(int uses);
+        virtual void use(Plot& plot) = 0;
     
 
 };

@@ -9,4 +9,6 @@ void Hoe::sowPlot(Plot& plot){
     uses--;
 }
 
-// Need to fix this
+void Hoe::use(Plot& plot) {
+    sowPlot(plot); // Call the specific action for the Hoe
+}

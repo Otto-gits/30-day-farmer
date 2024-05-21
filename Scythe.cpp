@@ -22,3 +22,7 @@ void Scythe::harvestCrop(Plot& plot) {
         cout << "No crop in this plot to harvest." << endl;
     }
 }
+
+void Scythe::use(Plot& plot) {
+    harvestCrop(plot); // Call the specific action for the Scythe
+}

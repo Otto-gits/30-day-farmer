@@ -6,7 +6,7 @@ using namespace std;
 Farm::Farm(){
     name = "Farm";
     location = "Adelaide";
-    balance = 20;
+    balance = 1000;
     dayNum = 0;
     // bellPeppersHarvastCount = 0;
     // onionHarvastCount = 0;

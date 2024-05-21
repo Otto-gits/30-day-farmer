@@ -35,16 +35,18 @@ int main(){
     wateringCan can;  // Create a wateringCan object
     Hoe hoe;          // Create a Hoe object
     Shovel shovel;    // Create a Shovel object
-    Scythe scythe(f1);
+    Scythe scythe(&f1);
 
     cropMerchant merchant(f1); // Create a cropMerchant object
 
     cout << f1.getNumPlots() << endl;
 
     Plot* firstPlot = f1.getPlot(0);
-    
-    firstPlot->plantCrop(&w1);
-    
+    Plot* secondPlot = f1.getPlot(1);
+
+
+    hoe.sowPlot(*firstPlot);
+    merchant.buyWheat();   
 
     cout << firstPlot->getCrop()->getWaterLevel() << endl;
     
@@ -52,6 +54,20 @@ int main(){
 
     cout << firstPlot->getCrop()->getWaterLevel() << endl;
 
+    firstPlot->getCrop()->setPlantSize(4);
+
+    cout << "Balance before harvest: "<< f1.getBalance() << endl;
+
+    cout << firstPlot->hasCrop() << endl;
+ 
+    scythe.harvestCrop(*firstPlot); 
+
+    cout << firstPlot->hasCrop() << endl;
+
+    cout << "Balance after harvest: " << f1.getBalance() << endl;
+
+
+ 
 
 
 

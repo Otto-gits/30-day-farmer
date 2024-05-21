@@ -18,10 +18,10 @@ cropMerchant::cropMerchant(Farm& farm): farm(farm){
 
 void cropMerchant::buyWheat(){
         if (farm.getBalance() >= wheatSeedCost){
-                farm.removeFromBalance(wheatSeedCost);
                 Plot* availablePlot= farm.getAvailablePlot();
                 if(availablePlot != nullptr){
                         availablePlot->plantCrop(new Wheat());
+                        farm.removeFromBalance(wheatSeedCost);
                 }else{
                         cout << "No available plots to plant wheat" << endl;
                 }
@@ -32,10 +32,10 @@ void cropMerchant::buyWheat(){
 
 void cropMerchant:: buyBellPeppers(){
         if (farm.getBalance() >= bellPeppersSeedCost){
-                farm.removeFromBalance(bellPeppersSeedCost);
                 Plot* availablePlot= farm.getAvailablePlot();
                 if(availablePlot != nullptr){
                         availablePlot->plantCrop(new bellPeppers());
+                        farm.removeFromBalance(bellPeppersSeedCost);
                 }else{
                         cout << "No available plots to plant bellpeppers" << endl;
                 }
@@ -46,10 +46,10 @@ void cropMerchant:: buyBellPeppers(){
 
 void cropMerchant::buyOnion(){
         if (farm.getBalance() >= onionSeedCost){
-                farm.removeFromBalance(onionSeedCost);
                 Plot* availablePlot= farm.getAvailablePlot();
                 if(availablePlot != nullptr){
                         availablePlot->plantCrop(new Onion());
+                        farm.removeFromBalance(onionSeedCost);
                 }else{
                         cout << "No available plots to plant onion" << endl;
                 }
@@ -59,10 +59,10 @@ void cropMerchant::buyOnion(){
 }
 void cropMerchant::buyCarrot(){
         if (farm.getBalance() >= carrotSeedCost){
-                farm.removeFromBalance(carrotSeedCost);
                 Plot* availablePlot= farm.getAvailablePlot();
                 if(availablePlot != nullptr){
                         availablePlot->plantCrop(new Carrot());
+                        farm.removeFromBalance(carrotSeedCost);
                 }else{
                         cout << "No available plots to plant carrot" << endl;
                 }
@@ -73,10 +73,10 @@ void cropMerchant::buyCarrot(){
 
 void cropMerchant::buyCorn(){
         if (farm.getBalance() >= cornSeedCost){
-                farm.removeFromBalance(cornSeedCost);
                 Plot* availablePlot= farm.getAvailablePlot();
                 if(availablePlot != nullptr){
                         availablePlot->plantCrop(new Corn());
+                        farm.removeFromBalance(cornSeedCost);
                 }else{
                         cout << "No available plots to plant corn" << endl;
                 }
@@ -87,10 +87,10 @@ void cropMerchant::buyCorn(){
         
 void cropMerchant::buyCherry(){
         if (farm.getBalance() >= cherrySeedCost){
-                farm.removeFromBalance(cherrySeedCost);
                 Plot* availablePlot= farm.getAvailablePlot();
                 if(availablePlot != nullptr){
                         availablePlot->plantCrop(new Cherry());
+                        farm.removeFromBalance(cherrySeedCost);
                 }else{
                         cout << "No available plots to plant cherry" << endl;
                 }
@@ -101,10 +101,10 @@ void cropMerchant::buyCherry(){
 
 void cropMerchant::buyApple(){
         if (farm.getBalance() >= appleSeedCost){
-                farm.removeFromBalance(appleSeedCost);
                 Plot* availablePlot= farm.getAvailablePlot();
                 if(availablePlot != nullptr){
                         availablePlot->plantCrop(new Apple());
+                        farm.removeFromBalance(appleSeedCost);
                 }else{
                         cout << "No available plots to plant apple" << endl;
                 }

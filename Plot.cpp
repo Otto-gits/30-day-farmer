@@ -27,7 +27,7 @@ void Plot::sow(){
 }
 
 void Plot::plantCrop(Crop* newCrop){
-    if (hasCrop() == false){
+    if (hasCrop() == false && ){
         crop = new Crop(*newCrop);
     }
     else{
@@ -42,9 +42,12 @@ Crop* Plot::getCrop(){
 
 void Plot::removeCrop(){
     if(crop != nullptr){
-    delete crop;
-    crop = nullptr;
-    sowed = false;
+        delete crop;
+        crop = nullptr;
+        sowed = false;
+        cout << "Crop removed" << endl;
+    }else{
+        cout << "There is not crop in this plot" << endl;
     }
 }
 

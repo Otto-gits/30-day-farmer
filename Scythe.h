@@ -10,11 +10,10 @@
 
 class Scythe: public Tool{
     private:
-        Farm farm;
-        Plot plot;
+        Farm* farm;
     public:
-        Scythe(Farm& farm, Plot& plot);
-        void harvestCrop(Crop& crop);
+        Scythe(Farm& farm);
+        void harvestCrop(int plotIndex);
 };
 
 #endif

@@ -37,7 +37,7 @@ int main(){
     bool shovelMode = false;
     Hoe hoe;
     bool hoeMode = false;
-    Scythe scythe(farmy);
+    Scythe scythe(&farmy);
     bool scytheMode = false;
 
 
@@ -63,8 +63,27 @@ int main(){
     plot1Text.setFont(font);
     plot1Text.setCharacterSize(19); // Set text size
     plot1Text.setFillColor(sf::Color::Red); // Set text color
-    plot1Text.setPosition(440, 500); // Set text position
-
+    plot1Text.setPosition(180, 480); // Set text position
+    sf::Text plot2Text;
+    plot2Text.setFont(font);
+    plot2Text.setCharacterSize(19); // Set text size
+    plot2Text.setFillColor(sf::Color::Red); // Set text color
+    plot2Text.setPosition(310, 475); // Set text position
+    sf::Text plot3Text;
+    plot3Text.setFont(font);
+    plot3Text.setCharacterSize(19); // Set text size
+    plot3Text.setFillColor(sf::Color::Red); // Set text color
+    plot3Text.setPosition(455, 470); // Set text position
+    sf::Text plot4Text;
+    plot4Text.setFont(font);
+    plot4Text.setCharacterSize(19); // Set text size
+    plot4Text.setFillColor(sf::Color::Red); // Set text color
+    plot4Text.setPosition(600, 475); // Set text position
+    sf::Text plot5Text;
+    plot5Text.setFont(font);
+    plot5Text.setCharacterSize(19); // Set text size
+    plot5Text.setFillColor(sf::Color::Red); // Set text color
+    plot5Text.setPosition(740, 480); // Set text position
 
 
     sf::Texture Background; // Creates the variable for the image in which the crops can be selected
@@ -186,7 +205,7 @@ int main(){
                             wCan.waterCrop(*p1);
                         }
                         else if (scytheMode == true){
-                            scythe.harvestCrop(0);
+                            scythe.harvestCrop(*p1);
                         }
                         else if(shovelMode == true){
                             shovel.digupCrop(*p1);
@@ -204,7 +223,7 @@ int main(){
                             wCan.waterCrop(*p2);
                         }
                         else if (scytheMode == true){
-                            scythe.harvestCrop(1);
+                            scythe.harvestCrop(*p2);
                         }
                         else if(shovelMode == true){
                             shovel.digupCrop(*p2);
@@ -222,7 +241,7 @@ int main(){
                             wCan.waterCrop(*p3);
                         }
                         else if (scytheMode == true){
-                            scythe.harvestCrop(2);
+                            scythe.harvestCrop(*p3);
                         }
                         else if(shovelMode == true){
                             shovel.digupCrop(*p3);
@@ -240,7 +259,7 @@ int main(){
                             wCan.waterCrop(*p4);
                         }
                         else if (scytheMode == true){
-                            scythe.harvestCrop(3);
+                            scythe.harvestCrop(*p4);
                         }
                         else if(shovelMode == true){
                             shovel.digupCrop(*p4);
@@ -258,7 +277,7 @@ int main(){
                             wCan.waterCrop(*p5);
                         }
                         else if (scytheMode == true){
-                            scythe.harvestCrop(4);
+                            scythe.harvestCrop(*p5);
                         }
                         else if(shovelMode == true){
                             shovel.digupCrop(*p5);
@@ -326,9 +345,54 @@ int main(){
         dd << farmy.getDayNum();
         dayCount.setString(dd.str());
 
+        // For p1
         std::ostringstream p1Stream;
-        p1Stream << p1->getCrop()->getType();
+        if (p1 != nullptr && p1->getCrop() != nullptr) {
+            p1Stream << p1->getPlotCropType();
+            p1Stream << p1-> getCrop()->getAge() <<  "/" << p1->getCrop()->getMaxAge();
+        } else {
+            p1Stream << "Empty";
+        }
         plot1Text.setString(p1Stream.str());
+
+        // For p2
+        std::ostringstream p2Stream;
+        if (p2 != nullptr && p2->getCrop() != nullptr) {
+            p2Stream << p2->getPlotCropType();
+            p2Stream << p2-> getCrop()->getAge() <<  "/" << p2->getCrop()->getMaxAge();
+        } else {
+            p2Stream << "Empty";
+        }
+        plot2Text.setString(p2Stream.str());
+
+        // For p3
+        std::ostringstream p3Stream;
+        if (p3 != nullptr && p3->getCrop() != nullptr) {
+            p3Stream << p3->getPlotCropType();
+            p3Stream << p3-> getCrop()->getAge() <<  "/" << p3->getCrop()->getMaxAge();
+        } else {
+            p3Stream << "Empty";
+        }
+        plot3Text.setString(p3Stream.str());
+
+        // For p4
+        std::ostringstream p4Stream;
+        if (p4 != nullptr && p4->getCrop() != nullptr) {
+            p4Stream << p4->getPlotCropType();
+            p4Stream << p4-> getCrop()->getAge() <<  "/" << p4->getCrop()->getMaxAge();        } else {
+            p4Stream << "Empty";
+        }
+        plot4Text.setString(p4Stream.str());
+
+        // For p5
+        std::ostringstream p5Stream;
+        if (p5 != nullptr && p5->getCrop() != nullptr) {
+            p5Stream << p5->getPlotCropType();
+            p5Stream << p5-> getCrop()->getAge() <<  "/" << p5->getCrop()->getMaxAge();
+        } else {
+            p5Stream << "Empty";
+        }
+        plot5Text.setString(p5Stream.str());
 
         window.clear(sf::Color(255, 255, 255));
     
@@ -343,6 +407,10 @@ int main(){
         window.draw(moneyText);
         window.draw(dayCount);
         window.draw(plot1Text);
+        window.draw(plot2Text);        
+        window.draw(plot3Text);
+        window.draw(plot4Text);        
+        window.draw(plot5Text);
         // end the current frame
         window.display();
     }

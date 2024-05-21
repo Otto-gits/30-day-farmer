@@ -19,7 +19,7 @@ cropMerchant::cropMerchant(Farm& farm): farm(farm){
 void cropMerchant::buyWheat(){
         if (farm.getBalance() >= wheatSeedCost){
                 Plot* availablePlot= farm.getAvailablePlot();
-                if(availablePlot != nullptr){
+                if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Wheat());
                         farm.removeFromBalance(wheatSeedCost);
                 }else{
@@ -33,7 +33,7 @@ void cropMerchant::buyWheat(){
 void cropMerchant:: buyBellPeppers(){
         if (farm.getBalance() >= bellPeppersSeedCost){
                 Plot* availablePlot= farm.getAvailablePlot();
-                if(availablePlot != nullptr){
+                if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new bellPeppers());
                         farm.removeFromBalance(bellPeppersSeedCost);
                 }else{
@@ -47,7 +47,7 @@ void cropMerchant:: buyBellPeppers(){
 void cropMerchant::buyOnion(){
         if (farm.getBalance() >= onionSeedCost){
                 Plot* availablePlot= farm.getAvailablePlot();
-                if(availablePlot != nullptr){
+                if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Onion());
                         farm.removeFromBalance(onionSeedCost);
                 }else{
@@ -60,7 +60,7 @@ void cropMerchant::buyOnion(){
 void cropMerchant::buyCarrot(){
         if (farm.getBalance() >= carrotSeedCost){
                 Plot* availablePlot= farm.getAvailablePlot();
-                if(availablePlot != nullptr){
+                if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Carrot());
                         farm.removeFromBalance(carrotSeedCost);
                 }else{
@@ -74,7 +74,7 @@ void cropMerchant::buyCarrot(){
 void cropMerchant::buyCorn(){
         if (farm.getBalance() >= cornSeedCost){
                 Plot* availablePlot= farm.getAvailablePlot();
-                if(availablePlot != nullptr){
+                if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Corn());
                         farm.removeFromBalance(cornSeedCost);
                 }else{
@@ -88,7 +88,7 @@ void cropMerchant::buyCorn(){
 void cropMerchant::buyCherry(){
         if (farm.getBalance() >= cherrySeedCost){
                 Plot* availablePlot= farm.getAvailablePlot();
-                if(availablePlot != nullptr){
+                if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Cherry());
                         farm.removeFromBalance(cherrySeedCost);
                 }else{
@@ -102,7 +102,7 @@ void cropMerchant::buyCherry(){
 void cropMerchant::buyApple(){
         if (farm.getBalance() >= appleSeedCost){
                 Plot* availablePlot= farm.getAvailablePlot();
-                if(availablePlot != nullptr){
+                if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Apple());
                         farm.removeFromBalance(appleSeedCost);
                 }else{

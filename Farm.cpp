@@ -23,7 +23,7 @@ void Farm::newDay(){
             Plot* plot = plots[i];
             if (plot->hasCrop()) {
                 Crop* crop = plot->getCrop();
-                crop->ageOneDay();
+                crop->setPlantAge((crop->getAge())+1);
                 if (crop->getWaterLevel() == 100) {
                     crop->setPlantSize(crop->getPlantSize() + 1);
                     crop->setWaterLevel(0);

@@ -20,7 +20,7 @@
 #include "Tree.h" 
 
 int main(){
-    Farm farmy("Farmy", "Adelaide");
+    Farm farmy;
     cropMerchant Merchant(farmy);
 
     Plot* p1 = farmy.getPlot(0);
@@ -349,7 +349,7 @@ int main(){
         std::ostringstream p1Stream;
         if (p1 != nullptr && p1->getCrop() != nullptr) {
             p1Stream << p1->getPlotCropType();
-            p1Stream << p1-> getCrop()->getAge() <<  "/" << p1->getCrop()->getMaxAge();
+            p1Stream << " " << p1-> getCrop()->getAge() <<  "/" << p1->getCrop()->getMaxAge();
         } else {
             p1Stream << "Empty";
         }
@@ -359,7 +359,7 @@ int main(){
         std::ostringstream p2Stream;
         if (p2 != nullptr && p2->getCrop() != nullptr) {
             p2Stream << p2->getPlotCropType();
-            p2Stream << p2-> getCrop()->getAge() <<  "/" << p2->getCrop()->getMaxAge();
+            p2Stream << " " << p2-> getCrop()->getAge() <<  "/" << p2->getCrop()->getMaxAge();
         } else {
             p2Stream << "Empty";
         }
@@ -369,7 +369,7 @@ int main(){
         std::ostringstream p3Stream;
         if (p3 != nullptr && p3->getCrop() != nullptr) {
             p3Stream << p3->getPlotCropType();
-            p3Stream << p3-> getCrop()->getAge() <<  "/" << p3->getCrop()->getMaxAge();
+            p3Stream << " " << p3-> getCrop()->getAge() <<  "/" << p3->getCrop()->getMaxAge();
         } else {
             p3Stream << "Empty";
         }
@@ -379,7 +379,7 @@ int main(){
         std::ostringstream p4Stream;
         if (p4 != nullptr && p4->getCrop() != nullptr) {
             p4Stream << p4->getPlotCropType();
-            p4Stream << p4-> getCrop()->getAge() <<  "/" << p4->getCrop()->getMaxAge();        } else {
+            p4Stream << " " << p4-> getCrop()->getAge() <<  "/" << p4->getCrop()->getMaxAge();        } else {
             p4Stream << "Empty";
         }
         plot4Text.setString(p4Stream.str());
@@ -388,7 +388,7 @@ int main(){
         std::ostringstream p5Stream;
         if (p5 != nullptr && p5->getCrop() != nullptr) {
             p5Stream << p5->getPlotCropType();
-            p5Stream << p5-> getCrop()->getAge() <<  "/" << p5->getCrop()->getMaxAge();
+            p5Stream << " " << p5-> getCrop()->getAge() <<  "/" << p5->getCrop()->getMaxAge();
         } else {
             p5Stream << "Empty";
         }

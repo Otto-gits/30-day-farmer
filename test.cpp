@@ -54,15 +54,16 @@ int main(){
     hoe.sowPlot(*fifthPlot);
 
     merchant.buyWheat();   
-    merchant.buyApple();
-    merchant.buyCarrot();
-    merchant.buyCorn();
-    merchant.buyCherry();
+    // merchant.buyApple();
+    // merchant.buyCarrot();
+    // merchant.buyCorn();
+    // merchant.buyCherry();
 
     cout << firstPlot->getCrop()->getWaterLevel() << endl;
     
     can.use(*firstPlot);
 
+    cout << f1.getBalance() << endl;
     cout << firstPlot->getCrop()->getWaterLevel() << endl;
     cout << firstPlot->getCrop()->getPlantSize() << endl;
     cout << firstPlot->getCrop()->getAge() << endl;
@@ -71,6 +72,12 @@ int main(){
 
     cout << firstPlot->getCrop()->getAge() << endl;
     cout << firstPlot->getCrop()->getPlantSize() << endl;
+    
+    firstPlot->getCrop()->setPlantSize(4);
+
+    scythe.use(*firstPlot);
+
+    cout << f1.getBalance() << endl;
 
     // saveState(f1);
 

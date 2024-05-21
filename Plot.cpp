@@ -62,5 +62,8 @@ string Plot::getPlotCropType(){
 }
 
 Plot::~Plot(){
-    delete crop; // Safely delete the crop, even if it's nullptr
+    delete crop; 
 }
+
+
+

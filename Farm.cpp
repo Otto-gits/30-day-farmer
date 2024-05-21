@@ -9,6 +9,7 @@ Farm::Farm(){
     balance = 1000;
     dayNum = 0;
     numPlots = 5;
+    maxNumDays = 30;
     plots = new Plot*[numPlots];
     for (int i = 0; i < numPlots; i++){
         plots[i] = new Plot();

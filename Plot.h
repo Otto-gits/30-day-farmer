@@ -12,6 +12,7 @@ class Plot{
         Crop* crop; // Create a pointer to a crop
     public:
         Plot(); // Default constructor for Plot, sets sowed to be false and crop to initially be a nullptr
+        ~Plot();
         bool getSowed(); // Returns the status of whether the plot is sowed 
         void sow(); // Sowes the plot 
         void plantCrop(Crop* newCrop); // Plants a crop in the plot 

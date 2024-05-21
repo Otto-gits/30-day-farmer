@@ -199,7 +199,7 @@ void cropMerchant::sellBellPeppers() {
                 plot->removeCrop();
                 bellPeppersSold = true;
             }
-        } else {
+        } else { 
             cout << "Bell Peppers in plot " << i + 1 << " are not yet ready for sale." << endl;
         }
     }

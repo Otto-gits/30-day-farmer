@@ -71,3 +71,11 @@ int Farm::getDayNum(){
 int Farm::getNumPlots(){
     return numPlots;
 }
+
+Farm::~Farm(){
+    for (int i = 0; i < numPlots; i++) {
+        delete plots[i]; // Delete each individual Plot object
+    }
+    delete[] plots; // Delete the array of pointers
+}
+

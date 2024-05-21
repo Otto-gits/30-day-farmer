@@ -24,6 +24,7 @@ class Farm{
         Plot** plots; // Creates an array of pointers to plotss
     public: 
         Farm(); // Default constructor for Farm
+        ~Farm(); // Destructor
         void newDay(); // Increments to dayNum by one and then changes the crop data members accordingly 
         void addToBalance(int amount); // Add an amount of money to the farms balance
         void removeFromBalance(int amount); // Remove an amount of money from the farms balance

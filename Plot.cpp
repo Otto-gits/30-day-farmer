@@ -27,7 +27,7 @@ void Plot::sow(){
 }
 
 void Plot::plantCrop(Crop* newCrop){
-    if (hasCrop() == false && ){
+    if (hasCrop() == false){
         crop = new Crop(*newCrop);
     }
     else{

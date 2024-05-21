@@ -22,10 +22,7 @@
 int main(){
     Farm farmy("Farmy", "Adelaide");
     cropMerchant Merchant(farmy);
-    for (int i = 0; i < 5; ++i) {
-        Plot* newPlot = new Plot(); // Assuming default constructor for Plot
-        farmy.addPlot(newPlot);
-    }
+
     Plot* p1 = farmy.getPlot(0);
     Plot* p2 = farmy.getPlot(1);
     Plot* p3 = farmy.getPlot(2);
@@ -36,12 +33,12 @@ int main(){
 
     wateringCan wCan;
     bool waterMode = false;
-    Shovel shove;
+    Shovel shovel;
     bool shovelMode = false;
     Hoe hoe;
     bool hoeMode = false;
-    //Scythe scythe;
-    //bool scytheMode = false;
+    Scythe scythe(farmy);
+    bool scytheMode = false;
 
 
     sf::RenderWindow window(sf::VideoMode(1000, 600), "30 Day Farmer"); // this creates the window in which the game is played
@@ -107,7 +104,6 @@ int main(){
     sf::FloatRect scythePos(840,350,70,75);
     sf::FloatRect wCanPos(840, 425 , 70,75); 
     sf::FloatRect nextDayPos(500,545,160,30);
-    sf::FloatRect buyLandPos(330,545,160,30);
 
     sf::Sprite SPbackground(Background); // creates a sprite from which the background will load into 
     sf::Sprite spPlot1(plot1); 
@@ -169,6 +165,8 @@ int main(){
                         waterMode = true;
                         hoeMode = false;
                         shovelMode = false;
+                        scytheMode = false;
+
                         std::cout << "watermode on" <<std::endl;
                     }
                     else{
@@ -176,11 +174,42 @@ int main(){
                             std::cout << "watermode off" <<std::endl;
                     }
                 }
-                else if (plot1Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p1->hasCrop() == true){
-                    wCan.waterCrop(*p1);
+                else if (plot1Coord.contains(event.mouseButton.x,event.mouseButton.y)){
+                    if(p1->hasCrop() == true){
+                        if (waterMode == true){
+                            wCan.waterCrop(*p1);
+                        }
+                        else if (scytheMode == true){
+                            scythe.harvestCrop(0);
+                        }
+                        else if(shovelMode == true){
+                            shovel.digupCrop(*p1);
+                        }
+                    }
+                    else{
+                        if (hoeMode == true){
+                            hoe.sowPlot(*p1);
+                        }
+                    }
                 }
-                else if (plot2Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p2->hasCrop() == true){
-                    wCan.waterCrop(*p2);
+                else if (plot2Coord.contains(event.mouseButton.x,event.mouseButton.y)){
+                    if(p2->hasCrop() == true){
+                        if (waterMode == true){
+                            wCan.waterCrop(*p2);
+                        }
+                        else if (scytheMode == true){
+                            scythe.harvestCrop(1);
+                        }
+                        else if(shovelMode == true){
+                            shovel.digupCrop(*p2);
+                        }
+                    }
+                    else{
+                        if (hoeMode == true){
+                            hoe.sowPlot(*p2);
+                        }
+                    }
+                }
                 }
                 else if (plot3Coord.contains(event.mouseButton.x,event.mouseButton.y) && waterMode == true && p3->hasCrop() == true){
                     wCan.waterCrop(*p3);
@@ -198,6 +227,7 @@ int main(){
                     if (shovelMode ==false){
                         shovelMode = true;
                         hoeMode = false;
+                        scytheMode = false;
                         waterMode = false;
                             
                         std::cout << "Shovelmode on" <<std::endl;
@@ -212,6 +242,7 @@ int main(){
                         hoeMode = true;
                         waterMode = false;
                         shovelMode = false;
+                        scytheMode = false;
                         std::cout << "HoeMode on" <<std::endl;
                     }
                     else{
@@ -219,17 +250,21 @@ int main(){
                             std::cout << "Hoemode off" <<std::endl;
                     }
                 }
-                /*else if (scythe.contains(event.mouseButton.x,event.mouseButton.y)){
+                else if (scythePos.contains(event.mouseButton.x,event.mouseButton.y)){
                     if (scytheMode ==false){
-                        scythe = true;
+                        scytheMode = true;
+                        waterMode = false;
+                        shovelMode = false;
+                        hoeMode = false;
                         std::cout << "ScytheMode on" <<std::endl;
                     }
                     else{
                         scytheMode = false;
                             std::cout << "Scythemode off" <<std::endl;
                     }
-                }
-                }*/
+                
+                
+
 
             }
             

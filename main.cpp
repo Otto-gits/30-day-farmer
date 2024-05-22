@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <sstream>
+#include <vector>
 #include "Wheat.h"
 #include "Plot.h"
 #include "Crop.h"
@@ -22,7 +23,7 @@
 int main(){
     Farm farmy;
     cropMerchant Merchant(farmy);
-
+    
     Plot* p1 = farmy.getPlot(0);
     Plot* p2 = farmy.getPlot(1);
     Plot* p3 = farmy.getPlot(2);
@@ -131,26 +132,38 @@ int main(){
     sf::FloatRect nextDayPos(500,545,160,30);
 
     sf::Sprite SPbackground(Background); // creates a sprite from which the background will load into 
-    sf::Sprite spPlot1(plot1); 
-    spPlot1.setPosition(120, 360); //sets the position of wher the loaded image will sit
+    std::vector<sf::Sprite> plotSprites;
+
+    // Create and configure each sprite, then add it to the vector
+    sf::Sprite spPlot1(plot1);
+    spPlot1.setPosition(120, 360); //sets the position of where the loaded image will sit
     spPlot1.setScale(0.375f, 0.375f); 
-    sf::FloatRect plot1Coord(220, 420 , 45,40); 
+    plotSprites.push_back(spPlot1); // Add sprite to vector
+    sf::FloatRect plot1Coord(220, 420, 45, 40);
+
     sf::Sprite spPlot2(plot2);
     spPlot2.setPosition(250, 345);
     spPlot2.setScale(0.375f, 0.375f); //sets the scale compared to the loaded image of how big the image should be
-    sf::FloatRect plot2Coord(300, 410 , 100,45); 
+    plotSprites.push_back(spPlot2); // Add sprite to vector
+    sf::FloatRect plot2Coord(300, 410, 100, 45);
+
     sf::Sprite spPlot3(plot3);
     spPlot3.setPosition(390, 340);
     spPlot3.setScale(0.375f, 0.375f);
-    sf::FloatRect plot3Coord(427, 405 , 110,50); //creates a rectangle of the area in which the user can click to utilize the plot
+    plotSprites.push_back(spPlot3); // Add sprite to vector
+    sf::FloatRect plot3Coord(427, 405, 110, 50); //creates a rectangle of the area in which the user can click to utilize the plot
+
     sf::Sprite spPlot4(plot4);
     spPlot4.setPosition(525, 345);
     spPlot4.setScale(0.375f, 0.375f);
-    sf::FloatRect plot4Coord(570, 400 , 90,50); 
+    plotSprites.push_back(spPlot4); // Add sprite to vector
+    sf::FloatRect plot4Coord(570, 400, 90, 50);
+
     sf::Sprite spPlot5(plot5);
     spPlot5.setPosition(660, 350);
     spPlot5.setScale(0.375f, 0.375f);
-    sf::FloatRect plot5Coord(700, 415 , 70,45); 
+    plotSprites.push_back(spPlot5); // Add sprite to vector
+    sf::FloatRect plot5Coord(700, 415, 70, 45);
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -202,7 +215,7 @@ int main(){
                 else if (plot1Coord.contains(event.mouseButton.x,event.mouseButton.y)){
                     if(p1->hasCrop() == true){
                         if (waterMode == true){
-                            wCan.waterCrop(*p1);
+                            wCan.waterCrop(*p1);                            
                         }
                         else if (scytheMode == true){
                             scythe.harvestCrop(*p1);
@@ -275,6 +288,7 @@ int main(){
                     if(p5->hasCrop() == true){
                         if (waterMode == true){
                             wCan.waterCrop(*p5);
+                            spPlot5.setColor(sf::Color(150, 150, 150));
                         }
                         else if (scytheMode == true){
                             scythe.harvestCrop(*p5);
@@ -332,10 +346,10 @@ int main(){
                         scytheMode = false;
                             std::cout << "Scythemode off" <<std::endl;
                     }
-            }
+                }
             
-        }
             }
+        }
 
         // clear the window with black color
         std::ostringstream ss;
@@ -348,54 +362,78 @@ int main(){
 
         // For p1
         std::ostringstream p1Stream;
-        if (p1 != nullptr && p1->getCrop() != nullptr) {
+        if (p1 != nullptr && p1->getCrop() != nullptr && p1->getCrop()->getAge() < p1->getCrop()->getMaxAge() ) {
             p1Stream << p1->getPlotCropType();
             p1Stream << " " << p1-> getCrop()->getPlantSize() <<  "/" << p1->getCrop()->getMaxSize();
-        } else {
+        } else if(p1 != nullptr && p1->getCrop() != nullptr && p1->getCrop()->getAge() >= p1->getCrop()->getMaxAge()) {
+            p1Stream << "Dead Crop";
+        } else{
             p1Stream << "Empty";
         }
+
         plot1Text.setString(p1Stream.str());
 
         // For p2
         std::ostringstream p2Stream;
-        if (p2 != nullptr && p2->getCrop() != nullptr) {
+        if (p2 != nullptr && p2->getCrop() != nullptr && p2->getCrop()->getAge() < p2->getCrop()->getMaxAge() ) {
             p2Stream << p2->getPlotCropType();
             p2Stream << " " << p2-> getCrop()->getPlantSize() <<  "/" << p2->getCrop()->getMaxSize();
-        } else {
+        } else if(p2 != nullptr && p2->getCrop() != nullptr && p2->getCrop()->getAge() >= p2->getCrop()->getMaxAge()) {
+            p2Stream << "Dead Crop";
+        } else{
             p2Stream << "Empty";
         }
         plot2Text.setString(p2Stream.str());
 
         // For p3
         std::ostringstream p3Stream;
-        if (p3 != nullptr && p3->getCrop() != nullptr) {
+        if (p3 != nullptr && p3->getCrop() != nullptr && p3->getCrop()->getAge() < p3->getCrop()->getMaxAge() ) {
             p3Stream << p3->getPlotCropType();
             p3Stream << " " << p3-> getCrop()->getPlantSize() <<  "/" << p3->getCrop()->getMaxSize();
-        } else {
+        } else if(p3 != nullptr && p3->getCrop() != nullptr && p3->getCrop()->getAge() >= p3->getCrop()->getMaxAge()) {
+            p3Stream << "Dead Crop";
+        } else{
             p3Stream << "Empty";
         }
         plot3Text.setString(p3Stream.str());
 
         // For p4
         std::ostringstream p4Stream;
-        if (p4 != nullptr && p4->getCrop() != nullptr) {
+        if (p4 != nullptr && p4->getCrop() != nullptr && p4->getCrop()->getAge() < p4->getCrop()->getMaxAge() ) {
             p4Stream << p4->getPlotCropType();
             p4Stream << " " << p4-> getCrop()->getPlantSize() <<  "/" << p4->getCrop()->getMaxSize();
-            } else {
+        } else if(p4 != nullptr && p4->getCrop() != nullptr && p4->getCrop()->getAge() >= p4->getCrop()->getMaxAge()) {
+            p4Stream << "Dead Crop";
+        } else{
             p4Stream << "Empty";
         }
+        
         plot4Text.setString(p4Stream.str());
 
         // For p5
         std::ostringstream p5Stream;
-        if (p5 != nullptr && p5->getCrop() != nullptr) {
+        if (p5 != nullptr && p5->getCrop() != nullptr && p5->getCrop()->getAge() < p5->getCrop()->getMaxAge() ) {
             p5Stream << p5->getPlotCropType();
             p5Stream << " " << p5-> getCrop()->getPlantSize() <<  "/" << p5->getCrop()->getMaxSize();
-        } else {
+        } else if(p5 != nullptr && p5->getCrop() != nullptr && p5->getCrop()->getAge() >= p5->getCrop()->getMaxAge()) {
+            p5Stream << "Dead Crop";
+        } else{
             p5Stream << "Empty";
         }
         plot5Text.setString(p5Stream.str());
 
+            for (int i = 0; i < farmy.getNumPlots(); ++i) {
+                Crop *crop = farmy.getPlot(i)->getCrop();
+                if (crop != nullptr) {
+                    if (farmy.getPlot(i)->getCrop()->getWaterLevel() > 1) {
+                        std::cout << crop->getWaterLevel() << std::endl;
+                        plotSprites[i].setColor(sf::Color(150, 150, 150)); // Darker color
+                    }
+                    else if(farmy.getPlot(i)->getCrop()->getWaterLevel() == 0) {
+                        plotSprites[i].setColor(sf::Color(150, 255, 255)); // Original color
+                    }
+                }
+            }
         window.clear(sf::Color(255, 255, 255));
     
         // draw everything here...

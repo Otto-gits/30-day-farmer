@@ -118,35 +118,94 @@ int main(){
         return -1;
     }
 
-    sf::Texture plant1;
-    plant1.loadFromFile("Planted.png",sf::IntRect(0,0,1000,1000));
-    sf::Sprite spPlant1(plant1);
+    sf::Texture plant;
+    plant.loadFromFile("Planted.png",sf::IntRect(0,0,1000,1000));
+    sf::Sprite spPlant1(plant);
     spPlant1.setPosition(223,425);
     spPlant1.scale(2,2);
-
-    sf::Texture plant2;
-    plant2.loadFromFile("Planted.png",sf::IntRect(0,0,1000,1000));
-    sf::Sprite spPlant2(plant2);
+    sf::Sprite spPlant2(plant);
     spPlant2.setPosition(350,425);
     spPlant2.scale(2,2);
-
-    sf::Texture plant3;
-    plant3.loadFromFile("Planted.png",sf::IntRect(0,0,1000,1000));
-    sf::Sprite spPlant3(plant3);
+    sf::Sprite spPlant3(plant);
     spPlant3.setPosition(480,425);
     spPlant3.scale(2,2);
-
-    sf::Texture plant4;
-    plant4.loadFromFile("Planted.png",sf::IntRect(0,0,1000,1000));
-    sf::Sprite spPlant4(plant4);
+    sf::Sprite spPlant4(plant);
     spPlant4.setPosition(610,425);
     spPlant4.scale(2,2);
-
-    sf::Texture plant5;
-    plant5.loadFromFile("Planted.png",sf::IntRect(0,0,1000,1000));
-    sf::Sprite spPlant5(plant5);
+    sf::Sprite spPlant5(plant);
     spPlant5.setPosition(750,425);
     spPlant5.scale(2,2);
+
+    sf::Texture wheatGrown;
+    wheatGrown.loadFromFile("Wheat.png",sf::IntRect(0,0,250,250));
+    sf::Sprite spWheat1(wheatGrown);
+    spWheat1.scale(2.3f,2.3f);
+    sf::Sprite spWheat2(wheatGrown);
+    spWheat2.scale(2.6f,2.6f);
+    sf::Sprite spWheat3(wheatGrown);
+    spWheat3.scale(2.9f,2.9f);
+    sf::Sprite spWheat4(wheatGrown);
+    spWheat4.scale(2.6f,2.6f);
+    sf::Sprite spWheat5(wheatGrown);
+    spWheat5.scale(2.3f,2.3f);
+
+    sf::Texture pepperGrown;
+    pepperGrown.loadFromFile("BellPepper.png",sf::IntRect(0,0,250,250));
+    sf::Sprite spPepper1(pepperGrown);
+    sf::Sprite spPepper2(pepperGrown);
+    sf::Sprite spPepper3(pepperGrown);
+    sf::Sprite spPepper4(pepperGrown);
+    sf::Sprite spPepper5(pepperGrown);
+
+    sf::Texture onionGrown;
+    onionGrown.loadFromFile("Onion.png",sf::IntRect(0,0,250,250));
+    sf::Sprite spOnion1(onionGrown);
+    sf::Sprite spOnion2(onionGrown);
+    sf::Sprite spOnion3(onionGrown);
+    sf::Sprite spOnion4(onionGrown);
+    sf::Sprite spOnion5(onionGrown);
+
+    sf::Texture cornGrown;
+    cornGrown.loadFromFile("Corn.png", sf::IntRect(0, 0, 250, 250));
+    sf::Sprite spCorn1(cornGrown);
+    sf::Sprite spCorn2(cornGrown);
+    sf::Sprite spCorn3(cornGrown);
+    sf::Sprite spCorn4(cornGrown);
+    sf::Sprite spCorn5(cornGrown);
+
+    sf::Texture carrotGrown;
+    carrotGrown.loadFromFile("Carrot.png", sf::IntRect(0, 0, 250, 250));
+    sf::Sprite spCarrot1(carrotGrown);
+    sf::Sprite spCarrot2(carrotGrown);
+    sf::Sprite spCarrot3(carrotGrown);
+    sf::Sprite spCarrot4(carrotGrown);
+    sf::Sprite spCarrot5(carrotGrown);
+
+    sf::Texture cherryGrown;
+    cherryGrown.loadFromFile("Cherry.png", sf::IntRect(0, 0, 250, 250));
+    sf::Sprite spCherry1(cherryGrown);
+    sf::Sprite spCherry2(cherryGrown);
+    sf::Sprite spCherry3(cherryGrown);
+    sf::Sprite spCherry4(cherryGrown);
+    sf::Sprite spCherry5(cherryGrown);
+    spCherry1.setScale(0.8f, 0.8f);
+    spCherry2.setScale(0.8f, 0.8f);
+    spCherry3.setScale(0.8f, 0.8f);
+    spCherry4.setScale(0.8f, 0.8f);
+    spCherry5.setScale(0.8f, 0.8f);
+    
+    sf::Texture appleGrown;
+    appleGrown.loadFromFile("Apple.png", sf::IntRect(0, 0, 250, 250));
+    sf::Sprite spApple1(appleGrown);
+    sf::Sprite spApple2(appleGrown);
+    sf::Sprite spApple3(appleGrown);
+    sf::Sprite spApple4(appleGrown);
+    sf::Sprite spApple5(appleGrown);
+    spApple1.setScale(0.8f, 0.8f);
+    spApple2.setScale(0.8f, 0.8f);
+    spApple3.setScale(0.8f, 0.8f);
+    spApple4.setScale(0.8f, 0.8f);
+    spApple5.setScale(0.8f, 0.8f);
 
 
     // this is the area where a user can click to interact with the objects.
@@ -487,6 +546,7 @@ int main(){
         window.draw(plot3Text);
         window.draw(plot4Text);        
         window.draw(plot5Text);
+        
         for (int i=0;i<5;i++){
             if (farmy.getPlot(i) != nullptr){
                 if (farmy.getPlot(i)->hasCrop() == true){
@@ -494,25 +554,170 @@ int main(){
                         window.draw(spPlant1);
                     }
                     else if (i==0 && p1 != nullptr && p1->getCrop() != nullptr && p1->getCrop()->getPlantSize() == p1->getCrop()->getMaxSize()){
-
+                        if(p1->getPlotCropType() == "Wheat"){
+                            spWheat1.setPosition(185,390);
+                            window.draw(spWheat1);
+                        }
+                        else if(p1->getPlotCropType() == "bellPeppers"){
+                            spPepper1.setPosition(185,400);
+                            window.draw(spPepper1);
+                        }
+                        else if(p1->getPlotCropType() == "Onion"){
+                            spOnion1.setPosition(200, 335);
+                            window.draw(spOnion1);
+                        }
+                        else if(p1->getPlotCropType() == "Corn"){
+                            spCorn1.setPosition(180,290);
+                            window.draw(spCorn1);
+                        }
+                        else if(p1->getPlotCropType() == "Carrot"){
+                            spCarrot1.setPosition(200, 370);
+                            window.draw(spCarrot1);
+                        }
+                        else if(p1->getPlotCropType() == "Cherry"){
+                            spCherry1.setPosition(155, 295);
+                            window.draw(spCherry1);
+                        }
+                        else if(p1->getPlotCropType() == "Apple"){
+                            spApple1.setPosition(155, 280);
+                            window.draw(spApple1);
+                        }
                     }
                     if (i==1 && p2 != nullptr && p2->getCrop() != nullptr && p2->getCrop()->getPlantSize() != p2->getCrop()->getMaxSize() ){
                         window.draw(spPlant2);
                     }
                     else if (i==1 && p2 != nullptr && p2->getCrop() != nullptr && p2->getCrop()->getPlantSize() == p2->getCrop()->getMaxSize()){
+                        if(p2->getPlotCropType() == "Wheat"){
+                            spWheat2.setPosition(290,370);
+                            window.draw(spWheat2);
+                        }
+                        else if(p2->getPlotCropType() == "bellPeppers"){
+                            spPepper2.setPosition(295,390);
+                            window.draw(spPepper2);
+                        }
+                        else if(p2->getPlotCropType() == "Onion"){
+                            spOnion2.setPosition(315, 325);
+                            window.draw(spOnion2);
+                        }
+                        else if(p2->getPlotCropType() == "Corn"){
+                            spCorn2.setPosition(295,280);
+                            window.draw(spCorn2);
+                        }
+                        else if(p2->getPlotCropType() == "Carrot"){
+                            spCarrot2.setPosition(315, 360);
+                            window.draw(spCarrot2);
+                        }
+                        else if(p2->getPlotCropType() == "Cherry"){
+                            spCherry2.setPosition(270, 285);
+                            window.draw(spCherry2);
+                        }
+                        else if(p2->getPlotCropType() == "Apple"){
+                            spApple2.setPosition(270, 270);
+                            window.draw(spApple2);
+                        }
                     }
                     if (i==2 && p3 != nullptr && p3->getCrop() != nullptr && p3->getCrop()->getPlantSize() != p3->getCrop()->getMaxSize() ){
                         window.draw(spPlant3);
                     }
                     else if (i==2 && p3 != nullptr && p3->getCrop() != nullptr && p3->getCrop()->getPlantSize() == p3->getCrop()->getMaxSize()){
+                        if(p3->getPlotCropType() == "Wheat"){
+                            spWheat3.setPosition(425,355);
+                            window.draw(spWheat3);
+                        }
+                        else if(p3->getPlotCropType() == "bellPeppers"){
+                            spPepper3.setPosition(430,390);
+                            window.draw(spPepper3);
+                        }
+                        else if(p3->getPlotCropType() == "Onion"){
+                            spOnion3.setPosition(450, 325);
+                            window.draw(spOnion3);
+                        }
+                        else if(p3->getPlotCropType() == "Corn"){
+                            spCorn3.setPosition(430,280);
+                            window.draw(spCorn3); 
+                        }
+                        else if(p3->getPlotCropType() == "Carrot"){
+                            spCarrot3.setPosition(450, 360);
+                            window.draw(spCarrot3);
+                        }
+                        else if(p3->getPlotCropType() == "Cherry"){
+                            spCherry3.setPosition(405, 285);
+                            window.draw(spCherry3);
+                        }
+                        else if(p3->getPlotCropType() == "Apple"){
+                            spApple3.setPosition(405, 270);
+                            window.draw(spApple3);
+                        }
+                    }
+                    if (i==3 && p4 != nullptr && p4->getCrop() != nullptr && p4->getCrop()->getPlantSize() != p4->getCrop()->getMaxSize() ){
+                        window.draw(spPlant4);
+                    }
+                    else if (i==3 && p4 != nullptr && p4->getCrop() != nullptr && p4->getCrop()->getPlantSize() == p4->getCrop()->getMaxSize()){
+                        if(p4->getPlotCropType() == "Wheat"){
+                            spWheat4.setPosition(565,370);
+                            window.draw(spWheat4);
+                        }
+                        else if(p4->getPlotCropType() == "bellPeppers"){
+                            spPepper4.setPosition(565,390);
+                            window.draw(spPepper4);
+                        }
+                        else if(p4->getPlotCropType() == "Onion"){
+                            spOnion4.setPosition(585, 325);
+                            window.draw(spOnion4);
+                        }
+                        else if(p4->getPlotCropType() == "Corn"){
+                            spCorn4.setPosition(565,280);
+                            window.draw(spCorn4);
+                        }
+                        else if(p4->getPlotCropType() == "Carrot"){
+                            spCarrot4.setPosition(585, 360);
+                            window.draw(spCarrot4);
+                        }
+                        else if(p4->getPlotCropType() == "Cherry"){
+                            spCherry4.setPosition(540, 285);
+                            window.draw(spCherry4);
+                        }
+                        else if(p4->getPlotCropType() == "Apple"){
+                            spApple4.setPosition(540, 270);
+                            window.draw(spApple4);
+                        }
+                    }
+                    if (i==4 && p5 != nullptr && p5->getCrop() != nullptr && p5->getCrop()->getPlantSize() != p5->getCrop()->getMaxSize() ){
+                        window.draw(spPlant5);
+                    }
+                    else if (i==4 && p5 != nullptr && p5->getCrop() != nullptr && p5->getCrop()->getPlantSize() == p5->getCrop()->getMaxSize()){
+                        if(p5->getPlotCropType() == "Wheat"){
+                            spWheat5.setPosition(695,380);
+                            window.draw(spWheat5);
+                        }
+                        else if(p5->getPlotCropType() == "bellPeppers"){
+                            spPepper5.setPosition(695,390);
+                            window.draw(spPepper5);     
+                        }
+                        else if(p5->getPlotCropType() == "Onion"){
+                            spOnion5.setPosition(705, 325);
+                            window.draw(spOnion5);      
+                        }   
+                        else if(p5->getPlotCropType() == "Corn"){
+                            spCorn5.setPosition(685,280);
+                            window.draw(spCorn5);
+                        }
+                        else if(p5->getPlotCropType() == "Carrot"){
+                            spCarrot5.setPosition(705, 360);
+                            window.draw(spCarrot5);
+                        }   
+                        else if(p5->getPlotCropType() == "Cherry"){
+                            spCherry5.setPosition(660, 285);
+                            window.draw(spCherry5);
+                        }
+                        else if(p5->getPlotCropType() == "Apple"){
+                            spApple5.setPosition(660, 270);
+                            window.draw(spApple5);
+                        }
                     }
             }
             }
         }
-        // window.draw(spPlant2);
-        window.draw(spPlant3);
-        window.draw(spPlant4);
-        window.draw(spPlant5);
         // end the current frame
         window.display();
     }

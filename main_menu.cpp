@@ -13,11 +13,18 @@ enum class State
 
 int main()
 {
+// Create a leaderboard instance with your desired filename
+    Leaderboard leaderboard("Leaderboard.csv");
 
-    Leaderboard leaderboard;
-    leaderboard.addEntry("BIG FARMER 60", 30);
-    leaderboard.addEntry("God Farmer", 497);
-    leaderboard.addEntry("Charlie", 2);
+    // Load the leaderboard data from the file
+    leaderboard.load();
+
+    // Add new entries or perform other operations
+    leaderboard.addEntry("B FARMER 60", 30);
+  
+
+    // Save the updated leaderboard data to the file
+    leaderboard.save();
 
 
     // Create a window

@@ -9,7 +9,7 @@ cropMerchant::cropMerchant(Farm& farm): farm(farm){
         wheatSeedCost = 1;
         cornSeedCost = 10;
         cherrySeedCost = 24;
-        appleSeedCost = 25;
+        appleSeedCost = 30;
         scytheReplenishmentCost = 10;
         hoeReplenishmentCost = 10;
         shovelReplenishmentCost = 10;

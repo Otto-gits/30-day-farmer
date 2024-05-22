@@ -117,6 +117,11 @@ int main(){
         std::cerr << "Failed to load Plot5Dry.png" << std::endl;
         return -1;
     }
+    sf::Texture brokenHoe;
+    if (!brokenHoe.loadFromFile("BrokenHoe.png", sf::IntRect(0,0,1000,1000))){
+        std::cerr << "Failed to load BrokenHoe.png" << std::endl;
+        return -1;
+    }
     // this is the area where a user can click to interact with the objects.
     sf::FloatRect wheatPos(280, 137 , 60,55); 
     sf::FloatRect pepperPos(340, 137 , 60,55); 
@@ -165,6 +170,10 @@ int main(){
     plotSprites.push_back(spPlot5); // Add sprite to vector
     sf::FloatRect plot5Coord(700, 415, 70, 45);
 
+    sf::Sprite spBrokenHoe(brokenHoe);
+    spBrokenHoe.setPosition(835,275);
+    spBrokenHoe.setScale(1.16f,1.16f);
+    
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -227,6 +236,8 @@ int main(){
                     else{
                         if (hoeMode == true){
                             hoe.sowPlot(*p1);
+                            std::cout << hoe.getUses() << std::endl;
+
                         }
                     }
                 }
@@ -245,6 +256,7 @@ int main(){
                     else{
                         if (hoeMode == true){
                             hoe.sowPlot(*p2);
+                            std::cout << hoe.getUses() << std::endl;
                         }
                     }
                 }
@@ -270,6 +282,7 @@ int main(){
                     if(p4->hasCrop() == true){
                         if (waterMode == true){
                             wCan.waterCrop(*p4);
+                            plotSprites[3].setColor(sf::Color(150, 150, 150));
                         }
                         else if (scytheMode == true){
                             scythe.harvestCrop(*p4);
@@ -422,28 +435,26 @@ int main(){
         }
         plot5Text.setString(p5Stream.str());
 
-            for (int i = 0; i < farmy.getNumPlots(); ++i) {
-                Crop *crop = farmy.getPlot(i)->getCrop();
-                if (crop != nullptr) {
-                    if (farmy.getPlot(i)->getCrop()->getWaterLevel() > 1) {
-                        std::cout << crop->getWaterLevel() << std::endl;
-                        plotSprites[i].setColor(sf::Color(150, 150, 150)); // Darker color
-                    }
-                    else if(farmy.getPlot(i)->getCrop()->getWaterLevel() == 0) {
-                        plotSprites[i].setColor(sf::Color(150, 255, 255)); // Original color
-                    }
+        for (int i = 0; i < farmy.getNumPlots(); ++i) {
+            Crop *crop = farmy.getPlot(i)->getCrop();
+            if (crop != nullptr) {
+                if (farmy.getPlot(i)->getCrop()->getWaterLevel() > 1) {
+                    plotSprites[i].setColor(sf::Color(150, 150, 150)); // Darker color
+                }
+                else if(farmy.getPlot(i)->getCrop()->getWaterLevel() == 0) {
+                    plotSprites[i].setColor(sf::Color(sf::Color::White)); // Original color
                 }
             }
+        }
         window.clear(sf::Color(255, 255, 255));
     
         // draw everything here...
         // window.draw(...);
         window.draw(SPbackground);
-        window.draw(spPlot1);
-        window.draw(spPlot2);      
-        window.draw(spPlot3);
-        window.draw(spPlot4);
-        window.draw(spPlot5); 
+        for (int i=0;i<5;i++){
+            window.draw(plotSprites[i]);
+        }
+
         window.draw(moneyText);
         window.draw(dayCount);
         window.draw(plot1Text);
@@ -451,10 +462,12 @@ int main(){
         window.draw(plot3Text);
         window.draw(plot4Text);        
         window.draw(plot5Text);
+        if (hoe.getUses() == 0){
+            window.draw(spBrokenHoe);
+
+        }
         // end the current frame
         window.display();
     }
-        
-    
     return 0;
     }

@@ -1,6 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+enum class State
+{
+    None,
+    FirstPopup,
+    SecondPopup
+};
+
 int main()
 {
     // Create a window
@@ -18,23 +25,40 @@ int main()
     sf::Sprite backgroundSprite;
     backgroundSprite.setTexture(backgroundTexture);
 
-    // Load the pop-up texture
-    sf::Texture popupTexture;
-    if (!popupTexture.loadFromFile("Intro 2.JPG")) // Ensure you have an appropriate image file
+    // Load the first pop-up texture
+    sf::Texture popupTexture1;
+    if (!popupTexture1.loadFromFile("Intro 2.JPG")) // Ensure you have an appropriate image file
     {
         std::cerr << "Failed to load Intro 2.JPG" << std::endl;
         return -1;
     }
 
-    // Create a sprite for the pop-up and set its texture
-    sf::Sprite popupSprite;
-    popupSprite.setTexture(popupTexture);
+    // Create a sprite for the first pop-up and set its texture
+    sf::Sprite popupSprite1;
+    popupSprite1.setTexture(popupTexture1);
+
+    // Load the second pop-up texture
+    sf::Texture popupTexture2;
+    if (!popupTexture2.loadFromFile("Intro 3.JPG")) // Ensure you have an appropriate image file
+    {
+        std::cerr << "Failed to load Intro 3.JPG" << std::endl;
+        return -1;
+    }
+
+    // Create a sprite for the second pop-up and set its texture
+    sf::Sprite popupSprite2;
+    popupSprite2.setTexture(popupTexture2);
 
     // Variable to control pop-up visibility
-    bool showPopup = false;
+    State currentState = State::None;
 
-    // Define the clickable area
-    sf::IntRect clickableArea(640, 355, 100, 100); // (left, top, width, height)
+    // Define the clickable areas
+    sf::IntRect clickableArea1(640, 355, 100, 100); // (left, top, width, height)
+    sf::IntRect clickableArea2(640, 355, 100, 100); // Area for second interaction in the first pop-up
+    sf::IntRect clickableArea3(230, 150, 120, 100); // Another area for interaction in the first pop-up
+    sf::IntRect clickableArea4(640, 355, 100, 100); // Area for interaction in the second pop-up
+    sf::IntRect clickableArea5(230, 150, 120, 100); // Another area for interaction in the second pop-up
+    sf::IntRect clickableAreaClose(500, 250, 100, 100); // Area to close the window in the final pop-up
 
     // Main loop
     while (window.isOpen())
@@ -50,12 +74,48 @@ int main()
             // Check for mouse button pressed event
             if (event.type == sf::Event::MouseButtonPressed)
             {
-                // Check if the mouse click is within the clickable area
-                if (clickableArea.contains(event.mouseButton.x, event.mouseButton.y))
+                if (currentState == State::None)
                 {
-                    std::cout << "Clicked within the clickable area!" << std::endl;
-                    // Toggle pop-up visibility
-                    showPopup = !showPopup;
+                    // Check if the mouse click is within the clickable area of the background
+                    if (clickableArea1.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area 1!" << std::endl;
+                        // Show the first pop-up
+                        currentState = State::FirstPopup;
+                    }
+                }
+                else if (currentState == State::FirstPopup)
+                {
+                    // Check if the mouse click is within the clickable areas of the first pop-up
+                    if (clickableArea2.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area 2!" << std::endl;
+                        // Show the second pop-up
+                        currentState = State::SecondPopup;
+                    }
+                    else if (clickableArea3.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area 3!" << std::endl;
+                        // Return to the main page
+                        currentState = State::None;
+                    }
+                }
+                else if (currentState == State::SecondPopup)
+                {
+                    // Check if the mouse click is within the clickable areas of the second pop-up
+                    if (clickableArea4.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area to close the window!" << std::endl;
+                        // Close the window
+                        window.close();
+                    }
+                    else if (clickableArea5.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area 5!" << std::endl;
+                        // Return to the first pop-up
+                        currentState = State::FirstPopup;
+                    }
+                
                 }
 
                 // Display the coordinates of the mouse click
@@ -69,12 +129,20 @@ int main()
         // Draw the background sprite
         window.draw(backgroundSprite);
 
-        // Draw the pop-up sprite if it is visible
-        if (showPopup)
+        // Draw the first pop-up sprite if it is visible
+        if (currentState == State::FirstPopup)
         {
-            // Position the pop-up sprite at the desired location
-            popupSprite.setPosition(0, 0); // Adjust the position as needed
-            window.draw(popupSprite);
+            // Position the first pop-up sprite at the desired location
+            popupSprite1.setPosition(0, 0); // Adjust the position as needed
+            window.draw(popupSprite1);
+        }
+
+        // Draw the second pop-up sprite if it is visible
+        if (currentState == State::SecondPopup)
+        {
+            // Position the second pop-up sprite at the desired location
+            popupSprite2.setPosition(0, 0); // Adjust the position as needed
+            window.draw(popupSprite2);
         }
 
         // Display the contents of the window

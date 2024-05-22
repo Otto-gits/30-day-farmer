@@ -8,8 +8,8 @@ Onion::Onion(){
     plantAge = 0;
     plantSize = 0;
     waterLevel = 0;
-    maxAge = 15; // Max age before dying 
-    maxSize = 10;  
+    maxAge = 7; // Max age before dying 
+    maxSize = 3;  
     growthRate = 3; 
     salePrice = 9;
     type = "Onion";

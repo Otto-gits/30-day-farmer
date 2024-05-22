@@ -57,3 +57,6 @@ string Crop::getType(){
     return type;
 }
 
+int Crop::getSize(){
+    return plantSize;
+}

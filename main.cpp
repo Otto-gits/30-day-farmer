@@ -19,6 +19,7 @@
 #include "Cherry.h"
 #include "Apple.h"
 #include "Tree.h" 
+#include <string>
 
 int main(){
     Farm farmy;
@@ -117,11 +118,7 @@ int main(){
         std::cerr << "Failed to load Plot5Dry.png" << std::endl;
         return -1;
     }
-    sf::Texture brokenHoe;
-    if (!brokenHoe.loadFromFile("BrokenHoe.png", sf::IntRect(0,0,1000,1000))){
-        std::cerr << "Failed to load BrokenHoe.png" << std::endl;
-        return -1;
-    }
+
     // this is the area where a user can click to interact with the objects.
     sf::FloatRect wheatPos(280, 137 , 60,55); 
     sf::FloatRect pepperPos(340, 137 , 60,55); 
@@ -169,11 +166,6 @@ int main(){
     spPlot5.setScale(0.375f, 0.375f);
     plotSprites.push_back(spPlot5); // Add sprite to vector
     sf::FloatRect plot5Coord(700, 415, 70, 45);
-
-    sf::Sprite spBrokenHoe(brokenHoe);
-    spBrokenHoe.setPosition(835,275);
-    spBrokenHoe.setScale(1.16f,1.16f);
-    
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -376,7 +368,7 @@ int main(){
         // For p1
         std::ostringstream p1Stream;
         if (p1 != nullptr && p1->getCrop() != nullptr && p1->getCrop()->getAge() < p1->getCrop()->getMaxAge() ) {
-            p1Stream << p1->getPlotCropType();
+            p1Stream << p1->getPlotCropType() << "\n";
             p1Stream << " " << p1-> getCrop()->getPlantSize() <<  "/" << p1->getCrop()->getMaxSize();
         } else if(p1 != nullptr && p1->getCrop() != nullptr && p1->getCrop()->getAge() >= p1->getCrop()->getMaxAge()) {
             p1Stream << "Dead Crop";
@@ -389,7 +381,7 @@ int main(){
         // For p2
         std::ostringstream p2Stream;
         if (p2 != nullptr && p2->getCrop() != nullptr && p2->getCrop()->getAge() < p2->getCrop()->getMaxAge() ) {
-            p2Stream << p2->getPlotCropType();
+            p2Stream << p2->getPlotCropType() << "\n";
             p2Stream << " " << p2-> getCrop()->getPlantSize() <<  "/" << p2->getCrop()->getMaxSize();
         } else if(p2 != nullptr && p2->getCrop() != nullptr && p2->getCrop()->getAge() >= p2->getCrop()->getMaxAge()) {
             p2Stream << "Dead Crop";
@@ -401,7 +393,7 @@ int main(){
         // For p3
         std::ostringstream p3Stream;
         if (p3 != nullptr && p3->getCrop() != nullptr && p3->getCrop()->getAge() < p3->getCrop()->getMaxAge() ) {
-            p3Stream << p3->getPlotCropType();
+            p3Stream << p3->getPlotCropType() << "\n";
             p3Stream << " " << p3-> getCrop()->getPlantSize() <<  "/" << p3->getCrop()->getMaxSize();
         } else if(p3 != nullptr && p3->getCrop() != nullptr && p3->getCrop()->getAge() >= p3->getCrop()->getMaxAge()) {
             p3Stream << "Dead Crop";
@@ -413,7 +405,7 @@ int main(){
         // For p4
         std::ostringstream p4Stream;
         if (p4 != nullptr && p4->getCrop() != nullptr && p4->getCrop()->getAge() < p4->getCrop()->getMaxAge() ) {
-            p4Stream << p4->getPlotCropType();
+            p4Stream << p4->getPlotCropType() << "\n";
             p4Stream << " " << p4-> getCrop()->getPlantSize() <<  "/" << p4->getCrop()->getMaxSize();
         } else if(p4 != nullptr && p4->getCrop() != nullptr && p4->getCrop()->getAge() >= p4->getCrop()->getMaxAge()) {
             p4Stream << "Dead Crop";
@@ -426,7 +418,7 @@ int main(){
         // For p5
         std::ostringstream p5Stream;
         if (p5 != nullptr && p5->getCrop() != nullptr && p5->getCrop()->getAge() < p5->getCrop()->getMaxAge() ) {
-            p5Stream << p5->getPlotCropType();
+            p5Stream << p5->getPlotCropType() << "\n";
             p5Stream << " " << p5-> getCrop()->getPlantSize() <<  "/" << p5->getCrop()->getMaxSize();
         } else if(p5 != nullptr && p5->getCrop() != nullptr && p5->getCrop()->getAge() >= p5->getCrop()->getMaxAge()) {
             p5Stream << "Dead Crop";
@@ -462,10 +454,7 @@ int main(){
         window.draw(plot3Text);
         window.draw(plot4Text);        
         window.draw(plot5Text);
-        if (hoe.getUses() == 0){
-            window.draw(spBrokenHoe);
 
-        }
         // end the current frame
         window.display();
     }

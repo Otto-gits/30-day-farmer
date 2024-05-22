@@ -11,7 +11,6 @@ using namespace std;
         int maxAge; // Maximum age a crop can reach, meaning the maximum day it can get it before dying 
         int plantSize; // Current size of a crop
         int maxSize; // Maximum size a crop can reach, meaning the size it will be harvestable at 
-        int growthRate; // The growth rate of a crop, meaning how many sizes it grows each day 
         float waterLevel; // The water level of a crop, initially 0 but then set to 100 using the watering an
         int salePrice; // The profit you receive for harvesting a crop
         string type; // The type of crop you are working with
@@ -22,7 +21,6 @@ using namespace std;
         int getMaxAge(); // Returns the maximum age of a crop
         int getPlantSize(); // Returns the current plant size of a crop
         int getMaxSize(); // Returns the maximum plant size for a crop
-        int getGrowthRate(); // Returns the amount a crop grows each day 
         float getWaterLevel(); // Returns the current water level of a plant
         void setPlantAge(int plantAge); // Set the plant age of a crop
         void setPlantSize(int plantSize); // Set the plant size of a crop

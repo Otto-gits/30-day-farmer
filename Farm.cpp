@@ -31,8 +31,7 @@ void Farm::newDay(){
                 }
             }
         }
-    }
-    else{
+    }else{
         cout << "Game over" << endl;
     }
 }
@@ -45,14 +44,15 @@ void Farm::removeFromBalance(int amount){
     balance -= amount;
 }
 
-Plot* Farm::getAvailablePlot(){
-    for (int i = 0; i < numPlots; i++){
-        if (!plots[i]->hasCrop()){
+Plot* Farm::getAvailablePlot() {
+    for (int i = 0; i < numPlots; i++) {
+        if (!plots[i]->hasCrop()) {
             return plots[i];
         }
     }
-    return nullptr;
+    return nullptr;  // Return nullptr if no available plots are found
 }
+
 
 Plot* Farm::getPlot(int index){
     if (index >= 0 && index < numPlots) {

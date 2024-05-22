@@ -8,10 +8,9 @@ Wheat::Wheat(){
     plantAge = 0;
     plantSize = 0;
     waterLevel = 0;
-    maxAge = 10; // Max age before dying 
-    maxSize = 4;  
-    growthRate = 2; //Grows by size two every day  
-    salePrice = 1;
+    maxAge = 5; // Max age before dying 
+    maxSize = 1;  
+    salePrice = 2;
     type = "Wheat";
 }
 

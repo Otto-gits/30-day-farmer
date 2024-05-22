@@ -31,8 +31,7 @@ void Farm::newDay(){
                 }
             }
         }
-    }
-    else{
+    }else{
         cout << "Game over" << endl;
     }
 }

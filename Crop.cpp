@@ -26,9 +26,6 @@ int Crop::getPlantSize(){
 int Crop:: getMaxSize(){
     return maxSize;
 }
-int Crop::getGrowthRate(){
-    return growthRate;
-}
 
 void Crop::setPlantAge(int plantAge){
     this->plantAge = plantAge;

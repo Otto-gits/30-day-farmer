@@ -10,7 +10,7 @@ Scythe::Scythe(Farm* farm) {
 
 void Scythe::harvestCrop(Plot& plot) {
     if (plot.hasCrop()) { // Check to see if plot has a crop in it 
-        Crop* crop = plot.getCrop(); // Create a pointer to the crop in the plot
+        Crop* crop = plot.getCrop(); // Create a pointer to the crop in the plotn 
         if (crop->isMature()) { // Checks to see if the crop is mature
             farm->addToBalance(crop->getSalePrice()); // Sell the crop by adding the sale price to the farms balance 
             plot.removeCrop(); // Remove the crop

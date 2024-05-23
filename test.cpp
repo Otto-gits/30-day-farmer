@@ -73,7 +73,7 @@ int main(){
     cout << firstPlot->getCrop()->getAge() << endl;
     cout << firstPlot->getCrop()->getPlantSize() << endl;
     
-    firstPlot->getCrop()->setPlantSize(4);
+    firstPlot->getCrop()->setPlantSize(1);
 
     scythe.use(*firstPlot);
 

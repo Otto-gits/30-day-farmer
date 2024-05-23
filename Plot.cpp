@@ -25,9 +25,9 @@ void Plot::sow(){
 }
 
 void Plot::plantCrop(Crop* newCrop){
-    if (sowed == true){
+    if (sowed == true){ // Check to see if plot is sowed
         if (hasCrop() == false){
-            crop = new Crop(*newCrop);
+            crop = new Crop(*newCrop); // set crop to be pointer parssed in 
         }
         else{
             cout << "The plot is full" << endl;
@@ -43,8 +43,8 @@ Crop* Plot::getCrop(){
 }
 
 void Plot::removeCrop(){
-    if(crop != nullptr){
-        delete crop;
+    if(crop != nullptr){ // Check to see if crop is a null pointer 
+        delete crop; // Delete the crop 
         crop = nullptr;
         sowed = false;
         cout << "Crop removed" << endl;
@@ -55,14 +55,14 @@ void Plot::removeCrop(){
 
 string Plot::getPlotCropType(){
     if (hasCrop()){
-        return crop->getType();
+        return crop->getType(); // Return the type (string) of crop in the plot 
     }else{
         return "Empty";
     }
 }
 
 Plot::~Plot(){
-    delete crop; 
+    delete crop; // Delete the crop in the plot, freeing up any dynamically allocated space 
 }
 
 

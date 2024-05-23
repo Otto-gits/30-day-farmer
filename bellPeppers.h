@@ -5,7 +5,7 @@
 
 class bellPeppers: public Crop{
     public:
-        bellPeppers();
+        bellPeppers(); // Default constructor for bellPeppers
 };
 
 

@@ -23,7 +23,7 @@ using namespace std;
         int getPlantSize(); // Returns the current plant size of a crop
         int getMaxSize(); // Returns the maximum plant size for a crop
         int getGrowthRate(); // Returns the amount a crop grows each day 
-        int getSize();
+        int getSize(); // Returns the current size of the plant
         float getWaterLevel(); // Returns the current water level of a plant
         void setPlantAge(int plantAge); // Set the plant age of a crop
         void setPlantSize(int plantSize); // Set the plant size of a crop

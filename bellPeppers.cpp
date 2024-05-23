@@ -8,10 +8,10 @@ bellPeppers::bellPeppers(){
     plantAge = 0;
     waterLevel = 0;
     plantSize = 0;
-    maxAge = 6; // Max age before dying 
+    maxAge = 6; 
     maxSize = 2;  
-    growthRate = 2; //Grows by size two every day   
-    salePrice = 6;
+    growthRate = 2;   
+    salePrice = 8;
     type = "bellPeppers";
 }
 

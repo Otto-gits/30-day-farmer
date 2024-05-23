@@ -16,70 +16,82 @@
 #include "Cherry.h"
 #include "Tree.h"
 #include "Apple.h"
-// #include "savefile.cpp"
+#include "CropTest.h"
+#include "PlotTest.h"
+#include "wateringCanTest.h"
 
 using namespace std;
 
 int main(){
-    Farm f1;          // Create a Farm object
+    // Farm f1;          // Create a Farm object
 
-    Corn corn;      // Create a Corn object
-    Wheat w1;  // Create a Wheat object
-    bellPeppers bp1;
-    Onion o1;
-    Carrot ca1;
-    Cherry ch1;
-    Apple a1;
+    // Corn corn;      // Create a Corn object
+    // Wheat w1;  // Create a Wheat object
+    // bellPeppers bp1;
+    // Onion o1;
+    // Carrot ca1;
+    // Cherry ch1;
+    // Apple a1;
 
 
-    wateringCan can;  // Create a wateringCan object
-    Hoe hoe;          // Create a Hoe object
-    Shovel shovel;    // Create a Shovel object
-    Scythe scythe(&f1);
+    // wateringCan can;  // Create a wateringCan object
+    // Hoe hoe;          // Create a Hoe object
+    // Shovel shovel;    // Create a Shovel object
+    // Scythe scythe(&f1);
 
-    cropMerchant merchant(f1); // Create a cropMerchant object
+    // cropMerchant merchant(f1); // Create a cropMerchant object
 
-    cout << f1.getNumPlots() << endl;
+    // cout << f1.getNumPlots() << endl;
 
-    Plot* firstPlot = f1.getPlot(0);
-    Plot* secondPlot = f1.getPlot(1);
-    Plot* thirdPlot = f1.getPlot(2);
-    Plot* fourthPlot = f1.getPlot(3);
-    Plot* fifthPlot = f1.getPlot(4);
+    // Plot* firstPlot = f1.getPlot(0);
+    // Plot* secondPlot = f1.getPlot(1);
+    // Plot* thirdPlot = f1.getPlot(2);
+    // Plot* fourthPlot = f1.getPlot(3);
+    // Plot* fifthPlot = f1.getPlot(4);
 
-    hoe.sowPlot(*firstPlot);
-    hoe.sowPlot(*secondPlot);
-    hoe.sowPlot(*thirdPlot);
-    hoe.sowPlot(*fourthPlot);
-    hoe.sowPlot(*fifthPlot);
+    // hoe.sowPlot(*firstPlot);
+    // hoe.sowPlot(*secondPlot);
+    // hoe.sowPlot(*thirdPlot);
+    // hoe.sowPlot(*fourthPlot);
+    // hoe.sowPlot(*fifthPlot);
 
-    merchant.buyWheat();   
-    // merchant.buyApple();
-    // merchant.buyCarrot();
-    // merchant.buyCorn();
-    // merchant.buyCherry();
+    // merchant.buyWheat();   
+    // // merchant.buyApple();
+    // // merchant.buyCarrot();
+    // // merchant.buyCorn();
+    // // merchant.buyCherry();
 
-    cout << firstPlot->getCrop()->getWaterLevel() << endl;
+    // cout << firstPlot->getCrop()->getWaterLevel() << endl;
     
-    can.use(*firstPlot);
+    // can.use(*firstPlot);
 
-    cout << f1.getBalance() << endl;
-    cout << firstPlot->getCrop()->getWaterLevel() << endl;
-    cout << firstPlot->getCrop()->getPlantSize() << endl;
-    cout << firstPlot->getCrop()->getAge() << endl;
+    // cout << f1.getBalance() << endl;
+    // cout << firstPlot->getCrop()->getWaterLevel() << endl;
+    // cout << firstPlot->getCrop()->getPlantSize() << endl;
+    // cout << firstPlot->getCrop()->getAge() << endl;
 
-    f1.newDay();
+    // f1.newDay();
 
-    cout << firstPlot->getCrop()->getAge() << endl;
-    cout << firstPlot->getCrop()->getPlantSize() << endl;
+    // cout << firstPlot->getCrop()->getAge() << endl;
+    // cout << firstPlot->getCrop()->getPlantSize() << endl;
     
-    firstPlot->getCrop()->setPlantSize(4);
+    // firstPlot->getCrop()->setPlantSize(4);
 
-    scythe.use(*firstPlot);
+    // scythe.use(*firstPlot);
 
-    cout << f1.getBalance() << endl;
+    // cout << f1.getBalance() << endl;
 
-    // saveState(f1);
+    CropTest cropTest;
+    cropTest.runCropTests();
+
+    PlotTest plotTest;
+    plotTest.runPlotTests();
+
+    WateringCanTest wateringCanTest;
+    wateringCanTest.runWateringCanTests();
+
+
+
 
     // cout << firstPlot->getCrop()->getWaterLevel() << endl;
 
@@ -92,35 +104,6 @@ int main(){
     // cout << firstPlot->hasCrop() << endl;
 
     // cout << "Balance after harvest: " << f1.getBalance() << endl;
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // f1.addToBalance(100);      // Add balance to the farm
 

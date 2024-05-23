@@ -5,7 +5,7 @@
 
 class Corn: public Crop{
     public:
-        Corn();
+        Corn(); // Default constructor for corn 
 };
 
 #endif

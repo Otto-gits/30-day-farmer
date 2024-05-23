@@ -5,7 +5,7 @@
 
 class Cherry: public Tree{
     public:
-        Cherry();
+        Cherry(); // Default constructor for cherry
 };
 
 #endif

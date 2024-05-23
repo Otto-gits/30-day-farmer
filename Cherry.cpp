@@ -8,10 +8,10 @@ Cherry::Cherry(){
     plantAge = 0;
     waterLevel = 0;
     plantSize = 0;
-    maxAge = 14; // Max age before dying 
+    maxAge = 14; 
     maxSize = 10;  
-    growthRate = 5; //Grows by size two every day  
-    salePrice = 20;
+    growthRate = 5; 
+    salePrice = 35;
     type = "Cherry";
 }
 

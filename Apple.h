@@ -5,7 +5,7 @@
 
 class Apple: public Tree{
     public:
-        Apple();
+        Apple(); // Default constructor for apple
 };
 
 #endif

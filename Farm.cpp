@@ -10,9 +10,9 @@ Farm::Farm(){
     dayNum = 0;
     numPlots = 5;
     maxNumDays = 30;
-    plots = new Plot*[numPlots];
+    plots = new Plot*[numPlots]; 
     for (int i = 0; i < numPlots; i++){
-        plots[i] = new Plot();
+        plots[i] = new Plot(); // Dynamically allocate space for all the plots 
     }
 }
 
@@ -24,9 +24,9 @@ void Farm::newDay(){
             Plot* plot = plots[i];
             if (plot->hasCrop()) {
                 Crop* crop = plot->getCrop();
-                crop->setPlantAge((crop->getAge())+1);
+                crop->setPlantAge((crop->getAge())+1); // Age all crops by one day 
                 if (crop->getWaterLevel() == 100 && crop->getSize() < crop->getMaxSize()){
-                    crop->setPlantSize(crop->getPlantSize() + 1);
+                    crop->setPlantSize(crop->getPlantSize() + 1); // If watered and not surpassed max size, age plant by one
                     crop->setWaterLevel(0);
                 }
             }
@@ -78,8 +78,8 @@ int Farm::getNumPlots(){
 
 Farm::~Farm(){
     for (int i = 0; i < numPlots; i++) {
-        delete plots[i]; // Delete each individual Plot object
+        delete plots[i]; // Delete each individual Plot object, freeing up any dynamically allocated space 
     }
-    delete[] plots; // Delete the array of pointers
+    delete[] plots; // Delete the array of pointers, freeing up any dynamically allocated space z
 }
 

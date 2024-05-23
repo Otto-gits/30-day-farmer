@@ -18,10 +18,10 @@ cropMerchant::cropMerchant(Farm& farm): farm(farm){
 
 void cropMerchant::buyWheat(){
         if (farm.getBalance() >= wheatSeedCost){
-                Plot* availablePlot= farm.getAvailablePlot();
+                Plot* availablePlot= farm.getAvailablePlot(); // Create pointer to available plot in farm
                 if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Wheat());
-                        farm.removeFromBalance(wheatSeedCost);
+                        farm.removeFromBalance(wheatSeedCost); // deduct amount from farm balance
                 }else{
                         cout << "No available plots to plant wheat" << endl;
                 }
@@ -32,10 +32,10 @@ void cropMerchant::buyWheat(){
 
 void cropMerchant:: buyBellPeppers(){
         if (farm.getBalance() >= bellPeppersSeedCost){
-                Plot* availablePlot= farm.getAvailablePlot();
+                Plot* availablePlot= farm.getAvailablePlot(); // Create pointer to available plot in farm
                 if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new bellPeppers());
-                        farm.removeFromBalance(bellPeppersSeedCost);
+                        farm.removeFromBalance(bellPeppersSeedCost); // deduct amount from farm balance
                 }else{
                         cout << "No available plots to plant bellpeppers" << endl;
                 }
@@ -46,10 +46,10 @@ void cropMerchant:: buyBellPeppers(){
 
 void cropMerchant::buyOnion(){
         if (farm.getBalance() >= onionSeedCost){
-                Plot* availablePlot= farm.getAvailablePlot();
+                Plot* availablePlot= farm.getAvailablePlot(); // Create pointer to available plot in farm
                 if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Onion());
-                        farm.removeFromBalance(onionSeedCost);
+                        farm.removeFromBalance(onionSeedCost); // deduct amount from farm balance
                 }else{
                         cout << "No available plots to plant onion" << endl;
                 }
@@ -59,10 +59,10 @@ void cropMerchant::buyOnion(){
 }
 void cropMerchant::buyCarrot(){
         if (farm.getBalance() >= carrotSeedCost){
-                Plot* availablePlot= farm.getAvailablePlot();
+                Plot* availablePlot= farm.getAvailablePlot(); // Create pointer to available plot in farm
                 if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Carrot());
-                        farm.removeFromBalance(carrotSeedCost);
+                        farm.removeFromBalance(carrotSeedCost); // deduct amount from farm balance
                 }else{
                         cout << "No available plots to plant carrot" << endl;
                 }
@@ -73,10 +73,10 @@ void cropMerchant::buyCarrot(){
 
 void cropMerchant::buyCorn(){
         if (farm.getBalance() >= cornSeedCost){
-                Plot* availablePlot= farm.getAvailablePlot();
+                Plot* availablePlot= farm.getAvailablePlot(); // Create pointer to available plot in farm
                 if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Corn());
-                        farm.removeFromBalance(cornSeedCost);
+                        farm.removeFromBalance(cornSeedCost); // deduct amount from farm balance
                 }else{
                         cout << "No available plots to plant corn" << endl;
                 }
@@ -87,10 +87,10 @@ void cropMerchant::buyCorn(){
         
 void cropMerchant::buyCherry(){
         if (farm.getBalance() >= cherrySeedCost){
-                Plot* availablePlot= farm.getAvailablePlot();
+                Plot* availablePlot= farm.getAvailablePlot(); // Create pointer to available plot in farm
                 if(availablePlot != nullptr && availablePlot->getSowed() == true){
                         availablePlot->plantCrop(new Cherry());
-                        farm.removeFromBalance(cherrySeedCost);
+                        farm.removeFromBalance(cherrySeedCost); // deduct amount from farm balance
                 }else{
                         cout << "No available plots to plant cherry" << endl;
                 }
@@ -102,9 +102,9 @@ void cropMerchant::buyCherry(){
 void cropMerchant::buyApple(){
         if (farm.getBalance() >= appleSeedCost){
                 Plot* availablePlot= farm.getAvailablePlot();
-                if(availablePlot != nullptr && availablePlot->getSowed() == true){
+                if(availablePlot != nullptr && availablePlot->getSowed() == true){ // Create pointer to available plot in farm
                         availablePlot->plantCrop(new Apple());
-                        farm.removeFromBalance(appleSeedCost);
+                        farm.removeFromBalance(appleSeedCost); // deduct amount from farm balance
                 }else{
                         cout << "No available plots to plant apple" << endl;
                 }
@@ -116,7 +116,7 @@ void cropMerchant::buyApple(){
 void cropMerchant::replenishScythe(Tool& tool, Farm& farm){
         if (tool.getUses() == 0 & farm.getBalance() >= scytheReplenishmentCost){
                 tool.setUses(4);
-                farm.removeFromBalance(scytheReplenishmentCost);
+                farm.removeFromBalance(scytheReplenishmentCost);  // deduct amount from farm balance
                 cout << "Scythe sucessfully replenished" << endl;
         }else{
                 cout << "Scythe could not be replenished" << endl;
@@ -126,7 +126,7 @@ void cropMerchant::replenishScythe(Tool& tool, Farm& farm){
 void cropMerchant::replenishHoe(Tool& tool, Farm& farm){
         if (tool.getUses() == 0 & farm.getBalance() >= hoeReplenishmentCost){
                 tool.setUses(4);
-                farm.removeFromBalance(hoeReplenishmentCost);
+                farm.removeFromBalance(hoeReplenishmentCost);  // deduct amount from farm balance
                 cout << "Hoe sucessfully replenished" << endl;
         }else{
                 cout << "Hoe could not be replenished" << endl;
@@ -136,7 +136,7 @@ void cropMerchant::replenishHoe(Tool& tool, Farm& farm){
 void cropMerchant::replenishShovel(Tool& tool, Farm& farm){
         if (tool.getUses() == 0 & farm.getBalance() >= shovelReplenishmentCost){
                 tool.setUses(4);
-                farm.removeFromBalance(shovelReplenishmentCost);
+                farm.removeFromBalance(shovelReplenishmentCost);  // deduct amount from farm balance
                 cout << "Shovel sucessfully replenished" << endl;
         }else{
                 cout << "Shovel could not be replenished" << endl;
@@ -146,7 +146,7 @@ void cropMerchant::replenishShovel(Tool& tool, Farm& farm){
 void cropMerchant::replenishWateringCan(Tool& tool, Farm& farm){
         if (tool.getUses() == 0 & farm.getBalance() >= wateringCanReplenishmentCost){
                 tool.setUses(4);
-                farm.removeFromBalance(wateringCanReplenishmentCost);
+                farm.removeFromBalance(wateringCanReplenishmentCost);  // deduct amount from farm balance
                 cout << "Watering can sucessfully replenished" << endl;
         }else{
                 cout << "Watering can could not be replenished" << endl;
@@ -160,13 +160,11 @@ void cropMerchant::sellWheat() {
         Plot* plot = farm.getPlot(i);
 
         if (plot->hasCrop() && plot->getCrop()->getType() == "Wheat" && plot->getCrop()->isMature()) {
-            // Correctly downcast to Wheat
-            Crop* wheat = new Wheat;
+            Crop* wheat = new Wheat; // Create pointer to wheat in plot
             wheat = plot->getCrop();
             
             if (wheat != nullptr) {
-                // Ensure proper sale and removal of the crop
-                farm.addToBalance(wheat->getSalePrice());
+                farm.addToBalance(wheat->getSalePrice()); // add amount to farm balance
                 cout << "Wheat from plot " << i + 1 << " sold for " << wheat->getSalePrice() << endl;
                 plot->removeCrop();
                 wheatSold = true;
@@ -188,13 +186,11 @@ void cropMerchant::sellBellPeppers() {
         Plot* plot = farm.getPlot(i);
 
         if (plot->hasCrop() && plot->getCrop()->getType() == "BellPeppers" && plot->getCrop()->isMature()) {
-            // Correctly downcast to BellPeppers
-            Crop* BellPeppers = new bellPeppers;
+            Crop* BellPeppers = new bellPeppers; // Create pointer to wheat in plot
             BellPeppers = plot->getCrop();
             
             if (BellPeppers != nullptr) {
-                // Ensure proper sale and removal of the crop
-                farm.addToBalance(BellPeppers->getSalePrice());
+                farm.addToBalance(BellPeppers->getSalePrice()); // add amount to farm balance
                 cout << "Bell Peppers from plot " << i + 1 << " sold for " << BellPeppers->getSalePrice() << endl;
                 plot->removeCrop();
                 bellPeppersSold = true;
@@ -216,13 +212,11 @@ void cropMerchant::sellOnion() {
         Plot* plot = farm.getPlot(i);
 
         if (plot->hasCrop() && plot->getCrop()->getType() == "Onion" && plot->getCrop()->isMature()) {
-            // Correctly downcast to Onion
-            Crop* onion = new Onion;
+            Crop* onion = new Onion; // Create pointer to wheat in plot
             onion = plot->getCrop();
             
             if (onion != nullptr) {
-                // Ensure proper sale and removal of the crop
-                farm.addToBalance(onion->getSalePrice());
+                farm.addToBalance(onion->getSalePrice()); // add amount to farm balance
                 cout << "Onion from plot " << i + 1 << " sold for " << onion->getSalePrice() << endl;
                 plot->removeCrop();
                 onionSold = true;
@@ -244,13 +238,11 @@ void cropMerchant::sellCarrot() {
         Plot* plot = farm.getPlot(i);
 
         if (plot->hasCrop() && plot->getCrop()->getType() == "Carrot" && plot->getCrop()->isMature()) {
-            // Correctly downcast to Carrot
-            Crop* carrot = new Carrot;
+            Crop* carrot = new Carrot; // Create pointer to wheat in plot
             carrot = plot->getCrop();
             
             if (carrot != nullptr) {
-                // Ensure proper sale and removal of the crop
-                farm.addToBalance(carrot->getSalePrice());
+                farm.addToBalance(carrot->getSalePrice()); // add amount to farm balance
                 cout << "Carrot from plot " << i + 1 << " sold for " << carrot->getSalePrice() << endl;
                 plot->removeCrop();
                 carrotSold = true;
@@ -272,13 +264,11 @@ void cropMerchant::sellCorn() {
         Plot* plot = farm.getPlot(i);
 
         if (plot->hasCrop() && plot->getCrop()->getType() == "Corn" && plot->getCrop()->isMature()) {
-            // Correctly downcast to Corn
-            Crop* corn = new Corn;
-            corn = plot->getCrop();
+            Crop* corn = new Corn; // Create pointer to wheat in plot
+            corn = plot->getCrop(); 
             
             if (corn != nullptr) {
-                // Ensure proper sale and removal of the crop
-                farm.addToBalance(corn->getSalePrice());
+                farm.addToBalance(corn->getSalePrice()); // add amount to farm balance 
                 cout << "Corn from plot " << i + 1 << " sold for " << corn->getSalePrice() << endl;
                 plot->removeCrop();
                 cornSold = true;
@@ -300,13 +290,11 @@ void cropMerchant::sellCherry() {
         Plot* plot = farm.getPlot(i);
 
         if (plot->hasCrop() && plot->getCrop()->getType() == "Cherry" && plot->getCrop()->isMature()) {
-            // Correctly downcast to Cherry
-            Crop* cherry = new Cherry;
+            Crop* cherry = new Cherry; // Create pointer to wheat in plot
             cherry = plot->getCrop();
             
             if (cherry != nullptr) {
-                // Ensure proper sale and removal of the crop
-                farm.addToBalance(cherry->getSalePrice());
+                farm.addToBalance(cherry->getSalePrice());  // add amount to farm balance 
                 cout << "Cherry from plot " << i + 1 << " sold for " << cherry->getSalePrice() << endl;
                 plot->removeCrop();
                 cherrySold = true;
@@ -328,13 +316,11 @@ void cropMerchant::sellApple() {
         Plot* plot = farm.getPlot(i);
 
         if (plot->hasCrop() && plot->getCrop()->getType() == "Apple" && plot->getCrop()->isMature()) {
-            // Correctly downcast to Apple
-            Crop* apple = new Apple;
+            Crop* apple = new Apple; // Create pointer to wheat in plot
             apple = plot->getCrop();
             
             if (apple != nullptr) {
-                // Ensure proper sale and removal of the crop
-                farm.addToBalance(apple->getSalePrice());
+                farm.addToBalance(apple->getSalePrice());  // add amount to farm balance 
                 cout << "Apple from plot " << i + 1 << " sold for " << apple->getSalePrice() << endl;
                 plot->removeCrop();
                 appleSold = true;

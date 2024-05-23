@@ -5,7 +5,7 @@
 
 class Wheat: public Crop{
     public:
-        Wheat();
+        Wheat(); // Default constructor for wheat
 
 };
 

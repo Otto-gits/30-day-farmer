@@ -6,7 +6,7 @@ using namespace std;
 Farm::Farm(){
     name = "Farm";
     location = "Adelaide";
-    balance = 1000;
+    balance = 1;
     dayNum = 0;
     numPlots = 5;
     maxNumDays = 30;

@@ -21,7 +21,7 @@
 #include "Tree.h" 
 #include "Leaderboard.h"
 
-// Define the states
+// Define the states which define what is shown on the screen
 enum class State
 {
     MainMenu,
@@ -33,17 +33,10 @@ enum class State
 
 int main(){
     Leaderboard leaderboard("Leaderboard.csv");
-
     // Load the leaderboard data from the file
     leaderboard.load();
 
-    // Add new entries or perform other operations
-    leaderboard.addEntry("B FARMER 60", 30);
-  
-
-    // Save the updated leaderboard data to the file
-    leaderboard.save();
-
+    //initilizes the farm, crop merchant, the plots as well as the tools
     Farm farmy;
     cropMerchant Merchant(farmy);
     
@@ -64,14 +57,13 @@ int main(){
     Scythe scythe(&farmy);
     bool scytheMode = false;
 
-
     sf::RenderWindow window(sf::VideoMode(1000, 600), "30 Day Farmer"); // this creates the window in which the game is played
+    //loads the font from a file
     sf::Font font;
     if (!font.loadFromFile("RobotoSlab-Regular.ttf")) {
         std::cerr << "Failed to load RobotoSlab-Regular.ttf" << std::endl;
         return -1;
     }
-
     // Create a text object to display the money
     sf::Text moneyText;
     moneyText.setFont(font);
@@ -115,7 +107,7 @@ int main(){
         std::cerr << "Failed to load 30DayFarmerBack.jpg" << std::endl; // sends an error message if the image does not load
         return -1;
     }
-    sf::Texture plot1;
+    sf::Texture plot1; //loads all the plots from the files and has an error catcher
     if (!plot1.loadFromFile("Plot1Dry.png",sf::IntRect(0, 0,500,500))) { 
         std::cerr << "Failed to load Plot1 dry.png" << std::endl;
         return -1;
@@ -140,18 +132,17 @@ int main(){
         std::cerr << "Failed to load Plot5Dry.png" << std::endl;
         return -1;
     }
+    //loads the files to show the main menu and stores them as a texture
     sf::Texture mainMenuTexture;
-
-    mainMenuTexture.loadFromFile("Main menu.JPG", sf::IntRect(0, 0, 1000, 600));
+    mainMenuTexture.loadFromFile("Main menu.jpeg", sf::IntRect(0, 0, 1000, 600));
     sf::Sprite mainMenuSprite;
     mainMenuSprite.setTexture(mainMenuTexture);
-
     sf::Texture intro1Texture;
     intro1Texture.loadFromFile("Intro 1.JPG", sf::IntRect(0, 0, 1000, 600));
     sf::Sprite intro1Sprite;
     intro1Sprite.setTexture(intro1Texture);
 
-    // Load the first pop-up texture
+    // Load the first pop-up texture (The first pAGE of intro)
     sf::Texture popupTexture1;
     popupTexture1.loadFromFile("Intro 2.JPG");
     sf::Sprite popupSprite1;
@@ -164,7 +155,7 @@ int main(){
     // Variable to control pop-up visibility
     State currentState = State::MainMenu;
 
-
+    //loads the growth stage of the plantes and creates it 5 times one for each plot
     sf::Texture plant;
     plant.loadFromFile("Planted.png",sf::IntRect(0,0,1000,1000));
     sf::Sprite spPlant1(plant);
@@ -182,11 +173,11 @@ int main(){
     sf::Sprite spPlant5(plant);
     spPlant5.setPosition(750,425);
     spPlant5.scale(2,2);
-
+    //Loads all of the grown plant files from the directory and then saves 5 versions of each for the plots
     sf::Texture wheatGrown;
     wheatGrown.loadFromFile("Wheat.png",sf::IntRect(0,0,250,250));
     sf::Sprite spWheat1(wheatGrown);
-    spWheat1.scale(2.3f,2.3f);
+    spWheat1.scale(2.3f,2.3f); // sets the scale so that it is the right size
     sf::Sprite spWheat2(wheatGrown);
     spWheat2.scale(2.6f,2.6f);
     sf::Sprite spWheat3(wheatGrown);
@@ -276,7 +267,7 @@ int main(){
     sf::IntRect clickableArea4(640, 355, 100, 100); // Area for interaction in the second pop-up
     sf::IntRect clickableArea5(230, 150, 120, 100); // Another area for interaction in the second pop-up
     sf::IntRect clickableAreaQuit(300, 440, 400, 100); // Area for interaction to quit
-    sf::IntRect clickableAreaLeaderBoard(300, 300, 400, 100); // Area for interaction to quit
+    sf::IntRect clickableAreaLeaderBoard(300, 300, 400, 100); // Area for interaction for the leaderboard
 
     sf::Sprite SPbackground(Background); // creates a sprite from which the background will load into 
     std::vector<sf::Sprite> plotSprites;
@@ -312,8 +303,6 @@ int main(){
     plotSprites.push_back(spPlot5); // Add sprite to vector
     sf::FloatRect plot5Coord(700, 415, 70, 45);
 
-
-    
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -343,7 +332,7 @@ int main(){
                     else if (clickableAreaLeaderBoard.contains(event.mouseButton.x, event.mouseButton.y))
                     {
                         std::cout << "Clicked within the clickable area LeaderBoard !" << std::endl;
-                        // Close the window
+                        // Displays the leaderboard
                         leaderboard.display();
                     }
                 }
@@ -379,7 +368,7 @@ int main(){
                     if (clickableArea4.contains(event.mouseButton.x, event.mouseButton.y))
                     {
                         std::cout << "Clicked within the clickable area to close the window!" << std::endl;
-                        // Close the window
+                        // Changes to the game screen
                         currentState = State::GameScreen;
                     }
                     else if (clickableArea5.contains(event.mouseButton.x, event.mouseButton.y))
@@ -390,11 +379,8 @@ int main(){
                     }
                 }
                 else if(currentState== State::GameScreen){
-                    // Display the coordinates of the mouse click
-                std::cout << "Mouse clicked at: (" << event.mouseButton.x << ", " << event.mouseButton.y << ")" << std::endl;
-                std::cout << "Mouse click at: (" << event.mouseButton.x << ", " << event.mouseButton.y << ")" << std::endl;
                 if (wheatPos.contains(event.mouseButton.x,event.mouseButton.y)){
-                    Merchant.buyWheat();
+                    Merchant.buyWheat(); // Buys and plants the wheat if there is an avaliable plot
                 }
                 else if (pepperPos.contains(event.mouseButton.x,event.mouseButton.y)){
                     Merchant.buyBellPeppers();
@@ -420,15 +406,16 @@ int main(){
                         hoeMode = false;
                         shovelMode = false;
                         scytheMode = false;
-
-                        std::cout << "watermode on" <<std::endl;
+                        //Sets the watering can mode to on
+                        std::cout << "You are using the watering can" <<std::endl;
                     }
                     else{
+                        //Sets the watering can mode to off
                         waterMode = false;
-                            std::cout << "watermode off" <<std::endl;
+                            std::cout << "You have put the watering can away" <<std::endl;
                     }
                 }
-                else if (plot1Coord.contains(event.mouseButton.x,event.mouseButton.y)){
+                else if (plot1Coord.contains(event.mouseButton.x,event.mouseButton.y)){ //this part lets the user interact with the plots using the tools
                     if(p1->hasCrop() == true){
                         if (waterMode == true){
                             wCan.waterCrop(*p1);                            
@@ -523,9 +510,8 @@ int main(){
                         }
                     }
                 }
-                else if (nextDayPos.contains(event.mouseButton.x,event.mouseButton.y)){
+                else if (nextDayPos.contains(event.mouseButton.x,event.mouseButton.y)){ //goes to the next day
                     farmy.newDay();
-                    std::cout << "tuesday" << std::endl;
                 }
                 else if (shovelPos.contains(event.mouseButton.x,event.mouseButton.y)){
                     if (shovelMode ==false){
@@ -534,11 +520,11 @@ int main(){
                         scytheMode = false;
                         waterMode = false;
                             
-                        std::cout << "Shovelmode on" <<std::endl;
+                        std::cout << "You have picked up the shovel" <<std::endl;
                     }
                     else{
                         shovelMode = false;
-                            std::cout << "Shovelmode off" <<std::endl;
+                            std::cout << "You have put down the shovel" <<std::endl;
                     }
                 }
                 else if (hoePos.contains(event.mouseButton.x,event.mouseButton.y)){
@@ -547,11 +533,11 @@ int main(){
                         waterMode = false;
                         shovelMode = false;
                         scytheMode = false;
-                        std::cout << "HoeMode on" <<std::endl;
+                        std::cout << "You have picked up the hoe" <<std::endl;
                     }
                     else{
                         hoeMode = false;
-                            std::cout << "Hoemode off" <<std::endl;
+                            std::cout << "You have put down the hoe" <<std::endl;
                     }
                 }
                 else if (scythePos.contains(event.mouseButton.x,event.mouseButton.y)){
@@ -560,18 +546,17 @@ int main(){
                         waterMode = false;
                         shovelMode = false;
                         hoeMode = false;
-                        std::cout << "ScytheMode on" <<std::endl;
+                        std::cout << "You have picked up the scythe" <<std::endl;
                     }
                     else{
                         scytheMode = false;
-                            std::cout << "Scythemode off" <<std::endl;
+                            std::cout << "You have put down the scythe" <<std::endl;
                     }
                 }
-                }
-            
             }
         }
-        // Draw the appropriate content based on the current state
+    }
+        // Draw the correct content based on the current state/page
         if (currentState == State::MainMenu)
         {
             // Draw the main menu sprite
@@ -585,29 +570,30 @@ int main(){
         else if (currentState == State::FirstPopup)
         {
             // Draw the first pop-up sprite
-            popupSprite1.setPosition(0, 0); // Adjust the position as needed
+            popupSprite1.setPosition(0, 0); 
             window.draw(popupSprite1);
         }
         else if (currentState == State::SecondPopup)
         {
             // Draw the second pop-up sprite
-            popupSprite2.setPosition(0, 0); // Adjust the position as needed
+            popupSprite2.setPosition(0, 0); 
             window.draw(popupSprite2);
         }
         else if (currentState == State::GameScreen){
-            // clear the window with black color
-        std::ostringstream ss;
-        ss << farmy.getBalance();
-        moneyText.setString(ss.str());
+        
+        //sets the balance of the user and the daycount as a stringstream to display it later in the file
+        std::ostringstream balance;
+        balance << farmy.getBalance();
+        moneyText.setString(balance.str());
 
-        std::ostringstream dd;
-        dd << farmy.getDayNum();
-        dayCount.setString(dd.str());
+        std::ostringstream day;
+        day << farmy.getDayNum();
+        dayCount.setString(day.str());
 
-        // For p1
+        // For plot 1 to show the status of what is planted
         std::ostringstream p1Stream;
-        if (p1 != nullptr && p1->getCrop() != nullptr && p1->getCrop()->getAge() < p1->getCrop()->getMaxAge() ) {
-            p1Stream << p1->getPlotCropType() << "\n";
+        if (p1 != nullptr && p1->getCrop() != nullptr && p1->getCrop()->getAge() < p1->getCrop()->getMaxAge() ) { //tests to see for segmentation fault
+            p1Stream << p1->getPlotCropType() << "\n"; 
             p1Stream << " " << p1-> getCrop()->getPlantSize() <<  "/" << p1->getCrop()->getMaxSize();
         } else if(p1 != nullptr && p1->getCrop() != nullptr && p1->getCrop()->getAge() >= p1->getCrop()->getMaxAge()) {
             p1Stream << "Dead Crop";
@@ -617,7 +603,7 @@ int main(){
 
         plot1Text.setString(p1Stream.str());
 
-        // For p2
+        // For plot 2 displays what the status of the plot is
         std::ostringstream p2Stream;
         if (p2 != nullptr && p2->getCrop() != nullptr && p2->getCrop()->getAge() < p2->getCrop()->getMaxAge() ) {
             p2Stream << p2->getPlotCropType() << "\n";
@@ -629,7 +615,7 @@ int main(){
         }
         plot2Text.setString(p2Stream.str());
 
-        // For p3
+        // For plot 3
         std::ostringstream p3Stream;
         if (p3 != nullptr && p3->getCrop() != nullptr && p3->getCrop()->getAge() < p3->getCrop()->getMaxAge() ) {
             p3Stream << p3->getPlotCropType() << "\n";
@@ -641,7 +627,7 @@ int main(){
         }
         plot3Text.setString(p3Stream.str());
 
-        // For p4
+        // For plot 4
         std::ostringstream p4Stream;
         if (p4 != nullptr && p4->getCrop() != nullptr && p4->getCrop()->getAge() < p4->getCrop()->getMaxAge() ) {
             p4Stream << p4->getPlotCropType() << "\n";
@@ -654,7 +640,7 @@ int main(){
         
         plot4Text.setString(p4Stream.str());
 
-        // For p5
+        // For plot 5
         std::ostringstream p5Stream;
         if (p5 != nullptr && p5->getCrop() != nullptr && p5->getCrop()->getAge() < p5->getCrop()->getMaxAge() ) {
             p5Stream << p5->getPlotCropType() << "\n";
@@ -666,6 +652,7 @@ int main(){
         }
         plot5Text.setString(p5Stream.str());
 
+        //changes the colour of the plot if the plot is watered and has segmentation error catching
         for (int i = 0; i < farmy.getNumPlots(); ++i) {
             Crop *crop = farmy.getPlot(i)->getCrop();
             if (crop != nullptr) {
@@ -679,8 +666,8 @@ int main(){
         }
         window.clear(sf::Color(255, 255, 255));
     
-        // draw everything here...
-        // window.draw(...);
+        // This draws all of the sprites as well as the texts
+        
         window.draw(SPbackground);
         for (int i=0;i<5;i++){
             window.draw(plotSprites[i]);
@@ -694,7 +681,7 @@ int main(){
         window.draw(plot4Text);        
         window.draw(plot5Text);
 
-        for (int i=0;i<5;i++){
+        for (int i=0;i<5;i++){ // draws the crop in the plot based on its status
             if (farmy.getPlot(i) != nullptr){
                 if (farmy.getPlot(i)->hasCrop() == true){
                     if (i==0 && p1 != nullptr && p1->getCrop() != nullptr && p1->getCrop()->getPlantSize() != p1->getCrop()->getMaxSize() ){
@@ -869,5 +856,16 @@ int main(){
         // end the current frame
         window.display();
     }
+    //Gets user to input their name to save to the leaderboard
+    std::string user;
+    std::cout << "Enter your name: " << std::endl;
+    std::getline(std::cin, user);  
+
+    // Adds a new entry to the leaderboard.csv file
+    leaderboard.addEntry(user, farmy.getBalance());
+  
+    // Save the updated leaderboard data to the file
+    leaderboard.save();
+    leaderboard.display();
     return 0;
-    }
+}

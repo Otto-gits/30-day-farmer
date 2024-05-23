@@ -5,7 +5,7 @@ CXX = g++
 TARGET = main
 
 # Define the source files (excluding main.cpp)
-SRCS = Plot.cpp Farm.cpp Wheat.cpp Crop.cpp bellPeppers.cpp Carrot.cpp Corn.cpp cropMerchant.cpp Hoe.cpp Onion.cpp Scythe.cpp Shovel.cpp Tool.cpp wateringCan.cpp Cherry.cpp Apple.cpp Tree.cpp
+SRCS = Plot.cpp Farm.cpp Wheat.cpp Crop.cpp bellPeppers.cpp Carrot.cpp Corn.cpp cropMerchant.cpp Hoe.cpp Onion.cpp Scythe.cpp Shovel.cpp Tool.cpp wateringCan.cpp Cherry.cpp Apple.cpp Tree.cpp Leaderboard.cpp
 
 # Define the object files
 OBJS = $(SRCS:.cpp=.o) main.o

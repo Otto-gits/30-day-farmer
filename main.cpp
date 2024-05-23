@@ -19,8 +19,31 @@
 #include "Cherry.h"
 #include "Apple.h"
 #include "Tree.h" 
+#include "Leaderboard.h"
+
+// Define the states
+enum class State
+{
+    MainMenu,
+    Intro1,
+    FirstPopup,
+    SecondPopup,
+    GameScreen
+};
 
 int main(){
+    Leaderboard leaderboard("Leaderboard.csv");
+
+    // Load the leaderboard data from the file
+    leaderboard.load();
+
+    // Add new entries or perform other operations
+    leaderboard.addEntry("B FARMER 60", 30);
+  
+
+    // Save the updated leaderboard data to the file
+    leaderboard.save();
+
     Farm farmy;
     cropMerchant Merchant(farmy);
     
@@ -117,6 +140,30 @@ int main(){
         std::cerr << "Failed to load Plot5Dry.png" << std::endl;
         return -1;
     }
+    sf::Texture mainMenuTexture;
+
+    mainMenuTexture.loadFromFile("Main menu.JPG", sf::IntRect(0, 0, 1000, 600));
+    sf::Sprite mainMenuSprite;
+    mainMenuSprite.setTexture(mainMenuTexture);
+
+    sf::Texture intro1Texture;
+    intro1Texture.loadFromFile("Intro 1.JPG", sf::IntRect(0, 0, 1000, 600));
+    sf::Sprite intro1Sprite;
+    intro1Sprite.setTexture(intro1Texture);
+
+    // Load the first pop-up texture
+    sf::Texture popupTexture1;
+    popupTexture1.loadFromFile("Intro 2.JPG");
+    sf::Sprite popupSprite1;
+    popupSprite1.setTexture(popupTexture1);
+    sf::Texture popupTexture2;
+    popupTexture2.loadFromFile("Intro 3.JPG");
+    sf::Sprite popupSprite2;
+    popupSprite2.setTexture(popupTexture2);
+
+    // Variable to control pop-up visibility
+    State currentState = State::MainMenu;
+
 
     sf::Texture plant;
     plant.loadFromFile("Planted.png",sf::IntRect(0,0,1000,1000));
@@ -221,6 +268,15 @@ int main(){
     sf::FloatRect scythePos(840,350,70,75);
     sf::FloatRect wCanPos(840, 425 , 70,75); 
     sf::FloatRect nextDayPos(500,545,160,30);
+    sf::IntRect clickableAreaMainMenu(300, 175, 400, 100); // (left, top, width, height)
+    sf::IntRect clickableAreaIntro1(640, 355, 100, 100); // Area for interaction in Intro 1
+    sf::IntRect clickableArea1(640, 355, 100, 100); // Area for the first pop-up interaction
+    sf::IntRect clickableArea2(640, 355, 100, 100); // Area for second interaction in the first pop-up
+    sf::IntRect clickableArea3(230, 150, 120, 100); // Another area for interaction in the first pop-up
+    sf::IntRect clickableArea4(640, 355, 100, 100); // Area for interaction in the second pop-up
+    sf::IntRect clickableArea5(230, 150, 120, 100); // Another area for interaction in the second pop-up
+    sf::IntRect clickableAreaQuit(300, 440, 400, 100); // Area for interaction to quit
+    sf::IntRect clickableAreaLeaderBoard(300, 300, 400, 100); // Area for interaction to quit
 
     sf::Sprite SPbackground(Background); // creates a sprite from which the background will load into 
     std::vector<sf::Sprite> plotSprites;
@@ -269,6 +325,73 @@ int main(){
                 window.close();
             }
             if (event.type == sf::Event::MouseButtonPressed){
+                if (currentState == State::MainMenu)
+                {
+                    // Check if the mouse click is within the clickable area of the main menu
+                    if (clickableAreaMainMenu.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area of the main menu!" << std::endl;
+                        // Show Intro 1
+                        currentState = State::Intro1;
+                    }
+                    else if (clickableAreaQuit.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area QUIT!" << std::endl;
+                        // Close the window
+                        window.close();
+                    }
+                    else if (clickableAreaLeaderBoard.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area LeaderBoard !" << std::endl;
+                        // Close the window
+                        leaderboard.display();
+                    }
+                }
+                else if (currentState == State::Intro1)
+                {
+                    // Check if the mouse click is within the clickable area of Intro 1
+                    if (clickableAreaIntro1.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area of Intro 1!" << std::endl;
+                        // Show the first pop-up
+                        currentState = State::FirstPopup;
+                    }
+                }
+                else if (currentState == State::FirstPopup)
+                {
+                    // Check if the mouse click is within the clickable areas of the first pop-up
+                    if (clickableArea1.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area 1!" << std::endl;
+                        // Show the second pop-up
+                        currentState = State::SecondPopup;
+                    }
+                    else if (clickableArea3.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area 3!" << std::endl;
+                        // Return to Intro 1
+                        currentState = State::Intro1;
+                    }
+                }
+                else if (currentState == State::SecondPopup)
+                {
+                    // Check if the mouse click is within the clickable areas of the second pop-up
+                    if (clickableArea4.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area to close the window!" << std::endl;
+                        // Close the window
+                        currentState = State::GameScreen;
+                    }
+                    else if (clickableArea5.contains(event.mouseButton.x, event.mouseButton.y))
+                    {
+                        std::cout << "Clicked within the clickable area 5!" << std::endl;
+                        // Return to the first pop-up
+                        currentState = State::FirstPopup;
+                    }
+                }
+                else if(currentState== State::GameScreen){
+                    // Display the coordinates of the mouse click
+                std::cout << "Mouse clicked at: (" << event.mouseButton.x << ", " << event.mouseButton.y << ")" << std::endl;
                 std::cout << "Mouse click at: (" << event.mouseButton.x << ", " << event.mouseButton.y << ")" << std::endl;
                 if (wheatPos.contains(event.mouseButton.x,event.mouseButton.y)){
                     Merchant.buyWheat();
@@ -444,11 +567,35 @@ int main(){
                             std::cout << "Scythemode off" <<std::endl;
                     }
                 }
+                }
             
             }
         }
-
-        // clear the window with black color
+        // Draw the appropriate content based on the current state
+        if (currentState == State::MainMenu)
+        {
+            // Draw the main menu sprite
+            window.draw(mainMenuSprite);
+        }
+        else if (currentState == State::Intro1)
+        {
+            // Draw the Intro 1 sprite
+            window.draw(intro1Sprite);
+        }
+        else if (currentState == State::FirstPopup)
+        {
+            // Draw the first pop-up sprite
+            popupSprite1.setPosition(0, 0); // Adjust the position as needed
+            window.draw(popupSprite1);
+        }
+        else if (currentState == State::SecondPopup)
+        {
+            // Draw the second pop-up sprite
+            popupSprite2.setPosition(0, 0); // Adjust the position as needed
+            window.draw(popupSprite2);
+        }
+        else if (currentState == State::GameScreen){
+            // clear the window with black color
         std::ostringstream ss;
         ss << farmy.getBalance();
         moneyText.setString(ss.str());
@@ -546,7 +693,7 @@ int main(){
         window.draw(plot3Text);
         window.draw(plot4Text);        
         window.draw(plot5Text);
-        
+
         for (int i=0;i<5;i++){
             if (farmy.getPlot(i) != nullptr){
                 if (farmy.getPlot(i)->hasCrop() == true){
@@ -717,6 +864,7 @@ int main(){
                     }
             }
             }
+        }
         }
         // end the current frame
         window.display();
